@@ -1,7 +1,6 @@
+
 /* Styles form inputs 
-
 Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
-
 */
 input[type=text], input[type=tel], input[type=email], input[type=date], textarea, select {
     width: 100%;
@@ -13,15 +12,12 @@ input[type=text], input[type=tel], input[type=email], input[type=date], textarea
   }
 
 /* Adds spacing between form elements */
-
   input, select, fieldset {
     margin: 5px 0 15px 0;
   }
   
   /* Styles the submit button on forms 
-  
   Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
-
   */
   input[type=submit] {
     width: 30%;
@@ -34,7 +30,6 @@ input[type=text], input[type=tel], input[type=email], input[type=date], textarea
     cursor: pointer;
     margin: auto;
   }
-
 
   /* Reduces the width of the main content on pages and centers it */
   main {
