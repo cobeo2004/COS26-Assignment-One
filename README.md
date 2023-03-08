@@ -1,6 +1,7 @@
 # COS26 Assignment One
 Deadline Is Coming guys
 
+
 # DEADLINES
 - Group form Mar 12 (end of Week 2)
 - Assignment Part 1 Apr 17 (Week 7)
@@ -20,6 +21,5 @@ Deadline Is Coming guys
 - Mid-semester Break: Report
 - Week 7: Report + Review and submit
 
-# Assignment information https://swinburne.instructure.com/courses/49151/assignments/504478 
-
-
+Assignment information
+https://swinburne.instructure.com/courses/49151/assignments/504478 
