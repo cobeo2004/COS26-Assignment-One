@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Apply to our open positions" />
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Apply to our open positions">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
     <title>Apply for our jobs</title>
   </head>
   <body>
+	<main>
     <h1>Apply for your dream job</h1>
     <h4>Fill out the form below to apply for one of our open positions!</h4>
 
@@ -15,32 +16,32 @@
 			<form method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
 				<label for="job_ref_no">Job Reference Number</label>
 				<input type="text" id="job_ref_no" name="job_ref_no" placeholder="a1234" required minlength="5"
-					maxlength="5" />
+					maxlength="5">
 
 				<label for="first_name">First Name</label>
-				<input type="text" id="first_name" name="first_name" placeholder="John" required maxlength="20" />
+				<input type="text" id="first_name" name="first_name" placeholder="John" required maxlength="20">
 
 				<label for="last_name">Last Name</label>
-				<input type="text" id="last_name" name="last_name" placeholder="Doe" required maxlength="20" />
+				<input type="text" id="last_name" name="last_name" placeholder="Doe" required maxlength="20">
 
 				<label for="birth_date">Date of Birth</label>
-				<input type="date" id="birth_date" name="birth_date" required />
+				<input type="date" id="birth_date" name="birth_date" required>
 
 				<fieldset>
 					<legend>Gender</legend>
-					<input type="radio" id="gender_male" name="gender" value="male" required />
-					<label for="gender_male">Male</label><br />
-					<input type="radio" id="gender_female" name="gender" value="female" />
-					<label for="gender_female">Female</label><br />
-					<input type="radio" id="gender_other" name="gender" value="other" />
+					<input type="radio" id="gender_male" name="gender" value="male" required>
+					<label for="gender_male">Male</label><br>
+					<input type="radio" id="gender_female" name="gender" value="female">
+					<label for="gender_female">Female</label><br>
+					<input type="radio" id="gender_other" name="gender" value="other">
 					<label for="gender_other">Other</label>
 				</fieldset>
 
 				<label for="address">Street Address</label>
-				<input type="text" id="address" name="address" placeholder="1 John St" required maxlength="40" />
+				<input type="text" id="address" name="address" placeholder="1 John St" required maxlength="40">
 
 				<label for="suburb">Suburb/Town</label>
-				<input type="text" id="suburb" name="suburb" placeholder="Hawthorn" required maxlength="40" />
+				<input type="text" id="suburb" name="suburb" placeholder="Hawthorn" required maxlength="40">
 
 				<label for="state">State</label>
 				<select name="state" id="state">
@@ -58,24 +59,23 @@
 				<input type="text" id="postcode" name="postcode" placeholder="3122" required pattern="\d{4}" maxlength="4">
 
 				<label for="email">Email</label>
-				<input type="email" id="email" name="email" placeholder="johndoe@example.com" />
+				<input type="email" id="email" name="email" placeholder="johndoe@example.com">
 
 				<label for="phone">Phone Number</label>
-				<input type="tel" id="phone" name="phone" placeholder="0412345678" minlength="8" maxlength="12" required/>
+				<input type="tel" id="phone" name="phone" placeholder="0412345678" minlength="8" maxlength="12" required>
 
 				<fieldset>
 					<legend>Your Skills</legend>
-					<input type="checkbox" id="skill1" name="skills" value="leadership" checked />
-					<label for="skill1">Leadership</label><br />
-					<input type="checkbox" id="skill2" name="skills" value="communication" />
-					<label for="skill2">Communication</label><br />
-					<input type="checkbox" id="skill3" name="skills" value="decision_making" />
-					<label for="skill3">Decision Making</label><br />
-					<input type="checkbox" id="skill4" name="skills" value="management" />
-					<label for="skill4">Management</label><br />
-					<input type="checkbox" id="skill5" name="skills" value="other" />
-					<label for="skill5">Other skills...</label><br />
-					</div>
+					<input type="checkbox" id="skill1" name="skills" value="leadership">
+					<label for="skill1">Leadership</label><br>
+					<input type="checkbox" id="skill2" name="skills" value="communication">
+					<label for="skill2">Communication</label><br>
+					<input type="checkbox" id="skill3" name="skills" value="decision_making">
+					<label for="skill3">Decision Making</label><br>
+					<input type="checkbox" id="skill4" name="skills" value="management">
+					<label for="skill4">Management</label><br>
+					<input type="checkbox" id="skill5" name="skills" value="other">
+					<label for="skill5">Other skills...</label><br>
 				</fieldset>
 
 				<label for="other_skills">Other Skills</label>
@@ -84,7 +84,7 @@
 					placeholder="If you have any other skills not listed above, please list them here.">
 				</textarea>
 
-				<input type="submit" value="Apply" />
+				<input type="submit" value="Apply">
 			</form>
 			</main>
 </body>
