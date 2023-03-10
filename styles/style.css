@@ -1,33 +1,34 @@
-  /* Styles all text on the page with a font */
-  * {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+/* Styles all text on the page with a font */
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
 
-  /* Styles form inputs 
+/* Styles form inputs 
 Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
 */
-  input[type=text],
-  input[type=tel],
-  input[type=email],
-  input[type=date],
-  textarea,
-  select {
-    width: 100%;
-    padding: 8px 10px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
 
-  /* Adds spacing between form elements */
-  input,
-  select,
-  fieldset, textarea {
-    margin: 5px 0 15px 0;
-  }
+/* Adds spacing between form elements */
+input,
+select,
+fieldset {
+  margin: 5px 0 15px 0;
+}
 
-  /* Styles the submit button on forms 
+/* Styles the submit button on forms 
   Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
   */
   input[type=submit] {
@@ -41,19 +42,49 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
     margin: auto;
   }
 
-  /* Reduces the width of the main content on pages and centers it */
-  main {
-    width: 50%;
-    margin: auto;
-  }
+/* Reduces the width of the main content on pages and centers it */
+main {
+  width: 50%;
+  margin: auto;
+}
 
-  /* Style fieldset border to be consistent with inputs */
-  fieldset {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
+/* Style fieldset border to be consistent with inputs */
+fieldset {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
-  /* Removes the bold property from headers with the 'unbold' class */
-  .unbold {
-    font-weight: normal;
-  }
+/* Removes the bold property from headers with the 'unbold' class */
+.unbold {
+  font-weight: normal;
+}
+
+.container {
+  text-align: center;
+  align-items: center;
+}
+
+.container h2 {
+  margin-top: 50px;
+}
+.about-text {
+  width: 640px;
+  padding: 10px;
+  border: 5px solid;
+  margin: auto;
+}
+
+.member-grid-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+.member-grid-row img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
