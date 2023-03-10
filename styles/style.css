@@ -1,8 +1,17 @@
+  /* Styles all text on the page with a font */
+  * {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
 
-/* Styles form inputs 
+  /* Styles form inputs 
 Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
 */
-input[type=text], input[type=tel], input[type=email], input[type=date], textarea, select {
+  input[type=text],
+  input[type=tel],
+  input[type=email],
+  input[type=date],
+  textarea,
+  select {
     width: 100%;
     padding: 8px 10px;
     display: inline-block;
@@ -11,11 +20,13 @@ input[type=text], input[type=tel], input[type=email], input[type=date], textarea
     box-sizing: border-box;
   }
 
-/* Adds spacing between form elements */
-  input, select, fieldset {
+  /* Adds spacing between form elements */
+  input,
+  select,
+  fieldset {
     margin: 5px 0 15px 0;
   }
-  
+
   /* Styles the submit button on forms 
   Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
   */
@@ -23,7 +34,7 @@ input[type=text], input[type=tel], input[type=email], input[type=date], textarea
     width: 30%;
     background-color: #0b63d5;
     color: white;
-    padding: 8px 10px;
+    padding: 80px 10px 0 0;
     margin: 10px 0;
     border: none;
     border-radius: 5px;
@@ -35,4 +46,15 @@ input[type=text], input[type=tel], input[type=email], input[type=date], textarea
   main {
     width: 50%;
     margin: auto;
+  }
+
+  /* Style fieldset border to be consistent with inputs */
+  fieldset {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  /* Removes the bold property from headers with the 'unbold' class */
+  .unbold {
+    font-weight: normal;
   }
