@@ -43,7 +43,7 @@
 				<input type="text" id="suburb" name="suburb" placeholder="Hawthorn" required maxlength="40">
 
 				<label for="state">State</label>
-				<select name="state" id="state">
+				<select name="state" id="state" required>
 					<option value="vic">VIC</option>
 					<option value="nsw">NSW</option>
 					<option value="qld">QLD</option>
@@ -65,15 +65,15 @@
 
 				<fieldset>
 					<legend>Your Skills</legend>
-					<input type="checkbox" id="skill1" name="skills" value="leadership" required>
+					<input type="checkbox" id="skill1" name="skills[]" value="leadership" required>
 					<label for="skill1">Leadership</label><br>
-					<input type="checkbox" id="skill2" name="skills" value="communication">
+					<input type="checkbox" id="skill2" name="skills[]" value="communication">
 					<label for="skill2">Communication</label><br>
-					<input type="checkbox" id="skill3" name="skills" value="decision_making">
+					<input type="checkbox" id="skill3" name="skills[]" value="decision_making">
 					<label for="skill3">Decision Making</label><br>
-					<input type="checkbox" id="skill4" name="skills" value="management">
+					<input type="checkbox" id="skill4" name="skills[]" value="management">
 					<label for="skill4">Management</label><br>
-					<input type="checkbox" id="skill5" name="skills" value="other">
+					<input type="checkbox" id="skill5" name="skills[]" value="other">
 					<label for="skill5">Other skills...</label><br>
 				</fieldset>
 
