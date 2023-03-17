@@ -1,114 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Apply for our open positions" />
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
-    <title>Apply - CloudLabs</title>
-  </head>
-  <body>
-    <main>
-      <h1>Apply for your dream job</h1>
-      <h3 class="unbold">
-        Fill out the form below to apply for one of our open positions!
-      </h3>
-      <br>
-      <!-- Job Application form, sends a POST request to the Swinburne Mercury server upon submission -->
-      <form
-        method="post"
-        action="https://mercury.swin.edu.au/it000000/formtest.php"
-      >
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="Apply for our open positions">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <title>Apply - CloudLabs</title>
+</head>
+
+<body>
+  <main>
+    <h1>Apply for your dream job</h1>
+    <h3 class="unbold">
+      Fill out the form below to apply for one of our open positions!
+    </h3>
+    <br>
+    <!-- Job Application form, sends a POST request to the Swinburne Mercury server upon submission -->
+    <form method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
 
       <fieldset class="section">
         <legend>📝 About the job</legend>
         <label for="job_ref_no">What job are you applying for?</label><br>
-        <input
-          type="text"
-          id="job_ref_no"
-          name="job_ref_no"
-          placeholder="Job reference number"
-          required
-          minlength="5"
-          maxlength="5"
-        />
+        <input type="text" id="job_ref_no" name="job_ref_no" placeholder="Job reference number" required minlength="5"
+          maxlength="5">
       </fieldset>
 
-        <fieldset class="section">
-          <legend>👋 Tell us about yourself</legend>
-          <table>
-            <tr>
-              <td><label for="first_name">First name</label></td>
-              <td> <label for="last_name">Last name</label></td>
-            </tr>
-            <tr>
-              <td> <input
-                type="text"
-                id="first_name"
-                name="first_name"
-                placeholder="John"
-                required
-                maxlength="20"
-              /></td>
-              <td> <input
-                type="text"
-                id="last_name"
-                name="last_name"
-                placeholder="Doe"
-                required
-                maxlength="20"
-              </td>
-            </tr>
-          </table>
+      <fieldset class="section">
+        <legend>👋 Tell us about yourself</legend>
+        <table>
+          <tr>
+            <td><label for="first_name">First name</label></td>
+            <td> <label for="last_name">Last name</label></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="first_name" name="first_name" placeholder="John" required maxlength="20"></td>
+            <td><input type="text" id="last_name" name="last_name" placeholder="Doe" required maxlength="20"></td>
+          </tr>
+        </table>
 
         <label for="birth_date">Date of birth</label><br>
-        <input type="date" id="birth_date" name="birth_date" required />
+        <input type="date" id="birth_date" name="birth_date" required>
 
         <fieldset id="gender_list">
           <legend>Gender</legend>
-          <input
-            type="radio"
-            id="gender_male"
-            name="gender"
-            value="male"
-            required
-          />
-          <label for="gender_male">Male</label><br />
-          <input type="radio" id="gender_female" name="gender" value="female" />
-          <label for="gender_female">Female</label><br />
-          <input type="radio" id="gender_other" name="gender" value="other" />
+          <input type="radio" id="gender_male" name="gender" value="male" required>
+          <label for="gender_male">Male</label><br>
+          <input type="radio" id="gender_female" name="gender" value="female">
+          <label for="gender_female">Female</label><br>
+          <input type="radio" id="gender_other" name="gender" value="other">
           <label for="gender_other">Other</label>
         </fieldset>
 
         <table>
-            <tr>
-              <td><label for="address">Street address</label></td>
-              <td><label for="suburb">Suburb/town</label></td>
-            </tr>
-            <tr>
-              <td> <input
-                type="text"
-                id="address"
-                name="address"
-                placeholder="1 John St"
-                required
-                maxlength="40"
-              /></td>
-              <td> <input
-                type="text"
-                id="suburb"
-                name="suburb"
-                placeholder="Hawthorn"
-                required
-                maxlength="40"
-              </td>
-            </tr>
-            <tr>
-              <td><label for="state">State</label></td>
-              <td><label for="postcode">Postcode</label></td>
-            </tr>
-            <tr>
-              <td> <select name="state" id="state" required>
+          <tr>
+            <td><label for="address">Street address</label></td>
+            <td><label for="suburb">Suburb/town</label></td>
+          </tr>
+          <tr>
+            <td><input type="text" id="address" name="address" placeholder="1 John St" required maxlength="40"></td>
+            <td><input type="text" id="suburb" name="suburb" placeholder="Hawthorn" required maxlength="40"></td>
+          </tr>
+          <tr>
+            <td><label for="state">State</label></td>
+            <td><label for="postcode">Postcode</label></td>
+          </tr>
+          <tr>
+            <td> <select name="state" id="state" required>
+              <option value="" disabled selected>Select your state</option>
                 <option value="vic">VIC</option>
                 <option value="nsw">NSW</option>
                 <option value="qld">QLD</option>
@@ -118,83 +77,38 @@
                 <option value="tas">TAS</option>
                 <option value="act">ACT</option>
               </select></td>
-              <td> <input
-                type="text"
-                id="postcode"
-                name="postcode"
-                placeholder="3122"
-                required
-                pattern="\d{4}"
-                maxlength="4"
-              /></td>
-            </tr>
-          </table>
+            <td><input type="text" id="postcode" name="postcode" placeholder="3122" required pattern="\d{4}"
+                maxlength="4"></td>
+          </tr>
+        </table>
 
         <label for="email">Email</label><br>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="johndoe@example.com"
-        />
-<br>
+        <input type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+        <br>
         <label for="phone">Phone number</label><br>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="0412345678"
-          minlength="8"
-          maxlength="12"
-          required
-        />
+        <input type="tel" id="phone" name="phone" placeholder="0412345678" minlength="8" maxlength="12" required>
       </fieldset>
 
-        <fieldset class="section">
-          <legend>🤔 Tell us about your skills</legend>
-          <input
-            type="checkbox"
-            id="skill1"
-            name="skills[]"
-            value="leadership"
-            required
-          />
-          <label for="skill1">Leadership</label><br />
-          <input
-            type="checkbox"
-            id="skill2"
-            name="skills[]"
-            value="communication"
-          />
-          <label for="skill2">Communication</label><br />
-          <input
-            type="checkbox"
-            id="skill3"
-            name="skills[]"
-            value="decision_making"
-          />
-          <label for="skill3">Decision making</label><br />
-          <input
-            type="checkbox"
-            id="skill4"
-            name="skills[]"
-            value="management"
-          />
-          <label for="skill4">Management</label><br>
-          <input type="checkbox" id="skill5" name="skills[]" value="other" />
-          <label for="skill5">Other skills...</label><br><br>
+      <fieldset class="section">
+        <legend>🤔 Tell us about your skills</legend>
+        <input type="checkbox" id="skill1" name="skills[]" value="leadership" required>
+        <label for="skill1">Leadership</label><br>
+        <input type="checkbox" id="skill2" name="skills[]" value="communication">
+        <label for="skill2">Communication</label><br>
+        <input type="checkbox" id="skill3" name="skills[]" value="decision_making">
+        <label for="skill3">Decision making</label><br>
+        <input type="checkbox" id="skill4" name="skills[]" value="management">
+        <label for="skill4">Management</label><br>
+        <input type="checkbox" id="skill5" name="skills[]" value="other">
+        <label for="skill5">Other skills...</label><br><br>
 
         <label for="other_skills">Other skills</label><br>
 
-        <textarea
-          id="other_skills"
-          name="other_skills"
-          rows="4"
-          cols="30"
+        <textarea id="other_skills" name="other_skills" rows="4" cols="30"
           placeholder="If you have any other skills not listed above, please list them here."></textarea>
       </fieldset>
-        <input type="submit" value="Apply" />
-      </form>
-    </main>
-  </body>
+      <input type="submit" value="Apply">
+    </form>
+  </main>
+</body>
 </html>
