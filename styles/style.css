@@ -2,9 +2,10 @@
 * {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+   box-sizing: border-box;
 }
 
-/* Styles form inputs 
+/* Styles form inputs for better appearance
 Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
 */
 input[type="text"],
@@ -14,37 +15,60 @@ input[type="date"],
 textarea,
 select {
   width: 100%;
-  padding: 8px 10px;
+  padding: 12px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
 }
 
+/* Adds spacing between inputs in a table */
+td {
+  padding-right: 10px;
+}
+
 /* Adds spacing between form elements */
 input,
-select,
-fieldset {
-  margin: 5px 0 15px 0;
+textarea,
+select {
+  margin: 10px 0 0 0;
+  display:inline-block;
 }
+
+/* Adds spacing between form labels */
+label {
+  margin: 20px 0 0 0;
+  display:inline-block;
+}
+
+/* Adds spacing between fieldsets to easier distinguish between sections */
+fieldset {
+  margin: 20px 0 0 0;
+}
+
+/* Removes margin from the 'gender_list' ID fieldset */
+#gender_list > label {
+  margin: 0;
+}
+
 
 /* Styles the submit button on forms 
   Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
   */
-  input[type=submit] {
-    width: 30%;
-    background-color: #5d79c0;
-    color: white;
-    padding: 8px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: auto;
-  }
+input[type="submit"] {
+  width: 30%;
+  background-color: #5d79c0;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 7px;
+  font-size: 105%;
+  margin-bottom: 100px;
+}
 
 /* Reduces the width of the main content on pages and centers it */
 main {
-  width: 50%;
+  width: 35%;
   margin: auto;
 }
 
@@ -54,37 +78,30 @@ fieldset {
   border: 1px solid #ccc;
 }
 
+/* Extends width of the table to take up all space allowed */
+table {
+  width: 100%;
+}
+
+/* Adapted from https://form.taxi/en/sample-forms/job-application-form*/
+.section {
+  font-size: 100%;
+  margin-top: 10px;
+  margin-bottom: 1.5rem;
+  border: 0;
+  padding: 0;
+  
+}
+
+/* Adapted from https://form.taxi/en/sample-forms/job-application-form*/
+.section > legend {
+  font-weight: 700;
+  font-size: 130%;
+  padding: 0;
+  padding-top: 15px;
+}
+
 /* Removes the bold property from headers with the 'unbold' class */
 .unbold {
   font-weight: normal;
-}
-
-.container {
-  text-align: center;
-  align-items: center;
-}
-
-.container h2 {
-  margin-top: 50px;
-}
-.about-text {
-  width: 640px;
-  padding: 10px;
-  border: 5px solid;
-  margin: auto;
-}
-
-.member-grid-row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
-  width: 200px;
-  height: 200px;
-  margin: auto;
-}
-
-.member-grid-row img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
 }
