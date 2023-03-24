@@ -16,10 +16,10 @@ Deadline Is Coming guys
 - Week 2: HTML
 - Week 3: HTML
 - Week 4: CSS
-- Week 5: CSS
+- Week 5: Enhancements
 - Week 6: Video + Report
 - Mid-semester Break: Report
-- Week 7: Report + Review and submit
+- Week 7: Report + Review and submit by 10pm Monday
 
-Assignment information
+# Assignment information
 https://swinburne.instructure.com/courses/49151/assignments/504478 
