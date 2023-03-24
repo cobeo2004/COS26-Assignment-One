@@ -4,24 +4,135 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job description</title>
+    <!-- <link rel="stylesheet" href="draft.css"> -->
+    <title>Job Description</title>
 </head>
 <style>
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
+    * {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    padding: 3;
+    margin: 3;
+    box-sizing: border-box;
+  }
+
+
+/* the whole content */
+  body {
+    /* margin: 1em 2em 1em 2em; */
+    margin: auto;
+    word-wrap: break-word;
+    line-height: 1.25em;
+    font-size: 1em;
+    width: 80vw;
+    text-align: left;
+  }
+
+
+/* relating to design n layout of boxes */
+  /* adding margin for each section (each jobs' descriptions) */
+  section {
+    margin: 2em 0 0 0;
+  }
+  /* sections with contents placing in boxes, namely the tables and some descriptions for the jobs */
+  dl, table, tr, td {
+    border: 0.5px solid rgb(51, 74, 75);
+    border-collapse: collapse;
+  }
+  /* small index and their content (beneath the job title) */
+  dl {
+    border-radius: 5px;
+    padding: 0.5em 1em 0.5em 1em;
+    width: fit-content;
+  }
+
+  
+/* relating to text - the actual content */
+  /* the title "Job description" */
+  h1 {
+    font-size: 3em;
+    color: black;
+  }
+  /* job title */
+  section h2 {
+    font-size: 1.75em;
+    color: rgb(100,125,209);
+  }
+  /* indexes */
+  dt, h2, h3, h4 {
+    color: rgb(51, 51, 51);
+  }
+  /* big indexes (h3 only) */
+  h3 {
+    font-size: 1.5em;
+  } 
+  /* smaller indexes (h4) */
+  h4 {
+    font-size: 1.25em;
+  }
+  /* indexes inside bordered boxes (dt) */
+  dt {
+    margin: 0.5em 0 0.125em 0;
+  }
+  /* content of every indexes */
+  p, li, td, dd {
+    color: rgb(51, 74, 75);
+  }
+  /* text inside tables */
+  td {
+    padding: 0.5em 1em 0.5em 1em;
+  }
+  /* paragraph indentation */
+  p {
+    text-indent: 2em;
+  }
+  /* in-text citation - linking to the reference section */
+  sup {
+    font-size: 0.5em;
+    font-weight: bold;
+  }
+
+
+
+/* the horizontal rule aka the thematic break (hr) */
+  hr {
+    border-bottom: 0.5px solid rgb(100, 125, 126);
+    width: 80%;
+    margin: 2em 0em 0em 0em;
+  }
+
+
+/* links */
+  a:link {
+    color: rgb(100, 125, 126);
+    text-decoration: none;
+  }
+  a:visited {
+    color: rgb(80, 103, 176);
+    text-decoration: none;
+  }
+  a:hover {
+    color: rgb(117, 143, 230);
+    text-decoration: underline;
+  }
+  a:active {
+    color: rgb(51, 51, 51);
+    text-decoration: underline;
+  }
 </style>
 <body>
     <header>
         <p>=D header</p>
     </header>
-    <h1>Job description</h1>
+    <h1>Job Description</h1>
+    <hr>
+    <h2>Table of Content</h2>
     <ol>
-        <!-- thêm link ở đây -->
-        <li><a href="job.html#cto">Chief Technology Officer</a></li>
-        <li><a href="job.html#cloud_en">Cloud Engineer</a></li>
+        <!-- đổi hết draft html to job html -->
+        <li><a href="draft.html#cto">Chief Technology Officer</a></li>
+        <li><a href="draft.html#cloud_en">Cloud Engineer</a></li>
     </ol>
+    
     <section>
         <h2 id="cto">Chief Technology Officer</h2>
         <dl>
@@ -30,12 +141,12 @@
             <dt><strong>Title of the position of successful applicant</strong></dt>
             <dd>Chief Technology Officer</dd>
             <dt><strong>Salary range</strong></dt>
-            <dd>237,500 &#8211; 376,665 AUD&#x2F;year <sup><a href="job.html#cite1">[1]</a></sup></dd>
+            <dd>237,500 &#8211; 376,665 AUD&#x2F;year <sup><a href="draft.html#cite">[1]</a></sup></dd>
         </dl>
         <h3>Brief Description</h3>
         <p>
-            A Chief Technology Officer needs to improve and perform new technology to establish or innovate our products (including both goods and services) for the client and the customers. <sup><a href="job.html#cite5">[5]</a></sup> 
-            They ensure that the technical improvements go in line with the company&#39;s target and that the technological resources are used for the right intention &#8211; for technological development. <sup><a href="job.html#cite4">[4]</a></sup>
+            A Chief Technology Officer needs to improve and perform new technology to establish or innovate our products (including both goods and services) for the client and the customers. <sup><a href="draft.html#cite">[5]</a></sup> 
+            They ensure that the technical improvements go in line with the company&#39;s target and that the technological resources are used for the right intention &#8211; for technological development. <sup><a href="draft.html#cite">[4]</a></sup>
         </p>
         <h3>Key Responsibilities</h3>
         <ul>
@@ -93,7 +204,7 @@
             <li>Qualification
                 <ul>
                     <li>Master of Computer Science or related fields, a post-graduate degree in computer science or related fields</li>
-                    <li>Experience leading programs and projects within the technological environment with ideally around 15 years <sup><a href="job.html#cite5">[5]</a></sup></li>
+                    <li>Experience leading programs and projects within the technological environment with ideally around 15 years <sup><a href="draft.html#cite">[5]</a></sup></li>
                 </ul>
             </li>
             <li>Knowledgeable in Mathematics, Statistics, and Business</li>
@@ -107,14 +218,14 @@
             <dt><strong>Title of the position of successful applicants</strong></dt>
             <dd>Cloud Engineer</dd>
             <dt><strong>Salary range</strong></dt>
-            <dd>132,500 &#8211; 180,000 AUD&#x2F;year <sup><a href="job.html#cite3">[3]</a></sup></dd>
+            <dd>132,500 &#8211; 180,000 AUD&#x2F;year <sup><a href="draft.html#cite">[3]</a></sup></dd>
         </dl>
         <h3>Brief Description</h3>
         <p>
             A Cloud Engineer needs to create, run, and maintain a cloud infrastructure. 
-            This includes sticking to the best performance of the environment and ensuring network security. <sup><a href="job.html#cite2">[2]</a></sup>
+            This includes sticking to the best performance of the environment and ensuring network security. <sup><a href="draftt.html#cite">[2]</a></sup>
         </p>
-        <h3>Key Responsibilities <sup><a href="job.html#cite6">[6]</a></sup></h3>
+        <h3>Key Responsibilities <sup><a href="draft.html#cite">[6]</a></sup></h3>
         <ul>
             <li>Planning and designing cloud computing products such as cloud applications and services</li>
             <li>Programming codes for cloud systems in coding languages such as Java, Python, C++, …</li>
@@ -171,25 +282,26 @@
             <li>Qualification
                 <ul>
                     <li>Earning computer certifications such as AWS and GCP</li>
-                    <li>Experiencing in the field for 3+ years <sup><a href="job.html#cite6">[6]</a></sup></li>
-                    <li>Experience integrating with 3rd party apps supporting designing cloud infrastructures</li>
+                    <li>Experiencing in the field for 3+ years <sup><a href="draft.html#cite">[6]</a></sup></li>
+                    <li>Experience integrating with third party apps supporting designing cloud infrastructures</li>
                 </ul>
             </li>
         </ul>
     </section>
+    <hr>
     <aside>
         <h2>Reference</h2>
         <ol>
-            <li id="cite1">Anonymous. (n.d.). CTO / Chief Technology Officer Salary & Rates Guide. Clicks IT Recruitment. <a href="https://clicks.com.au/job-salary/cto-chief-technology-officer/">https://clicks.com.au/job-salary/cto-chief-technology-officer/</a></li>
-            <li id="cite2">Anonymous. (n.d.) Cloud Engineer. Indeed. <a href="https://www.indeed.com/career/cloud-engineer">https://www.indeed.com/career/cloud-engineer</a></li>
-            <li id="cite3">Anonymous. (n.d.). Cloud Engineer Salary & Rates Guide. Clicks IT Recruitment. <a href="https://clicks.com.au/job-salary/cloud-engineer/#:~:text=The%20average%20Cloud%20Engineer%20salary,up%20to%20%24180%2C000%20per%20year">https://clicks.com.au/job-salary/cloud-engineer/#:~:text=The%20average%20Cloud%20Engineer%20salary,up%20to%20%24180%2C000%20per%20year</a></li>
-            <li id="cite4">Anonymous. (2020, August 3). Chief Technology Officer Job Description | Hudson. Hudson Australia. <a href="https://au.hudson.com/employers/recruitment/technology-it/chief-technology-officer-job-description/#:~:text=What%20does%20a%20Chief%20Technology">https://au.hudson.com/employers/recruitment/technology-it/chief-technology-officer-job-description/#:~:text=What%20does%20a%20Chief%20Technology</a>‌</li>
-            <li id="cite5">Frankenfield, J. (2023, January 23). Chief technology officer (CTO): Definition, how to become one, average salary. Investopedia. <a href="https://www.investopedia.com/terms/c/chief-technology-officer.asp">https://www.investopedia.com/terms/c/chief-technology-officer.asp</a></li>
-            <li id="cite6">Indeed Editorial Team. (2023, March 10). Cloud Engineer Roles And Réponsibilities: A Complete Guide. Indeed. <a href="https://in.indeed.com/career-advice/finding-a-job/cloud-engineer-roles-and-responsibilities">https://in.indeed.com/career-advice/finding-a-job/cloud-engineer-roles-and-responsibilities</a></li>
+            <li id="cite">Anonymous. (n.d.). CTO / Chief Technology Officer Salary & Rates Guide. Clicks IT Recruitment. <a href="https://clicks.com.au/job-salary/cto-chief-technology-officer/">https://clicks.com.au/job-salary/cto-chief-technology-officer/</a></li>
+            <li id="cite">Anonymous. (n.d.) Cloud Engineer. Indeed. <a href="https://www.indeed.com/career/cloud-engineer">https://www.indeed.com/career/cloud-engineer</a></li>
+            <li id="cite">Anonymous. (n.d.). Cloud Engineer Salary & Rates Guide. Clicks IT Recruitment. <a href="https://clicks.com.au/job-salary/cloud-engineer/#:~:text=The%20average%20Cloud%20Engineer%20salary,up%20to%20%24180%2C000%20per%20year">https://clicks.com.au/job-salary/cloud-engineer/#:~:text=The%20average%20Cloud%20Engineer%20salary,up%20to%20%24180%2C000%20per%20year</a></li>
+            <li id="cite">Anonymous. (2020, August 3). Chief Technology Officer Job Description | Hudson. Hudson Australia. <a href="https://au.hudson.com/employers/recruitment/technology-it/chief-technology-officer-job-description/#:~:text=What%20does%20a%20Chief%20Technology">https://au.hudson.com/employers/recruitment/technology-it/chief-technology-officer-job-description/#:~:text=What%20does%20a%20Chief%20Technology</a>‌</li>
+            <li id="cite">Frankenfield, J. (2023, January 23). Chief technology officer (CTO): Definition, how to become one, average salary. Investopedia. <a href="https://www.investopedia.com/terms/c/chief-technology-officer.asp">https://www.investopedia.com/terms/c/chief-technology-officer.asp</a></li>
+            <li id="cite">Indeed Editorial Team. (2023, March 10). Cloud Engineer Roles And Responsibilities: A Complete Guide. Indeed. <a href="https://in.indeed.com/career-advice/finding-a-job/cloud-engineer-roles-and-responsibilities">https://in.indeed.com/career-advice/finding-a-job/cloud-engineer-roles-and-responsibilities</a></li>
         </ol>
     </aside>
     <footer>
-        <p>D footer</p>
+        <p>=D footer</p>
     </footer>
 </body>
 </html>
