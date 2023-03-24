@@ -1,8 +1,16 @@
+/*
+filename: style.css
+authors:
+created: 17/03/2023
+description: Styling for the Cloudlabs website
+*/
+
+
 /* Styles all text on the page with a font */
 * {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-   box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Styles form inputs for better appearance
@@ -22,6 +30,15 @@ select {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 80px;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
 /* Adds spacing between inputs in a table */
 td {
   padding-right: 10px;
@@ -32,13 +49,13 @@ input,
 textarea,
 select {
   margin: 10px 0 0 0;
-  display:inline-block;
+  display: inline-block;
 }
 
 /* Adds spacing between form labels */
 label {
   margin: 20px 0 0 0;
-  display:inline-block;
+  display: inline-block;
 }
 
 /* Adds spacing between fieldsets to easier distinguish between sections */
@@ -47,7 +64,7 @@ fieldset {
 }
 
 /* Removes margin from the 'gender_list' ID fieldset */
-#gender_list > label {
+#gender_list>label {
   margin: 0;
 }
 
@@ -83,18 +100,18 @@ table {
   width: 100%;
 }
 
-/* Adapted from https://form.taxi/en/sample-forms/job-application-form*/
+/* Adapted from https://form.taxi/en/sample-forms/job-application-form */
 .section {
   font-size: 100%;
   margin-top: 10px;
   margin-bottom: 1.5rem;
   border: 0;
   padding: 0;
-  
+
 }
 
-/* Adapted from https://form.taxi/en/sample-forms/job-application-form*/
-.section > legend {
+/* Adapted from https://form.taxi/en/sample-forms/job-application-form */
+.section>legend {
   font-weight: 700;
   font-size: 130%;
   padding: 0;
@@ -105,3 +122,5 @@ table {
 .unbold {
   font-weight: normal;
 }
+
+
