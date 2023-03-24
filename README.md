@@ -9,7 +9,7 @@ Deadline Is Coming guys
 
 # JOBS:
 - Chief Technology Officer
-- TBD
+- Cloud Engineer
 
 # TIMELINE
 - Week 1: Submit group form + assign roles
