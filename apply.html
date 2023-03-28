@@ -9,33 +9,42 @@
     <title>Apply - CloudLabs</title>
   </head>
 
-<body>
-  <nav> 
-    <div class="logo">
+  <body>
+    <nav>
+      <div class="logo">
         <p>logo</p>
-    </div>
-    <ul>
+      </div>
+      <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#jobs">Jobs</a></li>
         <li><a href="#news">Apply</a></li>
-        <li><a href="#about">About</a></li> 
-    </ul>
-</nav>
-  <main>
-    <h1>Apply for your dream job</h1>      
-    <h2 class="unbold">
-      Fill out the form below to apply for one of our open positions!
-    </h2>
-    <br>
-    <!-- Job Application form, sends a POST request to the Swinburne Mercury server upon submission -->
-    <form method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
-
-      <fieldset class="section">
-        <legend>📝 About the job</legend>
-        <label for="job_ref_no">Which job are you applying for?</label><br>
-        <input type="text" id="job_ref_no" name="job_ref_no" placeholder="Job reference number" required minlength="5"
-          maxlength="5">
-      </fieldset>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Apply for your dream job</h1>
+      <h2 class="unbold">
+        Fill out the form below to apply for one of our open positions!
+      </h2>
+      <br />
+      <!-- Job Application form, sends a POST request to the Swinburne Mercury server upon submission -->
+      <form
+        method="post"
+        action="https://mercury.swin.edu.au/it000000/formtest.php"
+      >
+        <fieldset class="section">
+          <legend>📝 About the job</legend>
+          <label for="job_ref_no">Which job are you applying for?</label><br />
+          <input
+            type="text"
+            id="job_ref_no"
+            name="job_ref_no"
+            placeholder="Job reference number"
+            required
+            minlength="5"
+            maxlength="5"
+          />
+        </fieldset>
 
         <fieldset class="section">
           <legend>👋 Tell us about yourself</legend>
@@ -208,46 +217,54 @@
 
           <label for="other_skills">Other skills</label><br />
 
-        <textarea id="other_skills" name="other_skills" rows="4" cols="30"
-          placeholder="If you have any other skills not listed above, please list them here."></textarea>
-      </fieldset>
-      <input type="submit" value="Apply">
-    </form>
-  </main>
-</body>
-<footer>
-  <div class="row">
-    <div class="col"> 
-      <img src="logo.png" class="logo">
-      <p> Our company provides details of "Chief Technology Officer(CTO)" and "Cloud engineering", including
-      base position, skills needed, qualification and salary average per year in Australia. </p>
-    </div>
-
-    <div class="col">
-      <h3> Officer</h3>
-      <p class="email-id"> email : 104082552@student.swin.edu.au</p>
-      <p> phone number : +61 423032755 </p>
-    </div>
-
-    <div class="col">
-      <h3> Links</h3>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#jobs">Jobs</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#Links">Link reference</a></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3> Newsletter</h3>
-      <form> 
-        <input type="email" placeholder="Enter Your email id" required>
-        <input type="submit">
+          <textarea
+            id="other_skills"
+            name="other_skills"
+            rows="4"
+            cols="30"
+            placeholder="If you have any other skills not listed above, please list them here."
+          ></textarea>
+        </fieldset>
+        <input type="submit" value="Apply" />
       </form>
+    </main>
+  </body>
+  <footer>
+    <div class="row">
+      <div class="col">
+        <img src="logo.png" class="logo" alt="logo" />
+        <p>
+          Our company provides details of "Chief Technology Officer(CTO)" and
+          "Cloud engineering", including base position, skills needed,
+          qualification and salary average per year in Australia.
+        </p>
+      </div>
+
+      <div class="col">
+        <h3>Officer</h3>
+        <p class="email-id">email : 104082552@student.swin.edu.au</p>
+        <p>phone number : +61 423032755</p>
+      </div>
+
+      <div class="col">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#jobs">Jobs</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#Links">Link reference</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Newsletter</h3>
+        <form>
+          <input type="email" placeholder="Enter Your email id" required />
+          <input type="submit" />
+        </form>
+      </div>
     </div>
-  </div>
-  <hr> 
-  <p>Deadline is coming 2023 &copy - All Rights Reserved</p>
-</footer>
+    <hr />
+    <p>Deadline is coming 2023 &copy - All Rights Reserved</p>
+  </footer>
 </html>
