@@ -16,12 +16,12 @@ description: Styling for the Cloudlabs website
 /* Styles form inputs for better appearance
 Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
 */
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-input[type="date"],
-textarea,
-select {
+.apply-input[type="text"],
+.apply-input[type="tel"],
+.apply-input[type="email"],
+.apply-input[type="date"],
+.apply-textarea,
+.apply-select {
   width: 100%;
   padding: 12px;
   display: inline-block;
@@ -30,41 +30,45 @@ select {
   box-sizing: border-box;
 }
 
-h1 {
+.apply-h1 {
   font-size: 80px;
   text-align: center;
 }
 
-h2 {
+.apply-h2 {
   text-align: center;
+  font-weight: normal;
 }
 
 /* Adds spacing between inputs in a table */
-td {
+.apply-td {
   padding-right: 10px;
 }
 
 /* Adds spacing between form elements */
-input,
-textarea,
-select {
+.apply-input,
+.apply-textarea,
+.apply-select {
   margin: 10px 0 0 0;
   display: inline-block;
 }
 
 /* Adds spacing between form labels */
-label {
+.apply-label {
   margin: 20px 0 0 0;
   display: inline-block;
 }
 
-/* Adds spacing between fieldsets to easier distinguish between sections */
-fieldset {
+/* Adds spacing and borders on fieldsets to easier distinguish between sections */
+.apply-section
+.apply-gender-list {
   margin: 20px 0 0 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 /* Removes margin from the 'gender_list' ID fieldset */
-#gender_list>label {
+.apply-gender-list>label {
   margin: 0;
 }
 
@@ -72,7 +76,7 @@ fieldset {
 /* Styles the submit button on forms 
   Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
   */
-input[type="submit"] {
+  .apply-input[type="submit"] {
   width: 30%;
   background-color: #5d79c0;
   color: white;
@@ -84,24 +88,19 @@ input[type="submit"] {
 }
 
 /* Reduces the width of the main content on pages and centers it */
-main {
+.apply-container {
   width: 35%;
   margin: auto;
 }
 
-/* Style fieldset border to be consistent with inputs */
-fieldset {
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
 
 /* Extends width of the table to take up all space allowed */
-table {
+.apply-table {
   width: 100%;
 }
 
 /* Adapted from https://form.taxi/en/sample-forms/job-application-form */
-.section {
+.apply-section {
   font-size: 100%;
   margin-top: 10px;
   margin-bottom: 1.5rem;
@@ -111,15 +110,161 @@ table {
 }
 
 /* Adapted from https://form.taxi/en/sample-forms/job-application-form */
-.section>legend {
+.apply-section>legend {
   font-weight: 700;
   font-size: 130%;
   padding: 0;
   padding-top: 15px;
 }
 
-/* Removes the bold property from headers with the 'unbold' class */
-.unbold {
-  font-weight: normal;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************** Start of Header and Footer ***********************/
+/* Header navigation */
+#header-nav {
+  width: 100%;
+  height: 75px;
+  line-height: 75px; /* height between words in nav */
+  padding: 0px, 100px;
+  position: fixed;
+  background: #ccd5f8; /* #EDF1FF */
+  text-align: center;
+  position: static;
 }
 
+/* logo on the left */
+#header-nav .logo {
+  font-size: 30px;
+  font-weight: bold;
+  float: left;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer; /* show cursor not the mouse */
+  justify-content: center;
+}
+
+#header-nav ul {
+  justify-content: center;
+}
+/* display horizontally the nav */
+#header-nav li {
+  display: inline;
+  list-style: none;
+  /* not showing dot of ul ol */
+}
+
+#header-nav li a {
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 30px 114px;
+  color: #333;
+  text-decoration: none;
+}
+/*decoration more transition of header */
+#header-nav li a:hover {
+  background-color: white;
+  color: #ff8c69;
+  transition: 0.8s ease-out;
+  /* for the footer */
+}
+#general-footer {
+  width: 100%;
+  /* position: absolute; */
+  bottom: 0;
+  /* color change left to right of linear-gradient */
+  background: linear-gradient(to right, #00093c, #2d0b00);
+  color: #fff;
+  padding: 20px 0 10px;
+  /* border-top-left-radius: 125px; */
+  font-size: 13px;
+  line-height: 12px;
+}
+.footer-row {
+  width: 95%; /* gap between each row including 3 rows*/
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+/* divide the column equally */
+.footer-col {
+  flex-basis: 25%;
+  padding: 10px;
+}
+/*team logo */
+.logo {
+  width: 120px;
+  margin-bottom: 30px;
+}
+
+/* col 2 email phone */
+.footer-col h3 {
+  width: fit-content;
+  margin-bottom: 40px;
+  position: relative;
+}
+.footer-email-id {
+  width: fit-content;
+  border-bottom: 1px solid #333;
+  margin: 20px 0;
+}
+
+.footer-col ul li {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+/* last column, no need submit button */
+.footer-col form {
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 50px;
+}
+.footer-col form input {
+  width: 100%;
+  background: transparent;
+  color: #ccc;
+  border: 0;
+  outline: none;
+}
+/* copy right the end */
+.footer-col hr {
+  width: 95%;
+  border: 0;
+  border-bottom: 1px solid #333;
+  margin: 10px auto;
+}
+
+/**************************** End of Header and Footer ***********************/
