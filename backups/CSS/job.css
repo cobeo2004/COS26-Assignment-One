@@ -1,4 +1,4 @@
-* {
+#job-html {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 3;
@@ -7,7 +7,7 @@
 }
 
 /* the whole content */
-body {
+#job-body {
   /* margin: 1em 2em 1em 2em; */
   margin: auto;
   word-wrap: break-word;
@@ -19,19 +19,19 @@ body {
 
 /* relating to design n layout of boxes */
 /* adding margin for each section (each jobs' descriptions) */
-section {
+#job-main section {
   margin: 2em 0 0 0;
 }
 /* sections with contents placing in boxes, namely the tables and some descriptions for the jobs */
-dl,
-table,
-tr,
-td {
+#job-main dl,
+#job-main table,
+#job-main tr,
+#job-main td {
   border: 0.5px solid rgb(51, 74, 75);
   border-collapse: collapse;
 }
 /* small index and their content (beneath the job title) */
-dl {
+#job-main dl {
   border-radius: 5px;
   padding: 0.5em 1em 0.5em 1em;
   width: fit-content;
@@ -39,76 +39,77 @@ dl {
 
 /* relating to text - the actual content */
 /* the title "Job description" */
-h1 {
-  font-size: 3em;
+#job-main h1 {
   color: black;
+  font-size: 3em;
 }
 /* job title */
-section h2 {
+#job-main section h2 {
   font-size: 1.75em;
   color: rgb(100, 125, 209);
 }
 /* indexes */
-dt,
-h2,
-h3,
-h4 {
+#job-main dt,
+#job-main h2,
+#job-main h3,
+#job-main h4 {
   color: rgb(51, 51, 51);
 }
 /* big indexes (h3 only) */
-h3 {
+#job-main h3 {
   font-size: 1.5em;
 }
 /* smaller indexes (h4) */
-h4 {
+#job-main h4 {
   font-size: 1.25em;
 }
 /* indexes inside bordered boxes (dt) */
-dt {
+#job-main dt {
   margin: 0.5em 0 0.125em 0;
 }
 /* content of every indexes */
-p,
-li,
-td,
-dd {
+#job-main p,
+#job-main li,
+#job-main td,
+#job-main dd {
   color: rgb(51, 74, 75);
 }
 /* text inside tables */
-td {
+#job-main td {
   padding: 0.5em 1em 0.5em 1em;
 }
 /* paragraph indentation */
-p {
+#job-main p {
   text-indent: 2em;
 }
 /* in-text citation - linking to the reference section */
-sup {
+#job-main sup {
   font-size: 0.5em;
   font-weight: bold;
 }
 
 /* the horizontal rule aka the thematic break (hr) */
-hr {
+#job-main hr {
   border-bottom: 0.5px solid rgb(100, 125, 126);
   width: 80%;
   margin: 2em 0em 0em 0em;
 }
 
 /* links */
-a:link {
+#job-main a:link {
   color: rgb(100, 125, 126);
   text-decoration: none;
 }
-a:visited {
+
+#job-main a:visited {
   color: rgb(80, 103, 176);
   text-decoration: none;
 }
-a:hover {
+#job-main a:hover {
   color: rgb(117, 143, 230);
   text-decoration: underline;
 }
-a:active {
+#job-main a:active {
   color: rgb(51, 51, 51);
   text-decoration: underline;
 }

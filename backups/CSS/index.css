@@ -4,20 +4,20 @@
   box-sizing: border-box;
 }
 
-.header {
+.index-header {
   background-color: red;
 }
 
-.main-img {
+.index-main .main-img {
   width: 300px;
 }
 
-.row {
+.index-main .row {
   text-align: center;
   margin-bottom: 10px;
 }
 
-.column {
+.index-main .column {
   align-content: center;
   float: left;
   width: 31%;
@@ -29,10 +29,10 @@
   border-color: black;
 }
 
-.review-box {
+.index-main .review-box {
   text-align: center;
 }
-.review-box-indi {
+.index-main .review-box-indi {
   float: left;
   width: 45%;
   margin: 20px;
@@ -42,7 +42,7 @@
   border-color: black;
 }
 
-.profile-pic {
+.index-main .profile-pic {
   width: 50px;
   margin: 10px;
   float: left;
@@ -52,7 +52,7 @@
   border-width: 2px;
 }
 
-.review-wording {
+.index-main .review-wording {
   float: left;
   text-align: justify;
   width: 250px;
