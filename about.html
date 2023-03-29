@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/about.css" />
-    <link rel="stylesheet" href="styles/header_footer.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <title>About Us</title>
   </head>
-  <body>
+  <body id="about-body">
     <header>
-      <nav id="header">
+      <nav id="header-nav">
         <div class="logo">
           <p>logo</p>
         </div>
@@ -24,9 +23,9 @@
       </nav>
     </header>
     <main>
-      <div class="container">
-        <h1>About Our Lovely Team !</h1>
-        <p>
+      <div class="about-container">
+        <h1 class="about-h1">About Our Lovely Team !</h1>
+        <p class="about-p">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -37,8 +36,7 @@
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </p>
-        <h1></h1>
-        <div class="group-info">
+        <div class="about-group-info">
           <dl>
             <dt>Group Name</dt>
             <dd>Deadline Is Coming</dd>
@@ -56,33 +54,33 @@
             <dd>Computing Technology Inquiry Project</dd>
           </dl>
         </div>
-        <div class="card">
+        <div class="about-card">
           <img src="./images/messi.png" alt="Member 1" />
-          <h3>Member 1</h3>
+          <h3 class="about-h3">Member 1</h3>
           <p>Role: Front-end Developer</p>
         </div>
-        <div class="card">
+        <div class="about-card">
           <img src="./images/messi.png" alt="Member 2" />
-          <h3>Member 2</h3>
+          <h3 class="about-h3">Member 2</h3>
           <p>Role: Back-end Developer</p>
         </div>
-        <div class="card">
+        <div class="about-card">
           <img src="./images/messi.png" alt="Member 3" />
-          <h3>Member 3</h3>
+          <h3 class="about-h3">Member 3</h3>
           <p>Role: Full-stack Developer</p>
         </div>
-        <div class="card">
+        <div class="about-card">
           <img src="./images/messi.png" alt="Member 4" />
-          <h3>Member 4</h3>
+          <h3 class="about-h3">Member 4</h3>
           <p>Role: UI/UX Designer</p>
         </div>
-        <div class="card">
+        <div class="about-card">
           <img src="./images/messi.png" alt="Member 5" />
-          <h3>Member 5</h3>
+          <h3 class="about-h3">Member 5</h3>
           <p>Role: Project Manager</p>
         </div>
-        <div class="timetable">
-          <h2>Timetable</h2>
+        <div class="about-timetable">
+          <h2 class="about-h2">Timetable</h2>
           <table>
             <thead>
               <tr>
@@ -140,15 +138,15 @@
             </tbody>
           </table>
         </div>
-        <div class="mail">
+        <div class="about-mail">
           <p>Want to get in touch with us ?</p>
           <a href="mailto:abcdxyz@concac.com">Contact Us</a>
         </div>
       </div>
     </main>
-    <footer>
-      <div class="row">
-        <div class="col">
+    <footer id="general-footer">
+      <div class="footer-row">
+        <div class="footer-col">
           <img src="logo.png" class="logo" alt="LOGO" />
           <p>
             Our company provides details of "Chief Technology Officer(CTO)" and
@@ -157,23 +155,23 @@
           </p>
         </div>
 
-        <div class="col">
+        <div class="footer-col">
           <h3>Officer</h3>
-          <p class="email-id">email : 104082552@student.swin.edu.au</p>
-          <p>phone number : +61 423032755</p>
+          <p class="footer-email-id">Email : 104082552@student.swin.edu.au</p>
+          <p>Phone number : +61 423032755</p>
         </div>
 
-        <div class="col">
+        <div class="footer-col">
           <h3>Links</h3>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#jobs">Jobs</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#Links">Link reference</a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./job.html">Jobs</a></li>
+            <li><a href="./apply.html">Apply</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./enhancements.html">Enhancements</a></li>
           </ul>
         </div>
-        <div class="col">
+        <div class="footer-col">
           <h3>Newsletter</h3>
           <form>
             <input type="email" placeholder="Enter Your email id" required />
