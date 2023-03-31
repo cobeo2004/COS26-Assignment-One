@@ -261,9 +261,6 @@ TODO: Implementing enhancements for all files :)
 /**************************** End of about.css ***********************/
 
 /**************************** Start of job.css ***********************/
-.job-h1 {
-  text-align: center;
-}
 
 /* the whole content */
 .job-class * {
@@ -277,7 +274,6 @@ TODO: Implementing enhancements for all files :)
   line-height: 1.25em;
   font-size: 1em;
   width: 80vw;
-  text-align: left;
 
 }
 
@@ -305,7 +301,7 @@ TODO: Implementing enhancements for all files :)
 /* the title "Job description" */
 #job-main h1 {
   color: black;
-  font-size: 3em;
+  text-align: center;
   
 }
 /* job title */
@@ -646,9 +642,8 @@ https://www.sitepoint.com/css-typewriter-effect/ */
   border-right: 4px solid black;
   white-space: nowrap;
   animation: typing 1.5s steps(35, end) forwards, blink .5s step-end infinite alternate;
-  font-size: 25px;
+  font-size: 35px;
   width: 0;
-  text-align: center;
 }
 
 @keyframes typing {
