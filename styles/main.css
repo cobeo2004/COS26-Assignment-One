@@ -260,17 +260,15 @@ TODO: Implementing enhancements for all files :)
 }
 /**************************** End of about.css ***********************/
 
+
 /**************************** Start of job.css ***********************/
-.job-h1 {
-  text-align: center;
-}
 
 /* the whole content */
 .job-class * {
   padding: 3;
   margin: 3;
 }
-#job-main {
+#job-body {
   /* margin: 1em 2em 1em 2em; */
   margin: auto;
   word-wrap: break-word;
@@ -278,7 +276,6 @@ TODO: Implementing enhancements for all files :)
   font-size: 1em;
   width: 80vw;
   text-align: left;
-
 }
 
 /* relating to design n layout of boxes */
@@ -306,7 +303,6 @@ TODO: Implementing enhancements for all files :)
 #job-main h1 {
   color: black;
   font-size: 3em;
-  
 }
 /* job title */
 #job-main section h2 {
