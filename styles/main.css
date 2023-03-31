@@ -1,4 +1,4 @@
-/* 
+/*
 filename: main.css
 author: Simon Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
 created: 29-Mar-2023
@@ -260,14 +260,17 @@ TODO: Implementing enhancements for all files :)
 }
 /**************************** End of about.css ***********************/
 
-
 /**************************** Start of job.css ***********************/
 
 /* the whole content */
+<<<<<<< HEAD
 /* .job-class * {
   padding: 3;
   margin: 3;
 } */
+=======
+
+>>>>>>> 2b0ac7781997420d5f6132e6a3dc864e3e3a3774
 #job-main {
   /* margin: 1em 2em 1em 2em; */
   justify-self: center;
@@ -303,12 +306,12 @@ TODO: Implementing enhancements for all files :)
 /* the title "Job description" */
 #job-main h1 {
   color: black;
-  font-size: 3em;
+  text-align: center;
 }
 /* job title */
 #job-main section h2 {
   font-size: 1.75em;
-  color: #6378BB;
+  color: #6378bb;
 }
 /* indexes */
 #job-main dt,
@@ -364,11 +367,11 @@ TODO: Implementing enhancements for all files :)
 }
 
 #job-main a:visited {
-  color: #6378BB;
+  color: #6378bb;
   text-decoration: none;
 }
 #job-main a:hover {
-  color: #9BC7F4;
+  color: #9bc7f4;
   text-decoration: underline;
 }
 #job-main a:active {
@@ -383,6 +386,10 @@ TODO: Implementing enhancements for all files :)
 /* Styles form inputs for better appearance
 Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
 */
+.apply-class * {
+  margin: 0;
+  padding: 0;
+}
 .apply-input[type="text"],
 .apply-input[type="tel"],
 .apply-input[type="email"],
@@ -439,7 +446,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   margin: 0;
 }
 
-/* Styles the submit button on forms 
+/* Styles the submit button on forms
   Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.asp
   */
 .apply-input[type="submit"] {
@@ -482,7 +489,6 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   padding-top: 15px;
 }
 
-
 /**************************** End of apply.css ***********************/
 
 /**************************** Start of Header and Footer ***********************/
@@ -512,6 +518,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 
 #header-nav ul {
   justify-content: center;
+  margin-top: 0px;
 }
 /* display horizontally the nav */
 #header-nav li {
@@ -617,45 +624,51 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 /* https://codepen.io/denic/pen/GRoOxbM
 https://www.sitepoint.com/css-typewriter-effect/ */
 
-.header-container{
+.header-container {
   display: inline-block;
 }
-.apply-typed-out{
+.apply-typed-out {
   overflow: hidden;
   border-right: 4px solid black;
   white-space: nowrap;
-  animation: typing 1.5s steps(35, end) forwards, blink .5s step-end infinite alternate;
+  animation: typing 1.5s steps(35, end) forwards,
+    blink 0.5s step-end infinite alternate;
   font-size: 40px;
   width: 0;
 }
 
-.about-typed-out{
+.about-typed-out {
   overflow: hidden;
   border-right: 4px solid black;
   white-space: nowrap;
-  animation: typing 1.5s steps(35, end) forwards, blink .5s step-end infinite alternate;
+  animation: typing 1.5s steps(35, end) forwards,
+    blink 0.5s step-end infinite alternate;
   font-size: 35px;
   width: 0;
 }
 
-.job-typed-out{
+.job-typed-out {
   overflow: hidden;
   border-right: 4px solid black;
   white-space: nowrap;
-  animation: typing 1.5s steps(35, end) forwards, blink .5s step-end infinite alternate;
-  font-size: 25px;
+  animation: typing 1.5s steps(35, end) forwards,
+    blink 0.5s step-end infinite alternate;
+  font-size: 35px;
   width: 0;
-  text-align: center;
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @keyframes blink {
   50% {
-    border-color: transparent
+    border-color: transparent;
   }
 }
 
