@@ -1,6 +1,6 @@
 /*
 filename: main.css
-author: Simon Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
+author: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
 created: 29-Mar-2023
 description: This file is the main file of whole css!
 TODO: Implementing enhancements for all files :)
@@ -263,14 +263,6 @@ TODO: Implementing enhancements for all files :)
 /**************************** Start of job.css ***********************/
 
 /* the whole content */
-<<<<<<< HEAD
-/* .job-class * {
-  padding: 3;
-  margin: 3;
-} */
-=======
-
->>>>>>> 2b0ac7781997420d5f6132e6a3dc864e3e3a3774
 #job-main {
   /* margin: 1em 2em 1em 2em; */
   justify-self: center;
