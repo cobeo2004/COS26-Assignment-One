@@ -264,12 +264,13 @@ TODO: Implementing enhancements for all files :)
 /**************************** Start of job.css ***********************/
 
 /* the whole content */
-.job-class * {
+/* .job-class * {
   padding: 3;
   margin: 3;
-}
-#job-body {
+} */
+#job-main {
   /* margin: 1em 2em 1em 2em; */
+  justify-self: center;
   margin: auto;
   word-wrap: break-word;
   line-height: 1.25em;
