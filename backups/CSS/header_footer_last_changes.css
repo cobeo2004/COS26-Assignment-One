@@ -8,32 +8,36 @@
 /* Header navigation */
 #header-nav {
   width: 100%;
+  scale: none;
   height: 75px;
   line-height: 75px; /* height between words in nav */
   padding: 0px, 100px;
-  position: fixed;
-  background: #ccd5f8; /* #EDF1FF */
+  position: static;
+  background: #d9ecfd; /* header color backup #EDF1FF #ccd5f8; footer color backup 00093c 2d0b00 */
+  background: linear-gradient(to right, #78828a, #283b4e, #451100);
   text-align: center;
 }
 
 /* logo on the left */
 #header-nav .logo {
-  font-size: 30px;
+  width: 80px;
+  height: auto;
   font-weight: bold;
   float: left;
   color: #333;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   cursor: pointer; /* show cursor not the mouse */
   justify-content: center;
 }
 
 #header-nav ul {
   justify-content: center;
+  /* float: left; */
 }
 /* display horizontally the nav */
 #header-nav li {
-  display: inline;
+  display: inline-block;
   list-style: none;
   /* not showing dot of ul ol */
 }
@@ -42,7 +46,7 @@
   font-size: 18px;
   text-transform: uppercase;
   padding: 30px 114px;
-  color: #333;
+  color: white;
   text-decoration: none;
 }
 /*decoration more transition of header */
@@ -57,10 +61,10 @@
   position: absolute;
   bottom: 0;
   /* color change left to right of linear-gradient */
-  background: linear-gradient(to right, #00093c, #2d0b00);
+  background: linear-gradient(to right, #78828a, #283b4e, #451100);
   color: #fff;
   padding: 20px 0 10px;
-  /* border-top-left-radius: 125px; */
+  border-top-left-radius: 120px;
   font-size: 13px;
   line-height: 12px;
 }
@@ -103,10 +107,7 @@
 .footer-col ul li a {
   text-decoration: none;
   color: #fff;
-}
-
-.footer-col a {
-  transition: 0.5 ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 /* last column, no need submit button */
 .footer-col form {
@@ -130,4 +131,7 @@
   border: 0;
   border-bottom: 1px solid #333;
   margin: 10px auto;
+}
+.footer-col a:hover {
+  color: #f4b46f;
 }
