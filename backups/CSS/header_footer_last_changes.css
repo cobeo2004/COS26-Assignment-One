@@ -135,3 +135,26 @@
 .footer-col a:hover {
   color: #f4b46f;
 }
+
+@media screen and (min-width: 768px) {
+  #header-nav {
+    height: 150%;
+  }
+  .footer-row {
+    flex-wrap: nowrap;
+  }
+
+  .footer-col {
+    flex-basis: 25%;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #header-nav {
+    height: 120%;
+  }
+  .footer-col {
+    flex-basis: 20%;
+  }
+}
