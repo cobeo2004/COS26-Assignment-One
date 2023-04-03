@@ -7,11 +7,21 @@ TODO: Implementing enhancements for all files :)
 */
 
 /**************************** General Styling ***********************/
+
+/* Import font from file */
+@font-face {
+  font-family: 'Inter';
+
+  src: url(/styles/Inter-VariableFont_slnt\,wght.ttf) ;
+ 
+}
+
+/* Apply font to all text */
 * {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Inter', sans-serif;
   box-sizing: border-box;
 }
+
 /******************************************************************/
 
 /**************************** Start of index.css ***********************/
@@ -690,7 +700,7 @@ https://www.sitepoint.com/css-typewriter-effect/ */
     width: 0;
   }
   to {
-    width: 76%;
+    width: 83%;
   }
 }
 
@@ -730,7 +740,7 @@ https://www.sitepoint.com/css-typewriter-effect/ */
     width: 0;
   }
   to {
-    width: 45%;
+    width: 48%;
   }
 }
 
