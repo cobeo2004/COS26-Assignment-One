@@ -87,7 +87,7 @@ TODO: Implementing enhancements for all files :)
 }
 .about-h1 {
   text-align: center;
-  margin-top: 10px;
+  font-size: 4vw;
   color: black;
 }
 
@@ -111,14 +111,13 @@ TODO: Implementing enhancements for all files :)
 .about-container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 50px;
+  padding: 0px 50px 50px 50px;
   background-color: #fff;
   border-radius: 5px solid black;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 30px;
   margin-bottom: 30px;
 }
 
@@ -304,6 +303,7 @@ TODO: Implementing enhancements for all files :)
 #job-main h1 {
   color: black;
   text-align: center;
+  font-size: 4vw;
 }
 /* job title */
 #job-main section h2 {
@@ -317,6 +317,7 @@ TODO: Implementing enhancements for all files :)
 #job-main h4 {
   color: #242424;
 }
+
 /* big indexes (h3 only) */
 #job-main h3 {
   font-size: 1.5em;
@@ -402,12 +403,14 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 }
 
 .apply-h1 {
-  font-size: 5vw;
+  font-size: 4vw;
   text-align: center;
   margin: 0;
 }
 
 .apply-h2 {
+  margin-top: 30px;
+  font-size: 30px;
   text-align: center;
   font-weight: normal;
 }
@@ -461,7 +464,6 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 .apply-container {
   width: 60%;
   margin: auto;
-  margin-top: 85px;
 }
 
 /* Extends width of the table to take up all space allowed */
@@ -481,9 +483,10 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 /* Adapted from https://form.taxi/en/sample-forms/job-application-form */
 .apply-section > legend {
   font-weight: 700;
-  font-size: 130%;
+  font-size: 1.75em;
   padding: 0;
   padding-top: 15px;
+  color: #6378bb;
 }
 
 /**************************** End of apply.css ***********************/
@@ -656,43 +659,52 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 
 /**************************** Start of Enhancement 1 ***********************/
 
-/* https://codepen.io/denic/pen/GRoOxbM
+/* 
+CSS adapted from:
+https://codepen.io/denic/pen/GRoOxbM
 https://www.sitepoint.com/css-typewriter-effect/ */
 
+
+/* Contains the heading + typing cursor and centers it */
 .header-container {
   display: inline-block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 130px;
 }
+
+/* Animation for apply page heading */
 .apply-typed-out {
   overflow: hidden;
   border-right: 4px solid black;
   white-space: nowrap;
-  animation: typing 1.5s steps(35, end) forwards,
+  animation: apply-typing 1.5s steps(24, end) forwards,
     blink 0.5s step-end infinite alternate;
-  font-size: 40px;
   width: 0;
 }
 
+@keyframes apply-typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 76%;
+  }
+}
+
+/* Animation for about page heading */
 .about-typed-out {
   overflow: hidden;
   border-right: 4px solid black;
   white-space: nowrap;
-  animation: typing 1.5s steps(35, end) forwards,
+  animation: about-typing 1.5s steps(21, end) forwards,
     blink 0.5s step-end infinite alternate;
-  font-size: 35px;
-  width: 0;
+      width: 0;
 }
 
-.job-typed-out {
-  overflow: hidden;
-  border-right: 4px solid black;
-  white-space: nowrap;
-  animation: typing 1.5s steps(35, end) forwards,
-    blink 0.5s step-end infinite alternate;
-  font-size: 35px;
-  width: 0;
-}
 
-@keyframes typing {
+@keyframes about-typing {
   from {
     width: 0;
   }
@@ -700,6 +712,28 @@ https://www.sitepoint.com/css-typewriter-effect/ */
     width: 100%;
   }
 }
+
+/* Animation for job page heading */
+
+.job-typed-out {
+  overflow: hidden;
+  border-right: 4px solid black;
+  white-space: nowrap;
+  animation: job-typing 1.5s steps(18, end) forwards,
+    blink 0.5s step-end infinite alternate;
+  width: 0;
+}
+
+@keyframes job-typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 45%;
+  }
+}
+
+/* Blinking cursor animation */
 
 @keyframes blink {
   50% {
