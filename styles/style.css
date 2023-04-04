@@ -10,15 +10,14 @@ TODO: Implementing enhancements for all files :)
 
 /* Import font from file */
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
 
-  src: url(/styles/Inter-VariableFont_slnt\,wght.ttf) ;
- 
+  src: url(/styles/Inter-VariableFont_slnt\,wght.ttf);
 }
 
 /* Apply font to all text */
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   box-sizing: border-box;
 }
 
@@ -128,6 +127,7 @@ TODO: Implementing enhancements for all files :)
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-left: 288.5;
   margin-bottom: 30px;
 }
 
@@ -670,11 +670,10 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 
 /**************************** Start of Enhancement 1 ***********************/
 
-/* 
+/*
 CSS adapted from:
 https://codepen.io/denic/pen/GRoOxbM
 https://www.sitepoint.com/css-typewriter-effect/ */
-
 
 /* Contains the heading + typing cursor and centers it */
 .header-container {
@@ -711,9 +710,8 @@ https://www.sitepoint.com/css-typewriter-effect/ */
   white-space: nowrap;
   animation: about-typing 1.5s steps(21, end) forwards,
     blink 0.5s step-end infinite alternate;
-      width: 0;
+  width: 0;
 }
-
 
 @keyframes about-typing {
   from {
