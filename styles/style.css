@@ -11,9 +11,7 @@ TODO: Implementing enhancements for all files :)
 /* Import font from file */
 @font-face {
   font-family: 'Inter';
-
   src: url(/styles/Inter-VariableFont_slnt\,wght.ttf) ;
- 
 }
 
 /* Apply font to all text */
