@@ -257,7 +257,6 @@ TODO: Implementing enhancements for all files :)
   padding: 0;
 }
 
-
 /* the whole content */
 #job-main {
   /* margin: 1em 2em 1em 2em; */
@@ -289,7 +288,6 @@ TODO: Implementing enhancements for all files :)
   margin: 1em;
   padding: 0.5em 1em 0.5em 1em;
   width: fit-content;
-  
 }
 
 /* relating to text - the actual content */
@@ -299,7 +297,6 @@ TODO: Implementing enhancements for all files :)
   text-align: center;
   font-size: 4vw;
   margin: 1em;
-  
 }
 /* job title */
 #job-main section h2 {
@@ -313,7 +310,6 @@ TODO: Implementing enhancements for all files :)
 #job-main h3,
 #job-main h4 {
   color: #242424;
-  
 }
 /* big indexes (h3 only) */
 #job-main h3 {
@@ -350,7 +346,8 @@ TODO: Implementing enhancements for all files :)
   text-align: left;
 }
 /* bullet pt and ordered list indentation */
-#job-main ul, #job-main ol {
+#job-main ul,
+#job-main ol {
   padding: 0.25em 0 0.5em 2em;
 }
 /* in-text citation - linking to the reference section */
