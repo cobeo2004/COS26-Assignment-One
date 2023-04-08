@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="apply-class">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Apply for our open positions!">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Apply for our open positions!" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <title>Apply - CloudLabs</title>
   </head>
 
@@ -15,11 +15,11 @@
         <div class="logo">
           <a href="index.html">
             <img
-            src="./images/logo-removebg-preview.png"
-            alt="LOGO"
-            width="80"
-            height="80"
-          ></a>
+              src="./images/logo-removebg-preview.png"
+              alt="LOGO"
+              width="80"
+              height="80"
+          /></a>
         </div>
         <ul>
           <li><a href="./index.html">Home</a></li>
@@ -38,7 +38,7 @@
       <h2 class="apply-h2">
         Fill out the form below to apply for one of our open positions!
       </h2>
-      <br>
+      <br />
       <!-- Job Application form, sends a POST request to the Swinburne Mercury server upon submission -->
       <form
         method="post"
@@ -48,7 +48,7 @@
           <legend>About the job</legend>
           <label class="apply-label" for="job_ref_no"
             >Which job are you applying for?</label
-          ><br>
+          ><br />
           <input
             class="apply-input"
             type="text"
@@ -58,7 +58,7 @@
             required
             minlength="5"
             maxlength="5"
-          >
+          />
         </fieldset>
 
         <fieldset class="apply-section">
@@ -82,7 +82,7 @@
                   placeholder="John"
                   required
                   maxlength="20"
-                >
+                />
               </td>
               <td class="apply-td">
                 <input
@@ -93,20 +93,20 @@
                   placeholder="Doe"
                   required
                   maxlength="20"
-                >
+                />
               </td>
             </tr>
           </table>
 
           <label class="apply-label" for="birth_date">Date of birth</label
-          ><br>
+          ><br />
           <input
             class="apply-input"
             type="date"
             id="birth_date"
             name="birth_date"
             required
-          >
+          />
 
           <fieldset class="apply-gender-list">
             <legend>Gender</legend>
@@ -117,23 +117,23 @@
               name="gender"
               value="male"
               required
-            >
-            <label class="apply-label" for="gender_male">Male</label><br>
+            />
+            <label class="apply-label" for="gender_male">Male</label><br />
             <input
               class="apply-input"
               type="radio"
               id="gender_female"
               name="gender"
               value="female"
-            >
-            <label class="apply-label" for="gender_female">Female</label><br>
+            />
+            <label class="apply-label" for="gender_female">Female</label><br />
             <input
               class="apply-input"
               type="radio"
               id="gender_other"
               name="gender"
               value="other"
-            >
+            />
             <label class="apply-label" for="gender_other">Other</label>
           </fieldset>
 
@@ -156,7 +156,7 @@
                   placeholder="1 John St"
                   required
                   maxlength="40"
-                >
+                />
               </td>
               <td class="apply-td">
                 <input
@@ -167,7 +167,7 @@
                   placeholder="Hawthorn"
                   required
                   maxlength="40"
-                >
+                />
               </td>
             </tr>
             <tr>
@@ -202,12 +202,12 @@
                   required
                   pattern="\d{4}"
                   maxlength="4"
-                >
+                />
               </td>
             </tr>
           </table>
 
-          <label class="apply-label" for="email">Email</label><br>
+          <label class="apply-label" for="email">Email</label><br />
           <input
             class="apply-input"
             type="email"
@@ -215,9 +215,9 @@
             name="email"
             placeholder="johndoe@example.com"
             required
-          >
-          <br>
-          <label class="apply-label" for="phone">Phone number</label><br>
+          />
+          <br />
+          <label class="apply-label" for="phone">Phone number</label><br />
           <input
             class="apply-input"
             type="tel"
@@ -227,7 +227,7 @@
             minlength="8"
             maxlength="12"
             required
-          >
+          />
         </fieldset>
 
         <fieldset class="apply-section">
@@ -239,60 +239,60 @@
             name="skills[]"
             value="Communication"
             required
-          >
-          <label class="apply-label" for="skill1">Communication</label><br>
+          />
+          <label class="apply-label" for="skill1">Communication</label><br />
           <input
             class="apply-input"
             type="checkbox"
             id="skill2"
             name="skills[]"
             value="teamwork"
-          >
-          <label class="apply-label" for="skill2">Teamwork</label><br>
+          />
+          <label class="apply-label" for="skill2">Teamwork</label><br />
           <input
             class="apply-input"
             type="checkbox"
             id="skill3"
             name="skills[]"
             value="detail_oriented"
-          >
-          <label class="apply-label" for="skill3">Detail-oriented</label><br>
+          />
+          <label class="apply-label" for="skill3">Detail-oriented</label><br />
           <input
             class="apply-input"
             type="checkbox"
             id="skill4"
             name="skills[]"
             value="initiative"
-          >
-          <label class="apply-label" for="skill4">Initiative</label><br>
+          />
+          <label class="apply-label" for="skill4">Initiative</label><br />
           <input
             class="apply-input"
             type="checkbox"
             id="skill5"
             name="skills[]"
             value="time_management"
-          >
-          <label class="apply-label" for="skill5">Time management</label><br>
+          />
+          <label class="apply-label" for="skill5">Time management</label><br />
           <input
             class="apply-input"
             type="checkbox"
             id="skill6"
             name="skills[]"
             value="risk_management"
-          >
-          <label class="apply-label" for="skill6">Risk management</label><br>
+          />
+          <label class="apply-label" for="skill6">Risk management</label><br />
           <input
             class="apply-input"
             type="checkbox"
             id="skill7"
             name="skills[]"
             value="other"
-          >
+          />
           <label class="apply-label" for="skill7">Other skills...</label
-          ><br><br>
+          ><br /><br />
 
           <label class="apply-label" for="other_skills">Other skills</label
-          ><br>
+          ><br />
 
           <textarea
             class="apply-textarea"
@@ -303,13 +303,13 @@
             placeholder="If you have any other skills not listed above, please list them here."
           ></textarea>
         </fieldset>
-        <input class="apply-input" type="submit" value="Apply">
+        <input class="apply-input" type="submit" value="Apply" />
       </form>
     </main>
     <footer id="general-footer">
       <div class="footer-row">
         <div class="footer-col">
-          <img src="images/logo-removebg-preview.png" class="logo" alt="LOGO">
+          <img src="images/logo-removebg-preview.png" class="logo" alt="LOGO" />
           <p>
             Our company provides details of "Chief Technology Officer(CTO)" and
             "Cloud engineering", including base position, skills needed,
@@ -319,7 +319,11 @@
 
         <div class="footer-col">
           <h3>Officer</h3>
-          <p class="footer-email-id">Email : 104082552@student.swin.edu.au</p>
+          <p class="footer-email-id">
+            <a href="mailto:abcxyz@concac.com" class="footer-email-id"
+              >Email : 104082552@student.swin.edu.au</a
+            >
+          </p>
           <p>Phone number : +61 423032755</p>
         </div>
 
@@ -336,12 +340,12 @@
         <div class="footer-col">
           <h3>Newsletter</h3>
           <form>
-            <input type="email" placeholder="Enter Your email id" required>
-            <input type="submit">
+            <input type="email" placeholder="Enter Your email id" required />
+            <input type="submit" />
           </form>
         </div>
       </div>
-      <hr>
+      <hr />
       <p>Deadline is coming 2023 &copy; - All Rights Reserved</p>
     </footer>
   </body>
