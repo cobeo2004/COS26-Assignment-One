@@ -121,7 +121,7 @@ TODO: Implementing enhancements for all files :)
   margin: 0 auto;
   padding: 0px 50px 50px 50px;
   background-color: #fff;
-  border-radius: 5px solid black;
+  border-radius: 5px;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -135,7 +135,7 @@ TODO: Implementing enhancements for all files :)
   flex-wrap: wrap-reverse;
   justify-content: space-between;
   margin-bottom: 30px;
-  transition: all 0.5 ease-in-out;
+  transition: all ease-in-out;
 }
 
 .about-group-info dl {
@@ -508,7 +508,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   width: 100%;
   height: 75px;
   line-height: 75px; /* height between words in nav */
-  padding: 0px, 100px;
+  padding: 0px 100px;
   position: static;
   background: #d9ecfd; /* header color backup #EDF1FF #ccd5f8; footer color backup 00093c 2d0b00 */
   background: linear-gradient(to right, #78828a, #283b4e, #451100);
