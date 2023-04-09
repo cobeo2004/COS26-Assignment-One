@@ -30,8 +30,7 @@ ul {
 }
 
 h1 {
-  margin-bottom: 10px;
-  text-align: center;
+  margin: 0;
   font-size: 4vw;
 }
 
@@ -788,6 +787,26 @@ https://www.sitepoint.com/css-typewriter-effect/ */
   justify-content: center;
   margin-top: 5vw;
   margin-bottom: 30px;
+}
+
+/* Animation for index page heading */
+
+.index-typed-out {
+  overflow: hidden;
+  border-right: 4px solid black;
+  white-space: nowrap;
+  animation: index-typing 1.5s steps(17, end) forwards,
+    blink 0.5s step-end infinite alternate;
+  width: 0;
+}
+
+@keyframes index-typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 37%;
+  }
 }
 
 /* Animation for apply page heading */
