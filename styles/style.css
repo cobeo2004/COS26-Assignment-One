@@ -638,13 +638,21 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   color: white;
   text-decoration: none;
 }
+
 /*decoration more transition of header */
 #header-nav li a:hover {
   background-color: white;
   color: #ff8c69;
-  transition: 0.8s ease-out;
+  transition: 0.5s ease-out;
   /* for the footer */
 }
+
+/* Changes the colour of the link when the user is on the page */
+#selected-page {
+  background-color: #6777B6;
+  transition: 0.5s ease-in;
+}
+
 #general-footer {
   width: 100%;
   /* position: absolute; */
@@ -659,6 +667,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   clear: both;
   margin-top: 50px;
 }
+
 .footer-row {
   width: 95%; /* gap between each row including 3 rows*/
   margin: auto;
