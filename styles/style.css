@@ -23,59 +23,162 @@ TODO: Implementing enhancements for all files :)
 /******************************************************************/
 
 /**************************** Start of index.css ***********************/
-.index-header {
-  background-color: red;
+body {
+  margin: 0;
+}
+ul {
+  margin: 0;
 }
 
-.index-main .main-img {
-  width: 300px;
-}
-
-.index-main .row {
+h1 {
+  margin: 0;
   text-align: center;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  font-size: 40px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.img {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("images/ha.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.img .img-2 {
+  width: 300px;
+  float: left;
+  margin-right: 30px;
+  margin-left: 30px;
+  border-radius: 40px;
+}
+
+.img .first-para {
+  float: right;
+  margin-top: 20px;
+  margin-right: 30px;
+  text-align: justify;
+}
+
+.img .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+}
+
+.img .column {
+  padding: 10px;
+  text-align: center;
+  width: 1fr 1fr 1fr;
+  margin: 30px;
+  border: 2px;
+  background-color: #ccd5f8;
+  border-style: solid;
+  border-radius: 20px;
+}
+.img .column:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+  background-color: #9683ec;
+}
+
+.logo-indi {
+  margin: 20px;
+  max-height: 100px;
+}
+.logos {
+  padding: 50;
+  display: flex;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  overflow-x: auto;
+}
+/* Container styles */
+.reviews-container {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 40px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+/* Title styles */
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-size: 32px;
+  color: #333;
+}
+/* Review card styles */
+.review-card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+/* Hover effect for review card */
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+/* Rating styles */
+.rating {
+  font-size: 24px;
+  color: #ffc107;
   margin-bottom: 10px;
 }
-
-.index-main .column {
-  align-content: center;
-  float: left;
-  width: 31%;
-  margin-bottom: 50px;
-  margin: 10px;
-  border: 2px;
-  background-color: aqua;
-  border-style: solid;
-  border-color: black;
+/* Star styles */
+.star {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  font-size: 20px;
+}
+/* Review text styles */
+.review-text {
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+/* Author styles */
+.author {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+  text-align: right;
 }
 
-.index-main .review-box {
-  text-align: center;
-}
-.index-main .review-box-indi {
-  float: left;
-  width: 45%;
-  margin: 20px;
-  border: 2px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-}
-
-.index-main .profile-pic {
-  width: 50px;
-  margin: 10px;
-  float: left;
-  border-radius: 25px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
-
-.index-main .review-wording {
-  float: left;
-  text-align: justify;
-  width: 250px;
-  margin-left: 20px;
+/* Add a hover effect to elements */
+selector:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 /**************************** End of index.css ***********************/
