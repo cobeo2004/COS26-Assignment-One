@@ -24,17 +24,6 @@ description: This file is the main file of whole css!
 /**************************** Start of index.css ***********************/
 body {
   margin: 0;
-}
-ul {
-  margin: 0;
-}
-
-h1 {
-  margin: 0;
-  font-size: 4vw;
-}
-
-.img {
   display: block;
   margin-top: 0;
   margin-bottom: 0;
@@ -46,6 +35,15 @@ h1 {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+ul {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 4vw;
+}
+
 .img .img-2 {
   width: 300px;
   float: left;
