@@ -27,7 +27,6 @@ description: This file is the main file of whole css!
   display: block;
   position: relative;
   height: 100%;
-
 }
 
 /* add background image */
@@ -38,7 +37,7 @@ description: This file is the main file of whole css!
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;  
+  z-index: -1;
   background-image: url("../images/ha.png");
   background-size: cover;
   background-position: center;
@@ -216,7 +215,7 @@ selector:hover {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0px 50px 50px 50px;
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 5px;
   text-align: center;
   display: flex;
