@@ -248,7 +248,6 @@ selector:hover {
   flex-wrap: wrap-reverse;
   justify-content: space-between;
   margin-bottom: 30px;
-  transition: all ease-in-out;
 }
 
 .about-group-info dl {
@@ -260,16 +259,20 @@ selector:hover {
   padding: 20px;
   border-radius: 5px;
   text-align: left;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
 }
 
 .about-group-info dt {
   font-weight: bold;
   margin-bottom: 10px;
+  transition: 0.3s ease-in-out;
 }
 
 .about-group-info dd {
   margin-left: 0;
   margin-bottom: 0;
+  transition: 0.3s ease-in-out;
 }
 
 .about-card {
@@ -317,11 +320,13 @@ selector:hover {
   padding: 20px;
   text-align: left;
   cursor: pointer;
+  transition: 0.5s ease-in-out;
 }
 .about-timetable h2 {
   margin-top: 0;
   margin-bottom: 20px;
   text-align: center;
+  transition: 0.5s ease-in-out;
 }
 
 .about-timetable table {
@@ -335,6 +340,7 @@ selector:hover {
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid #ddd;
+  transition: 0.5s;
 }
 
 .about-timetable th {
@@ -944,5 +950,29 @@ https://stackdiary.com/gradient-hover-effect-css/
   transform: scale(1.2);
   background-image: linear-gradient(#9bc7f4, #8567f7);
   color: whitesmoke;
+}
+
+.about-group-info dl:hover {
+  transform: scale(1.2);
+  background-image: linear-gradient(#9bc7f4, #6045ea);
+}
+
+.about-group-info dt:hover {
+  transform: scale(1.095);
+  color: white;
+}
+
+.about-group-info dd:hover {
+  transform: scale(1.2);
+  color: wheat;
+}
+.about-timetable:hover,
+.about-timetable h2:hover {
+  transform: scale(1.1);
+}
+
+.about-timetable th:hover,
+.about-timetable td:hover {
+  transform: scale(1.2);
 }
 /**************************** End of Enhancement 2 ***********************/
