@@ -303,6 +303,7 @@ selector:hover {
   font-size: 18px;
   margin: 0;
   padding-top: 5px;
+  transition: 0.3s all ease;
 }
 .about-card p {
   font-size: 14px;
@@ -940,7 +941,12 @@ https://stackdiary.com/gradient-hover-effect-css/
   color: whitesmoke;
 }
 .about-card:hover > p {
-  color: white;
+  color: whitesmoke;
+}
+
+.about-card h3:hover,
+.about-card p:hover {
+  color: #fddc5c;
 }
 
 .about-card:hover > img {
@@ -971,6 +977,12 @@ https://stackdiary.com/gradient-hover-effect-css/
 .about-timetable:hover,
 .about-timetable h2:hover {
   transform: scale(1.1);
+}
+
+.about-timetable h2:hover,
+.about-timetable th:hover,
+.about-timetable td:hover {
+  color: #fddc5c;
 }
 
 .about-timetable th:hover,
