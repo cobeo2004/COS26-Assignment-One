@@ -529,6 +529,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 
 .apply-input[type="submit"] {
   cursor: pointer;
+  transition: 0.5s ease-in-out;
 }
 .apply-h1 {
   font-size: 4vw;
@@ -949,22 +950,23 @@ https://stackdiary.com/gradient-hover-effect-css/
 .link-report a:hover {
   transform: scale(1.2);
   background-image: linear-gradient(#9bc7f4, #8567f7);
-  color: whitesmoke;
+  color: #fddc5c;
 }
 
 .about-group-info dl:hover {
   transform: scale(1.2);
   background-image: linear-gradient(#9bc7f4, #6045ea);
+  color: white;
 }
 
 .about-group-info dt:hover {
   transform: scale(1.095);
-  color: white;
+  color: #fddc5c;
 }
 
 .about-group-info dd:hover {
   transform: scale(1.2);
-  color: wheat;
+  color: #fddc5c;
 }
 .about-timetable:hover,
 .about-timetable h2:hover {
@@ -974,5 +976,11 @@ https://stackdiary.com/gradient-hover-effect-css/
 .about-timetable th:hover,
 .about-timetable td:hover {
   transform: scale(1.2);
+}
+
+.apply-input[type="submit"]:hover {
+  transform: scale(1.2);
+  color: wheat;
+  background-image: linear-gradient(#9bc7f4, #8567f7);
 }
 /**************************** End of Enhancement 2 ***********************/
