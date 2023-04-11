@@ -163,6 +163,23 @@ h2 {
   text-align: right;
 }
 
+.link-report a {
+  text-decoration: none !important;
+  display: inline-block;
+  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.link-report {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
 /* Add a hover effect to elements */
 selector:hover {
   transform: translateY(-5px);
@@ -904,10 +921,11 @@ https://www.sitepoint.com/css-typewriter-effect/ */
 
 /**************************** Start of Enhancement 2 ***********************/
 
-/* Adapted from  https://stackdiary.com/gradient-hover-effect-css/
-https://www.w3schools.com/cssref/sel_hover.php
+/* Adapted From:
 https://www.youtube.com/watch?v=H_64n7gY3h0
-*/
+https://www.w3schools.com/cssref/sel_hover.php
+https://stackdiary.com/gradient-hover-effect-css/
+ */
 
 .about-card:hover {
   transform: scale(1.2);
@@ -921,7 +939,8 @@ https://www.youtube.com/watch?v=H_64n7gY3h0
 .about-card:hover > img {
   transform: scale(1.1);
 }
-.about-mail a:hover {
+.about-mail a:hover,
+.link-report a:hover {
   transform: scale(1.2);
   background-image: linear-gradient(#9bc7f4, #8567f7);
   color: whitesmoke;
