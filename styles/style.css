@@ -905,7 +905,7 @@ https://www.sitepoint.com/css-typewriter-effect/ */
 
 .about-card:hover {
   transform: scale(1.2);
-  background: linear-gradient(#6045ea, #8567f7);
+  background: linear-gradient(#9bc7f4, #6045ea);
   color: whitesmoke;
 }
 .about-card:hover > p {
@@ -917,7 +917,7 @@ https://www.sitepoint.com/css-typewriter-effect/ */
 }
 .about-mail a:hover {
   transform: scale(1.2);
-  background-image: linear-gradient(#6045ea, #8567f7);
+  background-image: linear-gradient(#9bc7f4, #8567f7);
   color: whitesmoke;
 }
 /**************************** End of Enhancement 2 ***********************/
