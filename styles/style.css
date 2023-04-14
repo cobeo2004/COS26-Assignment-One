@@ -746,6 +746,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   transition: 0.5s ease-in;
 }
 /***********************************FOOTER*************************/
+
 #general-footer {
   width: 100%;
   /* position: absolute; */
