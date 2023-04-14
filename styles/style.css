@@ -1,5 +1,5 @@
 /*
-filename: main.css
+filename: style.css
 authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
 created: 29-Mar-2023
 description: This file is the main file of whole css!
@@ -364,6 +364,29 @@ selector:hover {
   text-decoration: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: 0.5s ease-in-out;
+}
+
+.about-group-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+  transition: 0.5s all ease-in-out;
+  cursor: pointer;
+}
+
+.about-group-img img {
+  max-width: 800px;
+  max-height: 800px;
+  transition: 0.3s all ease-in-out;
+}
+
+.about-group-img figcaption {
+  font-size: large;
+  font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  transition: 0.3s all ease-in-out;
 }
 
 #about-footer {
@@ -1033,6 +1056,19 @@ https://stackdiary.com/gradient-hover-effect-css/
 .about-timetable th:hover,
 .about-timetable td:hover {
   transform: scale(1.2);
+}
+
+.about-group-img:hover {
+  margin-top: 80px;
+  transform: scale(1.2);
+}
+
+.about-group-img img:hover {
+  box-shadow: 0px 5px 20px #9bc7f4;
+}
+
+.about-group-img figcaption:hover {
+  color: #fddc5c;
 }
 
 .apply-input[type="submit"]:hover {
