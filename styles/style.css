@@ -418,27 +418,26 @@ selector:hover {
 #job-main section {
   margin: 2em 0 0 0;
 }
-
+/* positioning the table of contents */
 #job-main .table-of-contents {
   width: 100vw;
   display: block;
 }
-
+/* positioning the content of job descriptions to the left */
 #job-main .job-des {
   display: inline;
   float: left;
   width: 65%;
 }
-
+/* positioning the references aka the aside to the left and fixed the width to 25% of viewport width */
 #job-main aside {
-  /* display: inline; */
   float: right;
   border: 0.5px solid rgb(51, 74, 75);
   border-collapse: collapse;
   border-radius: 5px;
   padding: 1em;
   margin: 1em;
-  width: 25%;
+  width: 25vw;
 }
 /* sections with contents placing in boxes, namely the tables and some descriptions for the jobs */
 #job-main dl,
