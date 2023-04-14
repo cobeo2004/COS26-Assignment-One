@@ -1,8 +1,8 @@
 /*
 filename: main.css
-authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
+author: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
 created: 29-Mar-2023
-description: This file contains the styling for the CloudLabs website
+description: This file is the main file of whole css!
 */
 
 /**************************** General Styling ***********************/
@@ -39,7 +39,7 @@ description: This file contains the styling for the CloudLabs website
   height: 100%;
   z-index: -1;
   /* Image Source: https://4kwallpapers.com/abstract/windows-11-gradient-background-bloom-light-backgrounds-5k-8411.html */
-  background-image: url("images/ha.png");
+  background-image: url("../images/ha.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -352,7 +352,7 @@ selector:hover {
 }
 
 .about-mail {
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .about-mail a {
@@ -364,24 +364,6 @@ selector:hover {
   text-decoration: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: 0.5s ease-in-out;
-}
-
-.about-group-img {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 50px;
-}
-.about-group-img img {
-  max-width: 800px;
-  max-height: 800px;
-}
-
-.about-group-img figcaption {
-  font-size: large;
-  font-style: italic;
-  margin-top: 20px;
-  margin-bottom: 40px;
 }
 
 #about-footer {
@@ -651,15 +633,19 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 /**************************** Start of Header and Footer ***********************/
 /* Header navigation */
 #header-nav {
+  max-width: 100%;
   width: 100%;
-  height: 75px;
-  line-height: 75px; /* height between words in nav */
-  padding: 0px 100px;
+  height: auto;
+  line-height: 20px; /* height between words in nav */
+  padding: 0px 10px;
   position: static;
   background: #d9ecfd; /* header color backup #EDF1FF #ccd5f8; footer color backup 00093c 2d0b00 */
   background: linear-gradient(to right, #78828a, #283b4e, #451100);
   text-align: center;
   clear: both;
+  display: flex;
+  overflow-y: auto;
+  justify-content: center;
 }
 
 /* logo on the left */
@@ -678,6 +664,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 }
 
 #header-nav ul {
+  display: flex;
   justify-content: center;
   /* float: left; */
   margin-top: 0px;
@@ -685,12 +672,14 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 /* display horizontally the nav */
 /* display horizontally the nav */
 #header-nav li {
+  display: flex;
   display: inline-block;
   list-style: none;
   /* not showing dot of ul ol */
 }
 
 #header-nav li a {
+  display: flex;
   font-size: 18px;
   text-transform: uppercase;
   padding: 30px 114px;
@@ -711,7 +700,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   background-color: #6777b6;
   transition: 0.5s ease-in;
 }
-
+/***********************************FOOTER*************************/
 #general-footer {
   width: 100%;
   /* position: absolute; */
@@ -769,10 +758,6 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 .footer-col ul li {
   list-style: none;
   margin-bottom: 12px;
-}
-
-.footer-col ul {
-  padding-left: 0px;
 }
 
 .footer-col ul li a {
