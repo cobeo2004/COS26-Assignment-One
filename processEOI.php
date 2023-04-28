@@ -34,11 +34,7 @@ if (isset($_POST["submit"])) {
 	if ($error == false) {
 		
 		}
-
-		
 	}
-
-
 // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
 ?>
 
