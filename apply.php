@@ -43,7 +43,7 @@ description: Job application page
     </h2>
     <br />
     <!-- Job Application form, sends a POST request to the Swinburne Mercury server upon submission -->
-    <form method="post" action="https://mercury.swin.edu.au/it000000/formtest.php" novalidate=”novalidate”>
+    <form method="post" action="./processEOI.php" novalidate=”novalidate”>
       <fieldset class="apply-section">
         <legend>About the job</legend>
         <label class="apply-label" for="job_ref_no">Which job are you applying for?</label><br />
