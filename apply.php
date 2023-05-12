@@ -7,7 +7,7 @@ description: Job application page
 
 
 
-<!-- TODO: Fix error message style, display error message on all fields, fill in user data on error and confirmation page -->
+<!-- TODO: fill in user data on error (DOB, Gender, State, Skills, Other Skills) and make confirmation page -->
 
 <?php
 // check if there are form errors indicated in the URL parameter
@@ -87,16 +87,15 @@ if (isset($_GET['error'])) {
       <fieldset class="apply-section">
         <legend>About the job</legend>
         <label class="apply-label" for="job_ref_no">Which job are you applying for?</label><br />
-        <input class="apply-input" type="text" id="job_ref_no" name="job_ref_no" placeholder="Job reference number"
+        <input class="apply-input" type="text" id="job_ref_no" name="job_ref_no" placeholder="Job reference number" value="<?php echo $job_reference_number; ?>"
           required minlength="5" maxlength="5" />
           <?php
           // display error message if there is one
           if (isset($_GET['error'])) {
-            echo "<span class=\"apply-error\">$error_job_reference_number</span>";
+            echo "<span class='apply-error'>$error_job_reference_number</span>";
           }
           ?>
       </fieldset>
-
       <fieldset class="apply-section">
         <legend>Tell us about yourself</legend>
         <table class="apply-table">
@@ -104,6 +103,7 @@ if (isset($_GET['error'])) {
             <td class="apply-td">
               <label class="apply-label" for="first_name">First name</label>
             </td>
+            
             <td class="apply-td">
               <label class="apply-label" for="last_name">Last name</label>
             </td>
@@ -112,17 +112,35 @@ if (isset($_GET['error'])) {
             <!-- First and last name, maximum 20 alpha characters -->
             <td class="apply-td">
               <input class="apply-input" type="text" id="first_name" name="first_name" placeholder="John" required
-                maxlength="20" pattern="^[a-zA-Z]+$" />
+                maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $first_name?>"/>
+                <?php
+              // display error message if there is one
+              if (isset($_GET['error'])) {
+                echo "<span class='apply-error'>$error_first_name</span>";
+              }
+              ?>
             </td>
             <td class="apply-td">
               <input class="apply-input" type="text" id="last_name" name="last_name" placeholder="Doe" required
-                maxlength="20" pattern="^[a-zA-Z]+$" />
+                maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $last_name?>" />
+                <?php
+              // display error message if there is one
+              if (isset($_GET['error'])) {
+                echo "<span class='apply-error'>$error_last_name</span>";
+              }
+              ?>
             </td>
           </tr>
         </table>
         <!-- Date of birth - date picker -->
         <label class="apply-label" for="birth_date">Date of birth</label><br />
         <input class="apply-input" type="date" id="birth_date" name="birth_date" required />
+        <?php
+        // display error message if there is one
+        if (isset($_GET['error'])) {
+          echo "<span class='apply-error'>$error_date_of_birth</span>";
+        }
+        ?>
         <!-- Gender - radio buttons -->
         <fieldset class="apply-gender-list">
           <legend>Gender</legend>
@@ -132,6 +150,12 @@ if (isset($_GET['error'])) {
           <label class="apply-label" for="gender_female">Female</label><br />
           <input class="apply-input" type="radio" id="gender_other" name="gender" value="other" />
           <label class="apply-label" for="gender_other">Other</label>
+          <?php
+          // display error message if there is one
+          if (isset($_GET['error'])) {
+            echo "<br><span class='apply-error'>$error_gender</span>";
+          }
+          ?>
         </fieldset>
         <!-- Address - Max 40 characters -->
         <table class="apply-table">
@@ -146,11 +170,23 @@ if (isset($_GET['error'])) {
           <tr>
             <td class="apply-td">
               <input class="apply-input" type="text" id="address" name="address" placeholder="1 John St" required
-                maxlength="40" />
+                maxlength="40" value="<?php echo $street_address?>"/>
+                <?php
+                // display error message if there is one
+          if (isset($_GET['error'])) {
+            echo "<span class='apply-error'>$error_street_address</span>";
+          }
+                ?>
             </td>
             <td class="apply-td">
               <input class="apply-input" type="text" id="suburb" name="suburb" placeholder="Hawthorn" required
-                maxlength="40" />
+                maxlength="40" value="<?php echo $suburb?>"/>
+                <?php
+                // display error message if there is one
+          if (isset($_GET['error'])) {
+            echo "<span class='apply-error'>$error_suburb</span>";
+          }
+                ?>
             </td>
           </tr>
           <tr>
@@ -176,21 +212,45 @@ if (isset($_GET['error'])) {
                 <option value="TAS">TAS</option>
                 <option value="ACT">ACT</option>
               </select>
+              <?php
+              // display error message if there is one
+              if (isset($_GET['error'])) {
+                echo "<span class='apply-error'>$error_state</span>";
+              }
+              ?>
             </td>
             <td class="apply-td">
               <input class="apply-input" type="text" id="postcode" name="postcode" placeholder="3122" required
-                pattern="\d{4}" maxlength="4" />
+                pattern="\d{4}" maxlength="4" value="<?php echo $postcode?>"/>
+                <?php
+                // display error message if there is one
+          if (isset($_GET['error'])) {
+            echo "<span class='apply-error'>$error_postcode</span>";
+          }
+                ?>
             </td>
           </tr>
         </table>
         <!-- Email -->
         <label class="apply-label" for="email">Email</label><br />
-        <input class="apply-input" type="email" id="email" name="email" placeholder="johndoe@example.com" required />
+        <input class="apply-input" type="email" id="email" name="email" placeholder="johndoe@example.com" required value="<?php echo $email?>"/>
+        <?php
+        // display error message if there is one
+        if (isset($_GET['error'])) {
+          echo "<span class='apply-error'>$error_email</span>";
+        }
+        ?>
         <!-- Phone number - 8-12 digits/spaces -->
         <br />
         <label class="apply-label" for="phone">Phone number</label><br />
         <input class="apply-input" type="tel" id="phone" name="phone" placeholder="0412345678" minlength="8"
-          maxlength="12" required pattern="[\d\s]+" />
+          maxlength="12" required pattern="[\d\s]+" value="<?php echo $phone?>"/>
+        <?php
+        // display error message if there is one
+        if (isset($_GET['error'])) {
+          echo "<span class='apply-error'>$error_phone</span>";
+        }
+        ?>
       </fieldset>
       <!-- Skills - checkboxes -->
       <fieldset class="apply-section">
@@ -209,11 +269,22 @@ if (isset($_GET['error'])) {
         <label class="apply-label" for="skill6">Risk management</label><br />
         <input class="apply-input" type="checkbox" id="skill7" name="skills[]" value="other" />
         <label class="apply-label" for="skill7">Other skills...</label><br /><br />
-
+        <?php
+        // display error message if there is one
+        if (isset($_GET['error'])) {
+          echo "<span class='apply-error'>$error_skills</span><br>";
+        }
+        ?>
         <label class="apply-label" for="other_skills">Other skills</label><br />
         <!-- Other skills - textarea -->
         <textarea class="apply-textarea" id="other_skills" name="other_skills" rows="4" cols="30"
           placeholder="If you have any other skills not listed above, please list them here."></textarea>
+          <?php
+          // display error message if there is one
+          if (isset($_GET['error'])) {
+            echo "<span class='apply-error'>$error_other_skills</span>";
+          }
+          ?>
       </fieldset>
       <input class="apply-input" type="submit" value="Apply" />
     </form>
