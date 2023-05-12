@@ -271,6 +271,40 @@ if ($_POST) {
 		
 	} else {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
+        session_start();
+        // store error messages in session variables
+        $_SESSION["error_job_reference_number"] = $error_job_reference_number;
+        $_SESSION["error_first_name"] = $error_first_name;
+        $_SESSION["error_last_name"] = $error_last_name;
+        $_SESSION["error_date_of_birth"] = $error_date_of_birth;
+        $_SESSION["error_gender"] = $error_gender;
+        $_SESSION["error_street_address"] = $error_street_address;
+        $_SESSION["error_suburb"] = $error_suburb;
+        $_SESSION["error_state"] = $error_state;
+        $_SESSION["error_postcode"] = $error_postcode;
+        $_SESSION["error_email"] = $error_email;
+        $_SESSION["error_phone"] = $error_phone;
+        $_SESSION["error_skills"] = $error_skills;
+        $_SESSION["error_other_skills"] = $error_other_skills;
+
+        // store user's previous data in session variables (so the user doesn't have to re-enter all the data)
+        $_SESSION["job_reference_number"] = $job_reference_number;
+        $_SESSION["first_name"] = $first_name;
+        $_SESSION["last_name"] = $last_name;
+        $_SESSION["date_of_birth"] = $date_of_birth;
+        $_SESSION["gender"] = $gender;
+        $_SESSION["street_address"] = $street_address;
+        $_SESSION["suburb"] = $suburb;
+        $_SESSION["state"] = $state;
+        $_SESSION["postcode"] = $postcode;
+        $_SESSION["email"] = $email;
+        $_SESSION["phone"] = $phone;
+        $_SESSION["skills"] = $skills;
+        $_SESSION["other_skills"] = $other_skills;
+
+        // redirect to the application form with error parameter set
+        header("location: apply.php?error=1");
+        exit;
         
         // debug
         echo "Job reference number: " . $_POST["job_ref_no"] . "<br>";
@@ -305,6 +339,7 @@ if ($_POST) {
 } else {
     // Redirect to form, if process not triggered by a form submit
     header("location: apply.php");
+    exit;
 }
 ?>
 

@@ -5,6 +5,46 @@ created: 29-Mar-2023
 description: Job application page
 -->
 
+
+
+<!-- TODO: Fix error message style, display error message on all fields, fill in user data on error and confirmation page -->
+
+<?php
+// check if there are form errors indicated in the URL parameter
+if (isset($_GET['error'])) {
+  session_start();
+  // get the error messages from session variables
+  $error_job_reference_number = $_SESSION["error_job_reference_number"];
+  $error_first_name = $_SESSION["error_first_name"];
+  $error_last_name = $_SESSION["error_last_name"];
+  $error_date_of_birth = $_SESSION["error_date_of_birth"];
+  $error_gender = $_SESSION["error_gender"];
+  $error_street_address = $_SESSION["error_street_address"];
+  $error_suburb = $_SESSION["error_suburb"];
+  $error_state = $_SESSION["error_state"];
+  $error_postcode = $_SESSION["error_postcode"];
+  $error_email = $_SESSION["error_email"];
+  $error_phone = $_SESSION["error_phone"];
+  $error_skills = $_SESSION["error_skills"];
+  $error_other_skills = $_SESSION["error_other_skills"];
+
+  // get the user's form data from session variables
+  $job_reference_number = $_SESSION["job_reference_number"];
+  $first_name = $_SESSION["first_name"];
+  $last_name = $_SESSION["last_name"];
+  $date_of_birth = $_SESSION["date_of_birth"];
+  $gender = $_SESSION["gender"];
+  $street_address = $_SESSION["street_address"];
+  $suburb = $_SESSION["suburb"];
+  $state = $_SESSION["state"];
+  $postcode = $_SESSION["postcode"];
+  $email = $_SESSION["email"];
+  $phone = $_SESSION["phone"];
+  $skills = $_SESSION["skills"];
+  $other_skills = $_SESSION["other_skills"];
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="apply-class">
 
@@ -49,6 +89,12 @@ description: Job application page
         <label class="apply-label" for="job_ref_no">Which job are you applying for?</label><br />
         <input class="apply-input" type="text" id="job_ref_no" name="job_ref_no" placeholder="Job reference number"
           required minlength="5" maxlength="5" />
+          <?php
+          // display error message if there is one
+          if (isset($_GET['error'])) {
+            echo "<span class=\"apply-error\">$error_job_reference_number</span>";
+          }
+          ?>
       </fieldset>
 
       <fieldset class="apply-section">
