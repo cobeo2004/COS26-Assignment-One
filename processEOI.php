@@ -40,94 +40,102 @@ function sanitise_input($data) {
 }
 
 // Checks if validation was triggered by a form submit, if not redirect the user
-
-if (!empty($_POST)) {
+if ($_POST) {
 	// connect to database
 	
 	// save the form data to variables and sanitise + existence checks
-    if (isset($_POST["job_ref_no"])) {
+    if (!empty($_POST["job_ref_no"])) {
         $job_reference_number = sanitise_input($_POST["job_ref_no"]);
     } else {
         $error = true;
         $error_job_reference_number = "Please enter a job reference number";
     }
-    if (isset($_POST["first_name"])) {
+
+    if (!empty($_POST["first_name"])) {
         $first_name = sanitise_input($_POST["first_name"]);
     } else {
         $error = true;
         $error_first_name = "Please enter your first name";
     }
-    if (isset($_POST["last_name"])) {
+
+    if (!empty($_POST["last_name"])) {
         $last_name = sanitise_input($_POST["last_name"]);
     } else {
         $error = true;
         $error_last_name = "Please enter your last name";
     }
-    if (isset($_POST["birth_date"])) {
+
+    if (!empty($_POST["birth_date"])) {
         $date_of_birth = sanitise_input($_POST["birth_date"]);
     } else {
         $error = true;
        $error_date_of_birth = "Please enter your date of birth";
     }
-    if (isset($_POST["gender_male"])) {
-        $gender = sanitise_input($_POST["gender_male"]);
-    } elseif (isset($_POST["gender_female"])) {
-        $gender = sanitise_input($_POST["gender_female"]);
-    } elseif (isset($_POST["gender_other"])) {
-        $gender = sanitise_input($_POST["gender_other"]);
+
+    if (!empty($_POST["gender"])) {
+        $gender = sanitise_input($_POST["gender"]);
     } else {
         $error = true;
         $error_gender = "Please select a gender";
     }
-    if (isset($_POST["address"])) {
-        $address = sanitise_input($_POST["address"]);
+
+    if (!empty($_POST["address"])) {
+        $street_address = sanitise_input($_POST["address"]);
     } else {
         $error = true;
         $error_street_address = "Please enter your street address";
     }
-    if (isset($_POST["suburb"])) {
+
+    if (!empty($_POST["suburb"])) {
         $suburb = sanitise_input($_POST["suburb"]);
     } else {
         $error = true;
         $error_suburb = "Please enter your suburb";
     }
-    if (isset($_POST["state"])) {
+
+    if (!empty($_POST["state"])) {
         $state = sanitise_input($_POST["state"]);
     } else {
         $error = true;
         $error_state = "Please select a state";
     }
-    if (isset($_POST["postcode"])) {
+
+    if (!empty($_POST["postcode"])) {
         $postcode = sanitise_input($_POST["postcode"]);
     } else {
         $error = true;
         $error_postcode = "Please enter your postcode";
     }
-    if (isset($_POST["email"])) {
+
+    if (!empty($_POST["email"])) {
         $email = sanitise_input($_POST["email"]);
     } else {
         $error = true;
         $error_email = "Please enter your email address";
     }
-    if (isset($_POST["phone"])) {
+    
+    if (!empty($_POST["phone"])) {
         $phone = sanitise_input($_POST["phone"]);
     } else {
         $error = true;
         $error_phone = "Please enter your phone number";
     }
-    if (isset($_POST["skills"])) {
+
+    if (!empty($_POST["skills"])) {
         $skills = sanitise_input($_POST["skills"]);
     } else {
         $error = true;
         $error_skills = "Please select at least one skill";
     }
-    if (isset($_POST["other_skills"])) {
+    
+    if (!empty($_POST["other_skills"])) {
         $other_skills = sanitise_input($_POST["other_skills"]);
-    } elseif (isset($_POST["skills"]) && in_array("Other", $_POST["skills"])){
+    } elseif (!empty($_POST["skills"]) && in_array("other", $_POST["skills"])){
         $error = true;
         $error_other_skills = "Please enter any other skills you have";
     }
-    if (isset($_POST["status"])) {
+
+    if (!empty($_POST["status"])) {
         $status = sanitise_input($_POST["status"]);
     } else {
         $error = true;
@@ -154,17 +162,22 @@ if (!empty($_POST)) {
         $error = true;
         $error_last_name = "Last name must contain only alphabetic characters";
     }
-
-    // check if date of birth is in dd/mm/yyyy format
-    if (!preg_match("/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/", $date_of_birth) && empty($error_date_of_birth)) {
+     // check if the date picker has been used (if date of birth is in yyyy-mm-dd format)
+    if (!preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $date_of_birth) && empty($error_date_of_birth)) {
         $error = true;
-        $error_date_of_birth = "Date of birth must be formatted as dd/mm/yyyy";
+        $error_date_of_birth = "Please enter a valid date of birth";
     }
-
     // check if state is one of the following: VIC,NSW,QLD,NT,WA,SA,TAS,ACT
     if (!preg_match("/^(VIC|NSW|QLD|NT|WA|SA|TAS|ACT)$/", $state) && empty($error_state)) {
         $error = true;
-        $error_state = "State must be one of the following: VIC, NSW, QLD, NT, WA, SA, TAS, ACT";
+        $error_state = "Please select a valid state";
+    }
+
+    // check if postcode is 4 characters long
+    // better to check postcode length before checking if it is in the selected state
+    if (strlen($postcode) != 4 && empty($error_postcode)) {
+        $error = true;
+        $error_postcode = "Postcode must be 4 characters long";
     }
 
     // check if postcode is in the selected state
@@ -223,9 +236,6 @@ if (!empty($_POST)) {
 
     // check if age is between 15 and 80 using date of birth
     if (empty($error_date_of_birth)) {
-    $date_of_birth = explode("/", $date_of_birth);
-    // convert date of birth to yyyy-mm-dd format for PHP
-    $date_of_birth = $date_of_birth[2] . "-" . $date_of_birth[1] . "-" . $date_of_birth[0];
     // calculate age
     $date_of_birth = date_create($date_of_birth);
     $today = date_create(date("Y-m-d"));
@@ -236,7 +246,7 @@ if (!empty($_POST)) {
         $error_date_of_birth = "Age must be between 15 and 80 years old";
     }
 }
-    
+
     // check if street address is maximum 40 characters long
     if (strlen($street_address) > 40 && empty($error_street_address)) {
         $error = true;
@@ -247,12 +257,6 @@ if (!empty($_POST)) {
     if (strlen($suburb) > 40 && empty($error_suburb)) {
         $error = true;
         $error_suburb = "Suburb must be 40 characters or less";
-    }
-
-    // check if postcode is 4 characters long
-    if (strlen($postcode) != 4 && empty($error_postcode)) {
-        $error = true;
-        $error_postcode = "Postcode must be 4 characters long";
     }
 
     // check if phone number contains 8-12 digits or spaces
@@ -282,7 +286,6 @@ if (!empty($_POST)) {
         echo "Phone: " . $_POST["phone"] . "<br>";
         echo "Skills: " . $_POST["skills"] . "<br>";
         echo "Other skills: " . $_POST["other_skills"] . "<br>";
-
 
         echo "Error: " . $error . "<br>";
         echo "Error job reference number: " . $error_job_reference_number . "<br>";
