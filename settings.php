@@ -1,9 +1,33 @@
 <?php
-    $db_hostname = "feenix-mariadb.swin.edu.au";
-    $db_username = "s103819212";
-    $db_userpassword = "281204";
-    $db_name = "s103819212";
-    $connection = @mysqli_connect($db_hostname, $db_username, $db_userpassword, $db_name)
+    $host_name = "feenix-mariadb.swin.edu.au";
+    $user_name = "s103819212";
+    $password = "281204";
+    $database = "s103819212_db";
+    $table = "cars";
+    $connection = @mysqli_connect($host_name, $user_name, $password, $database);
+
+    function check_if_exists_table($conncetion, $table) {
+        if(mysqli_connect_errno()) {
+            die("Connect failed! \n".mysqli_connect_error());
+            exit();
+        }
+        else {
+            $result = mysqli_query($conncetion, "DESCRIBE `$table`;");
+            if($result !== false) {
+                if(mysqli_num_rows($result) > 0) {
+                    return true;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    function create_table(\mysqli $connection, string $table_name, array $commands = []) {
+        //TODO: Implement create_table and Database !!!
+    }
+
 
 ?>
 
