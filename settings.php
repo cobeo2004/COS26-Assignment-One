@@ -24,10 +24,6 @@
         }
     }
 
-    function create_table(\mysqli $connection, string $table_name, array $commands = []) {
-        //TODO: Implement create_table and Database !!!
-    }
-
 
 ?>
 
