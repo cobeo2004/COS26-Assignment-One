@@ -323,19 +323,66 @@ if (isset($_GET['error'])) {
       <!-- Skills - checkboxes -->
       <fieldset class="apply-section">
         <legend>Tell us about your skills</legend>
-        <input class="apply-input" type="checkbox" id="skill1" name="skills[]" value="communication" required />
+        <input class="apply-input" type="checkbox" id="skill1" name="skills[]" value="communication" required 
+        <?php
+        // if this is a form resubmission, and the skills array contains communication, check it
+        if (isset($_GET['error']) && in_array("communication", $skills)) {
+          echo "checked";
+        }
+        ?>
+        />
         <label class="apply-label" for="skill1">Communication</label><br />
-        <input class="apply-input" type="checkbox" id="skill2" name="skills[]" value="teamwork" />
+        <input class="apply-input" type="checkbox" id="skill2" name="skills[]" value="teamwork" 
+        <?php
+        // if this is a form resubmission, and the skills array contains teamwork, check it
+        if (isset($_GET['error']) && in_array("teamwork", $skills)) {
+          echo "checked";
+        }
+        ?>
+        />
         <label class="apply-label" for="skill2">Teamwork</label><br />
-        <input class="apply-input" type="checkbox" id="skill3" name="skills[]" value="detail_oriented" />
+        <input class="apply-input" type="checkbox" id="skill3" name="skills[]" value="detail_oriented" 
+        <?php
+        // if this is a form resubmission, and the skills array contains detail oriented, check it
+        if (isset($_GET['error']) && in_array("detail_oriented", $skills)) {
+          echo "checked";
+        }
+        ?>
+        />
         <label class="apply-label" for="skill3">Detail-oriented</label><br />
-        <input class="apply-input" type="checkbox" id="skill4" name="skills[]" value="initiative" />
+        <input class="apply-input" type="checkbox" id="skill4" name="skills[]" value="initiative" 
+        <?php
+        // if this is a form resubmission, and the skills array contains initiative, check it
+        if (isset($_GET['error']) && in_array("initiative", $skills)) {
+          echo "checked";
+        }
+        ?>
+        />
         <label class="apply-label" for="skill4">Initiative</label><br />
-        <input class="apply-input" type="checkbox" id="skill5" name="skills[]" value="time_management" />
+        <input class="apply-input" type="checkbox" id="skill5" name="skills[]" value="time_management" 
+        <?php
+        // if this is a form resubmission, and the skills array contains time management, check it
+        if (isset($_GET['error']) && in_array("time_management", $skills)) {
+          echo "checked";
+        }
+        ?>
+        />
         <label class="apply-label" for="skill5">Time management</label><br />
-        <input class="apply-input" type="checkbox" id="skill6" name="skills[]" value="risk_management" />
+        <input class="apply-input" type="checkbox" id="skill6" name="skills[]" value="risk_management" 
+        <?php
+        // if this is a form resubmission, and the skills array contains risk management, check it
+        if (isset($_GET['error']) && in_array("risk_management", $skills)) {
+          echo "checked";
+        }
+        ?>/>
         <label class="apply-label" for="skill6">Risk management</label><br />
-        <input class="apply-input" type="checkbox" id="skill7" name="skills[]" value="other" />
+        <input class="apply-input" type="checkbox" id="skill7" name="skills[]" value="other"
+        <?php
+        // if this is a form resubmission, and the skills array contains other skills, check it
+        if (isset($_GET['error']) && in_array("other", $skills)) {
+          echo "checked";
+        }
+        ?> />
         <label class="apply-label" for="skill7">Other skills...</label><br /><br />
         <?php
         // display error message if there is one

@@ -122,7 +122,14 @@ if ($_POST) {
     }
 
     if (!empty($_POST["skills"])) {
-        $skills = sanitise_input($_POST["skills"]);
+        // if skills is an array (which it should be), sanitise each skill
+        if (is_array($_POST["skills"])) {
+            foreach ($_POST["skills"] as $skill) {
+                $skills[] = sanitise_input($skill);
+            }
+        } else {
+            $skills[] = sanitise_input($_POST["skills"]);
+        }
     } else {
         $error = true;
         $error_skills = "Please select at least one skill";
