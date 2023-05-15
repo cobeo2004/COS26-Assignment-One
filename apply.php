@@ -7,7 +7,7 @@ description: Job application page
 
 
 
-<!-- TODO: fill in user data on error (Skills, Other Skills) and make confirmation page -->
+<!-- TODO: fill in user data on error (Other Skills) and make confirmation page -->
 
 <?php
 // check if there are form errors indicated in the URL parameter
@@ -392,7 +392,12 @@ if (isset($_GET['error'])) {
         ?>
         <label class="apply-label" for="other_skills">Other skills</label><br />
         <!-- Other skills - textarea -->
-        <textarea class="apply-textarea" id="other_skills" name="other_skills" rows="4" cols="30" placeholder="If you have any other skills not listed above, please list them here."></textarea>
+        <textarea class="apply-textarea" id="other_skills" name="other_skills" rows="4" cols="30" placeholder="If you have any other skills not listed above, please list them here."><?php
+        // if this is a form resubmission, and the skills array contains other skills, display the user's other skills if filled
+        if (isset($_GET['error']) && in_array("other", $skills)) {
+          echo $other_skills;
+        }
+        ?></textarea>
         <?php
         // display error message if there is one
         if (isset($_GET['error'])) {
