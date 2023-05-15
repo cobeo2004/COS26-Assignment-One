@@ -42,7 +42,22 @@ if (isset($_GET['error'])) {
   $phone = $_SESSION["phone"];
   $skills = $_SESSION["skills"];
   $other_skills = $_SESSION["other_skills"];
-} 
+}  else {
+  // if there is no form data, set all form data to empty strings
+  $job_reference_number = "";
+  $first_name = "";
+  $last_name = "";
+  $date_of_birth = "";
+  $gender = "";
+  $street_address = "";
+  $suburb = "";
+  $state = "";
+  $postcode = "";
+  $email = "";
+  $phone = "";
+  $skills = "";
+  $other_skills = "";
+}
 ?>
 
 <!DOCTYPE html>
@@ -112,8 +127,9 @@ if (isset($_GET['error'])) {
             <!-- First and last name, maximum 20 alpha characters -->
             <td class="apply-td">
               <input class="apply-input" type="text" id="first_name" name="first_name" placeholder="John" required
-                maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $first_name?>"/>
-                <?php
+                maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $first_name;
+              ?>">  
+              <?php
               // display error message if there is one
               if (isset($_GET['error'])) {
                 echo "<span class='apply-error'>$error_first_name</span>";
