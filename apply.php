@@ -7,7 +7,7 @@ description: Job application page
 
 
 
-<!-- TODO: fill in user data on error (DOB, Skills, Other Skills) and make confirmation page -->
+<!-- TODO: fill in user data on error (Skills, Other Skills) and make confirmation page -->
 
 <?php
 // check if there are form errors indicated in the URL parameter
@@ -42,7 +42,7 @@ if (isset($_GET['error'])) {
   $phone = $_SESSION["phone"];
   $skills = $_SESSION["skills"];
   $other_skills = $_SESSION["other_skills"];
-}  else {
+} else {
   // if there is no form data, set all form data to empty strings
   $job_reference_number = "";
   $first_name = "";
@@ -71,6 +71,7 @@ if (isset($_GET['error'])) {
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
   <title>Apply - CloudLabs</title>
 </head>
+
 <body class="index-body">
   <!-- Header -->
   <header>
@@ -102,14 +103,13 @@ if (isset($_GET['error'])) {
       <fieldset class="apply-section">
         <legend>About the job</legend>
         <label class="apply-label" for="job_ref_no">Which job are you applying for?</label><br />
-        <input class="apply-input" type="text" id="job_ref_no" name="job_ref_no" placeholder="Job reference number" value="<?php echo $job_reference_number; ?>"
-          required minlength="5" maxlength="5" />
-          <?php
-          // display error message if there is one
-          if (isset($_GET['error'])) {
-            echo "<span class='apply-error'>$error_job_reference_number</span>";
-          }
-          ?>
+        <input class="apply-input" type="text" id="job_ref_no" name="job_ref_no" placeholder="Job reference number" value="<?php echo $job_reference_number; ?>" required minlength="5" maxlength="5" />
+        <?php
+        // display error message if there is one
+        if (isset($_GET['error'])) {
+          echo "<span class='apply-error'>$error_job_reference_number</span>";
+        }
+        ?>
       </fieldset>
       <fieldset class="apply-section">
         <legend>Tell us about yourself</legend>
@@ -118,7 +118,7 @@ if (isset($_GET['error'])) {
             <td class="apply-td">
               <label class="apply-label" for="first_name">First name</label>
             </td>
-            
+
             <td class="apply-td">
               <label class="apply-label" for="last_name">Last name</label>
             </td>
@@ -126,8 +126,7 @@ if (isset($_GET['error'])) {
           <tr>
             <!-- First and last name, maximum 20 alpha characters -->
             <td class="apply-td">
-              <input class="apply-input" type="text" id="first_name" name="first_name" placeholder="John" required
-                maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $first_name;?>">  
+              <input class="apply-input" type="text" id="first_name" name="first_name" placeholder="John" required maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $first_name; ?>">
               <?php
               // display error message if there is one
               if (isset($_GET['error'])) {
@@ -136,9 +135,8 @@ if (isset($_GET['error'])) {
               ?>
             </td>
             <td class="apply-td">
-              <input class="apply-input" type="text" id="last_name" name="last_name" placeholder="Doe" required
-                maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $last_name?>" />
-                <?php
+              <input class="apply-input" type="text" id="last_name" name="last_name" placeholder="Doe" required maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $last_name ?>" />
+              <?php
               // display error message if there is one
               if (isset($_GET['error'])) {
                 echo "<span class='apply-error'>$error_last_name</span>";
@@ -149,7 +147,11 @@ if (isset($_GET['error'])) {
         </table>
         <!-- Date of birth - date picker -->
         <label class="apply-label" for="birth_date">Date of birth</label><br />
-        <input class="apply-input" type="date" id="birth_date" name="birth_date" required />
+        <input class="apply-input" type="date" id="birth_date" name="birth_date" value="<?php
+                                                                                        // if this is a resubmission, and a date was filled previously, fill in the date
+                                                                                        if (!empty($date_of_birth)) {
+                                                                                          echo $date_of_birth;
+                                                                                        } ?>" required />
         <?php
         // display error message if there is one
         if (isset($_GET['error'])) {
@@ -159,30 +161,26 @@ if (isset($_GET['error'])) {
         <!-- Gender - radio buttons -->
         <fieldset class="apply-gender-list">
           <legend>Gender</legend>
-          <input class="apply-input" type="radio" id="gender_male" name="gender" value="male" required
-          <?php
-          // if this is a resubmission, and this gender was selected previously, check the radio button
-          if ($gender === 'male') {
-            echo "checked";
-          }
-          ?>
-          />
+          <input class="apply-input" type="radio" id="gender_male" name="gender" value="male" required <?php
+                                                                                                        // if this is a resubmission, and this gender was selected previously, check the radio button
+                                                                                                        if ($gender === 'male') {
+                                                                                                          echo "checked";
+                                                                                                        }
+                                                                                                        ?> />
           <label class="apply-label" for="gender_male">Male</label><br />
-          <input class="apply-input" type="radio" id="gender_female" name="gender" value="female" 
-          <?php
-          // if this is a resubmission, and this gender was selected previously, check the radio button
-          if ($gender === 'female') {
-            echo "checked";
-          }
-          ?>/>
+          <input class="apply-input" type="radio" id="gender_female" name="gender" value="female" <?php
+                                                                                                  // if this is a resubmission, and this gender was selected previously, check the radio button
+                                                                                                  if ($gender === 'female') {
+                                                                                                    echo "checked";
+                                                                                                  }
+                                                                                                  ?> />
           <label class="apply-label" for="gender_female">Female</label><br />
-          <input class="apply-input" type="radio" id="gender_other" name="gender" value="other" 
-          <?php
-          // if this is a resubmission, and this gender was selected previously, check the radio button
-          if ($gender === 'other') {
-            echo "checked";
-          }
-          ?>/>
+          <input class="apply-input" type="radio" id="gender_other" name="gender" value="other" <?php
+                                                                                                // if this is a resubmission, and this gender was selected previously, check the radio button
+                                                                                                if ($gender === 'other') {
+                                                                                                  echo "checked";
+                                                                                                }
+                                                                                                ?> />
           <label class="apply-label" for="gender_other">Other</label>
           <?php
           // display error message if there is one
@@ -203,24 +201,22 @@ if (isset($_GET['error'])) {
           </tr>
           <tr>
             <td class="apply-td">
-              <input class="apply-input" type="text" id="address" name="address" placeholder="1 John St" required
-                maxlength="40" value="<?php echo $street_address?>"/>
-                <?php
-                // display error message if there is one
-          if (isset($_GET['error'])) {
-            echo "<span class='apply-error'>$error_street_address</span>";
-          }
-                ?>
+              <input class="apply-input" type="text" id="address" name="address" placeholder="1 John St" required maxlength="40" value="<?php echo $street_address ?>" />
+              <?php
+              // display error message if there is one
+              if (isset($_GET['error'])) {
+                echo "<span class='apply-error'>$error_street_address</span>";
+              }
+              ?>
             </td>
             <td class="apply-td">
-              <input class="apply-input" type="text" id="suburb" name="suburb" placeholder="Hawthorn" required
-                maxlength="40" value="<?php echo $suburb?>"/>
-                <?php
-                // display error message if there is one
-          if (isset($_GET['error'])) {
-            echo "<span class='apply-error'>$error_suburb</span>";
-          }
-                ?>
+              <input class="apply-input" type="text" id="suburb" name="suburb" placeholder="Hawthorn" required maxlength="40" value="<?php echo $suburb ?>" />
+              <?php
+              // display error message if there is one
+              if (isset($_GET['error'])) {
+                echo "<span class='apply-error'>$error_suburb</span>";
+              }
+              ?>
             </td>
           </tr>
           <tr>
@@ -237,67 +233,54 @@ if (isset($_GET['error'])) {
             <td class="apply-td">
               <select class="apply-select" name="state" id="state" required>
                 <option value="" disabled selected>Select your state</option>
-                <option value="VIC" <?php 
-                // if this is a form resubmission, and the state is VIC, select it
-                if ($state === "VIC") {
-                  echo "selected";
-                }
-                ?>>VIC</option>
-                <option value="NSW"
-                <?php 
-                // if this is a form resubmission, and the state is NSW, select it
-                if ($state === "NSW") {
-                  echo "selected";
-                }
-                ?>>NSW</option>
-                <option value="QLD"
-                <?php 
-                // if this is a form resubmission, and the state is QLD, select it
-                if ($state === "QLD") {
-                  echo "selected";
-                }
-                ?>
-                >QLD</option>
-                <option value="NT"
-                <?php 
-                // if this is a form resubmission, and the state is NT, select it
-                if ($state == ="NT") {
-                  echo "selected";
-                }
-                ?>
-                >NT</option>
-                <option value="WA"
-                <?php 
-                // if this is a form resubmission, and the state is WA, select it
-                if ($state === "WA") {
-                  echo "selected";
-                }
-                ?>
-                >WA</option>
-                <option value="SA"
-                <?php 
-                // if this is a form resubmission, and the state is SA, select it
-                if ($state === "SA") {
-                  echo "selected";
-                }
-                ?>
-                >SA</option>
-                <option value="TAS"
-                <?php 
-                // if this is a form resubmission, and the state is TAS, select it
-                if ($state === "TAS") {
-                  echo "selected";
-                }
-                ?>
-                >TAS</option>
-                <option value="ACT"
-                <?php 
-                // if this is a form resubmission, and the state is ACT, select it
-                if ($state === "ACT") {
-                  echo "selected";
-                }
-                ?>
-                >ACT</option>
+                <option value="VIC" <?php
+                                    // if this is a form resubmission, and the state is VIC, select it
+                                    if ($state === "VIC") {
+                                      echo "selected";
+                                    }
+                                    ?>>VIC</option>
+                <option value="NSW" <?php
+                                    // if this is a form resubmission, and the state is NSW, select it
+                                    if ($state === "NSW") {
+                                      echo "selected";
+                                    }
+                                    ?>>NSW</option>
+                <option value="QLD" <?php
+                                    // if this is a form resubmission, and the state is QLD, select it
+                                    if ($state === "QLD") {
+                                      echo "selected";
+                                    }
+                                    ?>>QLD</option>
+                <option value="NT" <?php
+                                    // if this is a form resubmission, and the state is NT, select it
+                                    if ($state === "NT") {
+                                      echo "selected";
+                                    }
+                                    ?>>NT</option>
+                <option value="WA" <?php
+                                    // if this is a form resubmission, and the state is WA, select it
+                                    if ($state === "WA") {
+                                      echo "selected";
+                                    }
+                                    ?>>WA</option>
+                <option value="SA" <?php
+                                    // if this is a form resubmission, and the state is SA, select it
+                                    if ($state === "SA") {
+                                      echo "selected";
+                                    }
+                                    ?>>SA</option>
+                <option value="TAS" <?php
+                                    // if this is a form resubmission, and the state is TAS, select it
+                                    if ($state === "TAS") {
+                                      echo "selected";
+                                    }
+                                    ?>>TAS</option>
+                <option value="ACT" <?php
+                                    // if this is a form resubmission, and the state is ACT, select it
+                                    if ($state === "ACT") {
+                                      echo "selected";
+                                    }
+                                    ?>>ACT</option>
               </select>
               <?php
               // display error message if there is one
@@ -307,20 +290,19 @@ if (isset($_GET['error'])) {
               ?>
             </td>
             <td class="apply-td">
-              <input class="apply-input" type="text" id="postcode" name="postcode" placeholder="3122" required
-                pattern="\d{4}" maxlength="4" value="<?php echo $postcode?>"/>
-                <?php
-                // display error message if there is one
-          if (isset($_GET['error'])) {
-            echo "<span class='apply-error'>$error_postcode</span>";
-          }
-                ?>
+              <input class="apply-input" type="text" id="postcode" name="postcode" placeholder="3122" required pattern="\d{4}" maxlength="4" value="<?php echo $postcode ?>" />
+              <?php
+              // display error message if there is one
+              if (isset($_GET['error'])) {
+                echo "<span class='apply-error'>$error_postcode</span>";
+              }
+              ?>
             </td>
           </tr>
         </table>
         <!-- Email -->
         <label class="apply-label" for="email">Email</label><br />
-        <input class="apply-input" type="email" id="email" name="email" placeholder="johndoe@example.com" required value="<?php echo $email?>"/>
+        <input class="apply-input" type="email" id="email" name="email" placeholder="johndoe@example.com" required value="<?php echo $email ?>" />
         <?php
         // display error message if there is one
         if (isset($_GET['error'])) {
@@ -330,8 +312,7 @@ if (isset($_GET['error'])) {
         <!-- Phone number - 8-12 digits/spaces -->
         <br />
         <label class="apply-label" for="phone">Phone number</label><br />
-        <input class="apply-input" type="tel" id="phone" name="phone" placeholder="0412345678" minlength="8"
-          maxlength="12" required pattern="[\d\s]+" value="<?php echo $phone?>"/>
+        <input class="apply-input" type="tel" id="phone" name="phone" placeholder="0412345678" minlength="8" maxlength="12" required pattern="[\d\s]+" value="<?php echo $phone ?>" />
         <?php
         // display error message if there is one
         if (isset($_GET['error'])) {
@@ -364,18 +345,17 @@ if (isset($_GET['error'])) {
         ?>
         <label class="apply-label" for="other_skills">Other skills</label><br />
         <!-- Other skills - textarea -->
-        <textarea class="apply-textarea" id="other_skills" name="other_skills" rows="4" cols="30"
-          placeholder="If you have any other skills not listed above, please list them here."></textarea>
-          <?php
-          // display error message if there is one
-          if (isset($_GET['error'])) {
-            echo "<span class='apply-error'>$error_other_skills</span>";
-          }
-          ?>
+        <textarea class="apply-textarea" id="other_skills" name="other_skills" rows="4" cols="30" placeholder="If you have any other skills not listed above, please list them here."></textarea>
+        <?php
+        // display error message if there is one
+        if (isset($_GET['error'])) {
+          echo "<span class='apply-error'>$error_other_skills</span>";
+        }
+        ?>
       </fieldset>
       <input class="apply-input" type="submit" value="Apply" />
     </form>
-  </main>      
+  </main>
   <!-- Footer -->
   <footer id="general-footer">
     <div class="footer-row">
