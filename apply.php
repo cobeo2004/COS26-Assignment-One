@@ -7,7 +7,7 @@ description: Job application page
 
 
 
-<!-- TODO: fill in user data on error (DOB, Gender, State, Skills, Other Skills) and make confirmation page -->
+<!-- TODO: fill in user data on error (DOB, Gender, Skills, Other Skills) and make confirmation page -->
 
 <?php
 // check if there are form errors indicated in the URL parameter
@@ -127,8 +127,7 @@ if (isset($_GET['error'])) {
             <!-- First and last name, maximum 20 alpha characters -->
             <td class="apply-td">
               <input class="apply-input" type="text" id="first_name" name="first_name" placeholder="John" required
-                maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $first_name;
-              ?>">  
+                maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $first_name;?>">  
               <?php
               // display error message if there is one
               if (isset($_GET['error'])) {
@@ -219,14 +218,67 @@ if (isset($_GET['error'])) {
             <td class="apply-td">
               <select class="apply-select" name="state" id="state" required>
                 <option value="" disabled selected>Select your state</option>
-                <option value="VIC">VIC</option>
-                <option value="NSW">NSW</option>
-                <option value="QLD">QLD</option>
-                <option value="NT">NT</option>
-                <option value="WA">WA</option>
-                <option value="SA">SA</option>
-                <option value="TAS">TAS</option>
-                <option value="ACT">ACT</option>
+                <option value="VIC" <?php 
+                // if this is a form resubmission, and the state is VIC, select it
+                if ($state == "VIC") {
+                  echo "selected";
+                }
+                ?>>VIC</option>
+                <option value="NSW"
+                <?php 
+                // if this is a form resubmission, and the state is NSW, select it
+                if ($state == "NSW") {
+                  echo "selected";
+                }
+                ?>>NSW</option>
+                <option value="QLD"
+                <?php 
+                // if this is a form resubmission, and the state is QLD, select it
+                if ($state == "QLD") {
+                  echo "selected";
+                }
+                ?>
+                >QLD</option>
+                <option value="NT"
+                <?php 
+                // if this is a form resubmission, and the state is NT, select it
+                if ($state == "NT") {
+                  echo "selected";
+                }
+                ?>
+                >NT</option>
+                <option value="WA"
+                <?php 
+                // if this is a form resubmission, and the state is WA, select it
+                if ($state == "WA") {
+                  echo "selected";
+                }
+                ?>
+                >WA</option>
+                <option value="SA"
+                <?php 
+                // if this is a form resubmission, and the state is SA, select it
+                if ($state == "SA") {
+                  echo "selected";
+                }
+                ?>
+                >SA</option>
+                <option value="TAS"
+                <?php 
+                // if this is a form resubmission, and the state is TAS, select it
+                if ($state == "TAS") {
+                  echo "selected";
+                }
+                ?>
+                >TAS</option>
+                <option value="ACT"
+                <?php 
+                // if this is a form resubmission, and the state is ACT, select it
+                if ($state == "ACT") {
+                  echo "selected";
+                }
+                ?>
+                >ACT</option>
               </select>
               <?php
               // display error message if there is one
