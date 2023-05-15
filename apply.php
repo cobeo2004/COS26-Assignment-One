@@ -7,7 +7,7 @@ description: Job application page
 
 
 
-<!-- TODO: fill in user data on error (DOB, Gender, Skills, Other Skills) and make confirmation page -->
+<!-- TODO: fill in user data on error (DOB, Skills, Other Skills) and make confirmation page -->
 
 <?php
 // check if there are form errors indicated in the URL parameter
@@ -159,11 +159,30 @@ if (isset($_GET['error'])) {
         <!-- Gender - radio buttons -->
         <fieldset class="apply-gender-list">
           <legend>Gender</legend>
-          <input class="apply-input" type="radio" id="gender_male" name="gender" value="male" required />
+          <input class="apply-input" type="radio" id="gender_male" name="gender" value="male" required
+          <?php
+          // if this is a resubmission, and this gender was selected previously, check the radio button
+          if ($gender === 'male') {
+            echo "checked";
+          }
+          ?>
+          />
           <label class="apply-label" for="gender_male">Male</label><br />
-          <input class="apply-input" type="radio" id="gender_female" name="gender" value="female" />
+          <input class="apply-input" type="radio" id="gender_female" name="gender" value="female" 
+          <?php
+          // if this is a resubmission, and this gender was selected previously, check the radio button
+          if ($gender === 'female') {
+            echo "checked";
+          }
+          ?>/>
           <label class="apply-label" for="gender_female">Female</label><br />
-          <input class="apply-input" type="radio" id="gender_other" name="gender" value="other" />
+          <input class="apply-input" type="radio" id="gender_other" name="gender" value="other" 
+          <?php
+          // if this is a resubmission, and this gender was selected previously, check the radio button
+          if ($gender === 'other') {
+            echo "checked";
+          }
+          ?>/>
           <label class="apply-label" for="gender_other">Other</label>
           <?php
           // display error message if there is one
@@ -220,21 +239,21 @@ if (isset($_GET['error'])) {
                 <option value="" disabled selected>Select your state</option>
                 <option value="VIC" <?php 
                 // if this is a form resubmission, and the state is VIC, select it
-                if ($state == "VIC") {
+                if ($state === "VIC") {
                   echo "selected";
                 }
                 ?>>VIC</option>
                 <option value="NSW"
                 <?php 
                 // if this is a form resubmission, and the state is NSW, select it
-                if ($state == "NSW") {
+                if ($state === "NSW") {
                   echo "selected";
                 }
                 ?>>NSW</option>
                 <option value="QLD"
                 <?php 
                 // if this is a form resubmission, and the state is QLD, select it
-                if ($state == "QLD") {
+                if ($state === "QLD") {
                   echo "selected";
                 }
                 ?>
@@ -242,7 +261,7 @@ if (isset($_GET['error'])) {
                 <option value="NT"
                 <?php 
                 // if this is a form resubmission, and the state is NT, select it
-                if ($state == "NT") {
+                if ($state == ="NT") {
                   echo "selected";
                 }
                 ?>
@@ -250,7 +269,7 @@ if (isset($_GET['error'])) {
                 <option value="WA"
                 <?php 
                 // if this is a form resubmission, and the state is WA, select it
-                if ($state == "WA") {
+                if ($state === "WA") {
                   echo "selected";
                 }
                 ?>
@@ -258,7 +277,7 @@ if (isset($_GET['error'])) {
                 <option value="SA"
                 <?php 
                 // if this is a form resubmission, and the state is SA, select it
-                if ($state == "SA") {
+                if ($state === "SA") {
                   echo "selected";
                 }
                 ?>
@@ -266,7 +285,7 @@ if (isset($_GET['error'])) {
                 <option value="TAS"
                 <?php 
                 // if this is a form resubmission, and the state is TAS, select it
-                if ($state == "TAS") {
+                if ($state === "TAS") {
                   echo "selected";
                 }
                 ?>
@@ -274,7 +293,7 @@ if (isset($_GET['error'])) {
                 <option value="ACT"
                 <?php 
                 // if this is a form resubmission, and the state is ACT, select it
-                if ($state == "ACT") {
+                if ($state === "ACT") {
                   echo "selected";
                 }
                 ?>
