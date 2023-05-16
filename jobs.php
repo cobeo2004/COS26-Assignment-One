@@ -22,7 +22,7 @@ description: Job descriptions page
     <header>
         <nav id="header-nav">
           <div class="logo">
-            <a href="index.html">
+            <a href="index.php">
             <img
             src="images/logo-removebg-preview.png"
             alt="CloudLabs logo"
@@ -31,10 +31,10 @@ description: Job descriptions page
           /></a>
           </div>
           <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li id="selected-page"><a href="./jobs.html">Jobs</a></li>
-            <li><a href="./apply.html">Apply</a></li>
-            <li><a href="./about.html">About</a></li>
+            <li><a href="./index.php">Home</a></li>
+            <li id="selected-page"><a href="./jobs.php">Jobs</a></li>
+            <li><a href="./apply.php">Apply</a></li>
+            <li><a href="./about.php">About</a></li>
           </ul>
         </nav>
     </header>
@@ -253,11 +253,11 @@ description: Job descriptions page
           <div class="footer-col">
             <h3>Links</h3>
             <ul>
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="./jobs.html">Jobs</a></li>
-              <li><a href="./apply.html">Apply</a></li>
-              <li><a href="./about.html">About</a></li>
-              <li><a href="./enhancements.html">Enhancements</a></li>
+              <li><a href="./index.php">Home</a></li>
+              <li><a href="./jobs.php">Jobs</a></li>
+              <li><a href="./apply.php">Apply</a></li>
+              <li><a href="./about.php">About</a></li>
+              <li><a href="./enhancements.php">Enhancements</a></li>
             </ul>
           </div>
           <div class="footer-col">
