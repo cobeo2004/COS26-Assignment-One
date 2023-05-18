@@ -1,4 +1,7 @@
 <?php
+include("./settings.php");
+
+
 // initialise form data variables
 $job_reference_number = "";
 $first_name = "";
@@ -42,7 +45,7 @@ function sanitise_input($data) {
 // Checks if validation was triggered by a form submit, if not redirect the user
 if ($_POST) {
 	// connect to database
-	
+
 	// save the form data to variables and sanitise + existence checks
     if (!empty($_POST["job_ref_no"])) {
         $job_reference_number = sanitise_input($_POST["job_ref_no"]);
@@ -113,7 +116,7 @@ if ($_POST) {
         $error = true;
         $error_email = "Please enter your email address";
     }
-    
+
     if (!empty($_POST["phone"])) {
         $phone = sanitise_input($_POST["phone"]);
     } else {
@@ -134,7 +137,7 @@ if ($_POST) {
         $error = true;
         $error_skills = "Please select at least one skill";
     }
-    
+
     if (!empty($_POST["other_skills"])) {
         $other_skills = sanitise_input($_POST["other_skills"]);
     } elseif (!empty($_POST["skills"]) && in_array("other", $_POST["skills"])){
@@ -274,8 +277,7 @@ if ($_POST) {
 
 	// If there is no error, add the application to the database
 	if ($error == false) {
-		
-		
+        check_if_connected($connection);
 	} else {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
         session_start();
@@ -312,7 +314,7 @@ if ($_POST) {
         // redirect to the application form with error parameter set
         header("location: apply.php?error=1");
         exit;
-        
+
         // debug
         echo "Job reference number: " . $_POST["job_ref_no"] . "<br>";
         echo "First name: " . $_POST["first_name"] . "<br>";
