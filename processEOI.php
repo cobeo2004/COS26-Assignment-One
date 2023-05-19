@@ -6,9 +6,6 @@ description: Script to process the job application form
 -->
 
 <?php
-include("./settings.php");
-
-
 // TODO: Add EOI to table, generate table if it doesnt exist
 
 // initialise form data variables
@@ -43,6 +40,10 @@ $error_phone = "";
 $error_skills = "";
 $error_other_skills = "";
 
+// initialise database connection
+require_once "settings.php";
+$connection = @mysqli_connect($host_name, $user_name, $password, $database);
+
 // Function to sanitise inputs
 function sanitise_input($data) {
     $data = trim($data);
@@ -50,6 +51,51 @@ function sanitise_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
+
+    //Function to check if table exists
+    function check_table_existence($connection, $table) {
+        // If connection is not established, return false
+        if(!check_if_connected($connection)) {
+            return false;
+        }
+        // If connection is established, check if table exists
+        else {
+            $result = mysqli_query($connection, "DESCRIBE `$table`;");
+            if($result !== false) {
+                if(mysqli_num_rows($result) > 0) {
+                    return true;
+                } else
+                    return false;
+            }
+            else {
+                // If the table does not exist, create the table
+                $query = "CREATE TABLE $table(
+                    EOINumber INT AUTO_INCREMENT PRIMARY KEY,
+                    job_reference_number VARCHAR(5),
+                    first_name VARCHAR(20),
+                    last_name VARCHAR(20),
+                    date_of_birth DATE,
+                    gender VARCHAR(6),
+                    street_address VARCHAR(40),
+                    suburb VARCHAR(40),
+                    state VARCHAR(3),
+                    postcode VARCHAR(4),
+                    email VARCHAR(40),
+                    phone VARCHAR(12),
+                    skill_communication TINYINT,
+                    skill_teamwork TINYINT,
+                    skill_detail_oriented TINYINT,
+                    skill_initiative TINYINT,
+                    skill_time_management TINYINT,
+                    skill_risk_management TINYINT,
+                    other_skills VARCHAR(300),
+                    status VARCHAR(20)
+                );";
+            mysqli_query($connection, $query);
+            return true;
+            }
+        }
+    }
 
 // Checks if validation was triggered by a form submit, if not redirect the user
 if ($_POST) {
@@ -152,13 +198,6 @@ if ($_POST) {
     } elseif (!empty($_POST["skills"]) && in_array("other", $_POST["skills"])){
         $error = true;
         $error_other_skills = "Please enter any other skills you have";
-    }
-
-    if (!empty($_POST["status"])) {
-        $status = sanitise_input($_POST["status"]);
-    } else {
-        $error = true;
-        $error_type = "status";
     }
 
 	// VALIDATION
@@ -286,7 +325,48 @@ if ($_POST) {
 
 	// If there is no error, add the application to the database
 	if ($error == false) {
-        check_if_connected($connection);
+        // Check if table exists
+         if (check_table_existence($connection, 'eoi')) {
+            // Extract skills from array
+            if (in_array("communication", $skills)) {
+                $skill_communication = 1;
+            } else {
+                $skill_communication = 0;
+            }
+
+            if (in_array("teamwork", $skills)) {
+                $skill_teamwork = 1;
+            } else {
+                $skill_teamwork = 0;
+            }
+
+            if (in_array("detail_oriented", $skills)) {
+                $skill_detail_oriented = 1;
+            } else {
+                $skill_detail_oriented = 0;
+            }
+
+            if (in_array("initiative", $skills)) {
+                $skill_initiative = 1;
+            } else {
+                $skill_initiative = 0;
+            }
+
+            if (in_array("time_management", $skills)) {
+                $skill_time_management = 1;
+            } else {
+                $skill_time_management = 0;
+            }
+
+            if (in_array("risk_management", $skills)) {
+                $skill_risk_management = 1;
+            } else {
+                $skill_risk_management = 0;
+            }
+
+            // If table exists, insert data into table
+            $query  = "INSERT INTO eoi (job_reference_number, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone, skill_communication, skill_teamwork, skill_detail_oriented, skill)_initiative, skill_time_management, skill_risk_management, other_skills, status) values ('$job_reference_number', '$first_name', '$last_name', $date_of_birth, '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email', '$phone', '$skill_communication', '$skill_teamwork', '$skill_detail_oriented', '$skill_initiative', '$skill_time_management', '$skill_risk_management', '$other_skills', 'New')";
+         }
 	} else {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
         session_start();
@@ -323,36 +403,6 @@ if ($_POST) {
         // redirect to the application form with error parameter set
         header("location: apply.php?error=1");
         exit;
-
-        // debug
-        echo "Job reference number: " . $_POST["job_ref_no"] . "<br>";
-        echo "First name: " . $_POST["first_name"] . "<br>";
-        echo "Last name: " . $_POST["last_name"] . "<br>";
-        echo "Date of birth: " . $_POST["birth_date"] . "<br>";
-        echo "Gender: " . $gender . "<br>";
-        echo "Street address: " . $_POST["address"] . "<br>";
-        echo "Suburb: " . $_POST["suburb"] . "<br>";
-        echo "State: " . $_POST["state"] . "<br>";
-        echo "Postcode: " . $_POST["postcode"] . "<br>";
-        echo "Email: " . $_POST["email"] . "<br>";
-        echo "Phone: " . $_POST["phone"] . "<br>";
-        echo "Skills: " . $_POST["skills"] . "<br>";
-        echo "Other skills: " . $_POST["other_skills"] . "<br>";
-
-        echo "Error: " . $error . "<br>";
-        echo "Error job reference number: " . $error_job_reference_number . "<br>";
-        echo "Error first name: " . $error_first_name . "<br>";
-        echo "Error last name: " . $error_last_name . "<br>";
-        echo "Error date of birth: " . $error_date_of_birth . "<br>";
-        echo "Error gender: " . $error_gender . "<br>";
-        echo "Error street address: " . $error_street_address . "<br>";
-        echo "Error suburb: " . $error_suburb . "<br>";
-        echo "Error state: " . $error_state . "<br>";
-        echo "Error postcode: " . $error_postcode . "<br>";
-        echo "Error email: " . $error_email . "<br>";
-        echo "Error phone: " . $error_phone . "<br>";
-        echo "Error skills: " . $error_skills . "<br>";
-        echo "Error other skills: " . $error_other_skills . "<br>";
     }
 } else {
     // Redirect to form, if process not triggered by a form submit
