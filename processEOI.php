@@ -1,4 +1,13 @@
+<!--
+filename: processEOI.php
+authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
+created: 28-Apr-2023
+description: Script to process the job application form
+-->
+
 <?php
+// TODO: Add EOI to table, generate table if it doesnt exist
+
 // initialise form data variables
 $job_reference_number = "";
 $first_name = "";
@@ -191,28 +200,28 @@ if ($_POST) {
     if (empty($error_postcode)) {
     if ($state == "VIC" && !preg_match("/^(3|8)[0-9]{3}$/", $postcode)) {
         $error = true;
-        $error_postcode = "This postcode is not in Victoria";
+        $error_postcode = "Please enter a valid Victorian postcode";
     } elseif ($state == "NSW" && !preg_match("/^(1|2)[0-9]{3}$/", $postcode)) {
         $error = true;
-        $error_postcode = "This postcode is not in New South Wales";
+        $error_postcode = "Please enter a valid New South Wales postcode";
     } elseif ($state == "QLD" && !preg_match("/^(4|9)[0-9]{3}$/", $postcode)) {
         $error = true;
-        $error_postcode = "This postcode is not in Queensland";
+        $error_postcode = "Please enter a valid Queensland postcode";
     } elseif ($state == "NT" && !preg_match("/^(0)[0-9]{3}$/", $postcode)) {
         $error = true;
-        $error_postcode = "This postcode is not in the Northern Territory";
+        $error_postcode = "Please enter a valid Northern Territory postcode";
     } elseif ($state == "WA" && !preg_match("/^(6)[0-9]{3}$/", $postcode)) {
         $error = true;
-        $error_postcode = "This postcode is not in Western Australia";
+        $error_postcode = "Please enter a valid Western Australia postcode";
     } elseif ($state == "SA" && !preg_match("/^(5)[0-9]{3}$/", $postcode)) {
         $error = true;
-        $error_postcode = "This postcode is not in South Australia";
+        $error_postcode = "Please enter a valid South Australia postcode";
     } elseif ($state == "TAS" && !preg_match("/^(7)[0-9]{3}$/", $postcode)) {
         $error = true;
-        $error_postcode = "This postcode is not in Tasmania";
+        $error_postcode = "Please enter a valid Tasmania postcode";
     } elseif ($state == "ACT" && !preg_match("/^(0)[0-9]{3}$/", $postcode)) {
         $error = true;
-        $error_postcode = "This postcode is not in the Australian Capital Territory";
+        $error_postcode = "Please enter a valid Australian Capital Territory postcode";
     }
 }
 

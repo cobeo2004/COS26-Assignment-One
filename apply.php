@@ -1,5 +1,5 @@
 <!--
-filename: apply.html
+filename: apply.php
 authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
 created: 29-Mar-2023
 description: Job application page
@@ -7,12 +7,14 @@ description: Job application page
 
 
 
-<!-- TODO: fill in user data on error (Other Skills) and make confirmation page -->
+<!-- TODO: make confirmation page -->
 
 <?php
 // check if there are form errors indicated in the URL parameter
 if (isset($_GET['error'])) {
   session_start();
+  // set error to true
+  $error = true;
   // get the error messages from session variables
   $error_job_reference_number = $_SESSION["error_job_reference_number"];
   $error_first_name = $_SESSION["error_first_name"];
@@ -44,6 +46,7 @@ if (isset($_GET['error'])) {
   $other_skills = $_SESSION["other_skills"];
 } else {
   // if there is no form data, set all form data to empty strings
+  $error = false;
   $job_reference_number = "";
   $first_name = "";
   $last_name = "";
@@ -106,7 +109,7 @@ if (isset($_GET['error'])) {
         <input class="apply-input" type="text" id="job_ref_no" name="job_ref_no" placeholder="Job reference number" value="<?php echo $job_reference_number; ?>" required minlength="5" maxlength="5" />
         <?php
         // display error message if there is one
-        if (isset($_GET['error'])) {
+        if ($error) {
           echo "<span class='apply-error'>$error_job_reference_number</span>";
         }
         ?>
@@ -129,7 +132,7 @@ if (isset($_GET['error'])) {
               <input class="apply-input" type="text" id="first_name" name="first_name" placeholder="John" required maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $first_name; ?>">
               <?php
               // display error message if there is one
-              if (isset($_GET['error'])) {
+              if ($error) {
                 echo "<span class='apply-error'>$error_first_name</span>";
               }
               ?>
@@ -138,7 +141,7 @@ if (isset($_GET['error'])) {
               <input class="apply-input" type="text" id="last_name" name="last_name" placeholder="Doe" required maxlength="20" pattern="^[a-zA-Z]+$" value="<?php echo $last_name ?>" />
               <?php
               // display error message if there is one
-              if (isset($_GET['error'])) {
+              if ($error) {
                 echo "<span class='apply-error'>$error_last_name</span>";
               }
               ?>
@@ -154,7 +157,7 @@ if (isset($_GET['error'])) {
                                                                                         } ?>" required />
         <?php
         // display error message if there is one
-        if (isset($_GET['error'])) {
+        if ($error) {
           echo "<span class='apply-error'>$error_date_of_birth</span>";
         }
         ?>
@@ -184,7 +187,7 @@ if (isset($_GET['error'])) {
           <label class="apply-label" for="gender_other">Other</label>
           <?php
           // display error message if there is one
-          if (isset($_GET['error'])) {
+          if ($error) {
             echo "<br><span class='apply-error'>$error_gender</span>";
           }
           ?>
@@ -204,7 +207,7 @@ if (isset($_GET['error'])) {
               <input class="apply-input" type="text" id="address" name="address" placeholder="1 John St" required maxlength="40" value="<?php echo $street_address ?>" />
               <?php
               // display error message if there is one
-              if (isset($_GET['error'])) {
+              if ($error) {
                 echo "<span class='apply-error'>$error_street_address</span>";
               }
               ?>
@@ -213,7 +216,7 @@ if (isset($_GET['error'])) {
               <input class="apply-input" type="text" id="suburb" name="suburb" placeholder="Hawthorn" required maxlength="40" value="<?php echo $suburb ?>" />
               <?php
               // display error message if there is one
-              if (isset($_GET['error'])) {
+              if ($error) {
                 echo "<span class='apply-error'>$error_suburb</span>";
               }
               ?>
@@ -284,7 +287,7 @@ if (isset($_GET['error'])) {
               </select>
               <?php
               // display error message if there is one
-              if (isset($_GET['error'])) {
+              if ($error) {
                 echo "<span class='apply-error'>$error_state</span>";
               }
               ?>
@@ -293,7 +296,7 @@ if (isset($_GET['error'])) {
               <input class="apply-input" type="text" id="postcode" name="postcode" placeholder="3122" required pattern="\d{4}" maxlength="4" value="<?php echo $postcode ?>" />
               <?php
               // display error message if there is one
-              if (isset($_GET['error'])) {
+              if ($error) {
                 echo "<span class='apply-error'>$error_postcode</span>";
               }
               ?>
@@ -305,7 +308,7 @@ if (isset($_GET['error'])) {
         <input class="apply-input" type="email" id="email" name="email" placeholder="johndoe@example.com" required value="<?php echo $email ?>" />
         <?php
         // display error message if there is one
-        if (isset($_GET['error'])) {
+        if ($error) {
           echo "<span class='apply-error'>$error_email</span>";
         }
         ?>
@@ -315,7 +318,7 @@ if (isset($_GET['error'])) {
         <input class="apply-input" type="tel" id="phone" name="phone" placeholder="0412345678" minlength="8" maxlength="12" required pattern="[\d\s]+" value="<?php echo $phone ?>" />
         <?php
         // display error message if there is one
-        if (isset($_GET['error'])) {
+        if ($error) {
           echo "<span class='apply-error'>$error_phone</span>";
         }
         ?>
@@ -323,84 +326,72 @@ if (isset($_GET['error'])) {
       <!-- Skills - checkboxes -->
       <fieldset class="apply-section">
         <legend>Tell us about your skills</legend>
-        <input class="apply-input" type="checkbox" id="skill1" name="skills[]" value="communication" required 
-        <?php
-        // if this is a form resubmission, and the skills array contains communication, check it
-        if (isset($_GET['error']) && in_array("communication", $skills)) {
-          echo "checked";
-        }
-        ?>
-        />
+        <input class="apply-input" type="checkbox" id="skill1" name="skills[]" value="communication" required <?php
+                                                                                                              // if this is a form resubmission, and the skills array contains communication, check it
+                                                                                                              if ($error && in_array("communication", $skills)) {
+                                                                                                                echo "checked";
+                                                                                                              }
+                                                                                                              ?> />
         <label class="apply-label" for="skill1">Communication</label><br />
-        <input class="apply-input" type="checkbox" id="skill2" name="skills[]" value="teamwork" 
-        <?php
-        // if this is a form resubmission, and the skills array contains teamwork, check it
-        if (isset($_GET['error']) && in_array("teamwork", $skills)) {
-          echo "checked";
-        }
-        ?>
-        />
+        <input class="apply-input" type="checkbox" id="skill2" name="skills[]" value="teamwork" <?php
+                                                                                                // if this is a form resubmission, and the skills array contains teamwork, check it
+                                                                                                if ($error && in_array("teamwork", $skills)) {
+                                                                                                  echo "checked";
+                                                                                                }
+                                                                                                ?> />
         <label class="apply-label" for="skill2">Teamwork</label><br />
-        <input class="apply-input" type="checkbox" id="skill3" name="skills[]" value="detail_oriented" 
-        <?php
-        // if this is a form resubmission, and the skills array contains detail oriented, check it
-        if (isset($_GET['error']) && in_array("detail_oriented", $skills)) {
-          echo "checked";
-        }
-        ?>
-        />
+        <input class="apply-input" type="checkbox" id="skill3" name="skills[]" value="detail_oriented" <?php
+                                                                                                        // if this is a form resubmission, and the skills array contains detail oriented, check it
+                                                                                                        if ($error && in_array("detail_oriented", $skills)) {
+                                                                                                          echo "checked";
+                                                                                                        }
+                                                                                                        ?> />
         <label class="apply-label" for="skill3">Detail-oriented</label><br />
-        <input class="apply-input" type="checkbox" id="skill4" name="skills[]" value="initiative" 
-        <?php
-        // if this is a form resubmission, and the skills array contains initiative, check it
-        if (isset($_GET['error']) && in_array("initiative", $skills)) {
-          echo "checked";
-        }
-        ?>
-        />
+        <input class="apply-input" type="checkbox" id="skill4" name="skills[]" value="initiative" <?php
+                                                                                                  // if this is a form resubmission, and the skills array contains initiative, check it
+                                                                                                  if ($error && in_array("initiative", $skills)) {
+                                                                                                    echo "checked";
+                                                                                                  }
+                                                                                                  ?> />
         <label class="apply-label" for="skill4">Initiative</label><br />
-        <input class="apply-input" type="checkbox" id="skill5" name="skills[]" value="time_management" 
-        <?php
-        // if this is a form resubmission, and the skills array contains time management, check it
-        if (isset($_GET['error']) && in_array("time_management", $skills)) {
-          echo "checked";
-        }
-        ?>
-        />
+        <input class="apply-input" type="checkbox" id="skill5" name="skills[]" value="time_management" <?php
+                                                                                                        // if this is a form resubmission, and the skills array contains time management, check it
+                                                                                                        if ($error && in_array("time_management", $skills)) {
+                                                                                                          echo "checked";
+                                                                                                        }
+                                                                                                        ?> />
         <label class="apply-label" for="skill5">Time management</label><br />
-        <input class="apply-input" type="checkbox" id="skill6" name="skills[]" value="risk_management" 
-        <?php
-        // if this is a form resubmission, and the skills array contains risk management, check it
-        if (isset($_GET['error']) && in_array("risk_management", $skills)) {
-          echo "checked";
-        }
-        ?>/>
+        <input class="apply-input" type="checkbox" id="skill6" name="skills[]" value="risk_management" <?php
+                                                                                                        // if this is a form resubmission, and the skills array contains risk management, check it
+                                                                                                        if ($error && in_array("risk_management", $skills)) {
+                                                                                                          echo "checked";
+                                                                                                        }
+                                                                                                        ?> />
         <label class="apply-label" for="skill6">Risk management</label><br />
-        <input class="apply-input" type="checkbox" id="skill7" name="skills[]" value="other"
-        <?php
-        // if this is a form resubmission, and the skills array contains other skills, check it
-        if (isset($_GET['error']) && in_array("other", $skills)) {
-          echo "checked";
-        }
-        ?> />
+        <input class="apply-input" type="checkbox" id="skill7" name="skills[]" value="other" <?php
+                                                                                              // if this is a form resubmission, and the skills array contains other skills, check it
+                                                                                              if ($error && in_array("other", $skills)) {
+                                                                                                echo "checked";
+                                                                                              }
+                                                                                              ?> />
         <label class="apply-label" for="skill7">Other skills...</label><br /><br />
         <?php
         // display error message if there is one
-        if (isset($_GET['error'])) {
+        if ($error) {
           echo "<span class='apply-error'>$error_skills</span><br>";
         }
         ?>
         <label class="apply-label" for="other_skills">Other skills</label><br />
         <!-- Other skills - textarea -->
         <textarea class="apply-textarea" id="other_skills" name="other_skills" rows="4" cols="30" placeholder="If you have any other skills not listed above, please list them here."><?php
-        // if this is a form resubmission, and the skills array contains other skills, display the user's other skills if filled
-        if (isset($_GET['error']) && in_array("other", $skills)) {
-          echo $other_skills;
-        }
-        ?></textarea>
+                                                                                                                                                                                      // if this is a form resubmission, and the skills array contains other skills, display the user's other skills if filled
+                                                                                                                                                                                      if ($error && in_array("other", $skills)) {
+                                                                                                                                                                                        echo $other_skills;
+                                                                                                                                                                                      }
+                                                                                                                                                                                      ?></textarea>
         <?php
         // display error message if there is one
-        if (isset($_GET['error'])) {
+        if ($error) {
           echo "<span class='apply-error'>$error_other_skills</span>";
         }
         ?>
