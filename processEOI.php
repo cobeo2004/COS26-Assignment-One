@@ -13,6 +13,7 @@ $job_reference_number = "";
 $first_name = "";
 $last_name = "";
 $date_of_birth = "";
+$date_of_birth_string = "";
 $gender = "";
 $street_address = "";
 $suburb = "";
@@ -51,51 +52,6 @@ function sanitise_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
-
-    //Function to check if table exists
-    function check_table_existence($connection, $table) {
-        // If connection is not established, return false
-        if(!check_if_connected($connection)) {
-            return false;
-        }
-        // If connection is established, check if table exists
-        else {
-            $result = mysqli_query($connection, "DESCRIBE `$table`;");
-            if($result !== false) {
-                if(mysqli_num_rows($result) > 0) {
-                    return true;
-                } else
-                    return false;
-            }
-            else {
-                // If the table does not exist, create the table
-                $query = "CREATE TABLE $table(
-                    EOINumber INT AUTO_INCREMENT PRIMARY KEY,
-                    job_reference_number VARCHAR(5),
-                    first_name VARCHAR(20),
-                    last_name VARCHAR(20),
-                    date_of_birth DATE,
-                    gender VARCHAR(6),
-                    street_address VARCHAR(40),
-                    suburb VARCHAR(40),
-                    state VARCHAR(3),
-                    postcode VARCHAR(4),
-                    email VARCHAR(40),
-                    phone VARCHAR(12),
-                    skill_communication TINYINT,
-                    skill_teamwork TINYINT,
-                    skill_detail_oriented TINYINT,
-                    skill_initiative TINYINT,
-                    skill_time_management TINYINT,
-                    skill_risk_management TINYINT,
-                    other_skills VARCHAR(300),
-                    status VARCHAR(20)
-                );";
-            mysqli_query($connection, $query);
-            return true;
-            }
-        }
-    }
 
 // Checks if validation was triggered by a form submit, if not redirect the user
 if ($_POST) {
@@ -294,7 +250,9 @@ if ($_POST) {
 
     // check if age is between 15 and 80 using date of birth
     if (empty($error_date_of_birth)) {
-    // calculate age
+    // save date of birth string for later use
+    $date_of_birth_string = $date_of_birth;
+        // calculate age
     $date_of_birth = date_create($date_of_birth);
     $today = date_create(date("Y-m-d"));
     $age = date_diff($date_of_birth, $today);
@@ -365,7 +323,7 @@ if ($_POST) {
             }
 
             // If table exists, insert data into table
-            $query  = "INSERT INTO eoi (job_reference_number, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone, skill_communication, skill_teamwork, skill_detail_oriented, skill)_initiative, skill_time_management, skill_risk_management, other_skills, status) values ('$job_reference_number', '$first_name', '$last_name', $date_of_birth, '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email', '$phone', '$skill_communication', '$skill_teamwork', '$skill_detail_oriented', '$skill_initiative', '$skill_time_management', '$skill_risk_management', '$other_skills', 'New')";
+            $query  = "INSERT INTO eoi (job_reference_number, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone, skill_communication, skill_teamwork, skill_detail_oriented, skill)_initiative, skill_time_management, skill_risk_management, other_skills, status) values ('$job_reference_number', '$first_name', '$last_name', '$date_of_birth_string', '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email', '$phone', '$skill_communication', '$skill_teamwork', '$skill_detail_oriented', '$skill_initiative', '$skill_time_management', '$skill_risk_management', '$other_skills', 'New')";
          }
 	} else {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)

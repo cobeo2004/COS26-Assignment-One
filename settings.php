@@ -22,28 +22,11 @@
 
     }
 
-    //Function to check if table exists
-    function check_if_exists_table($connection, $database_name, $table) {
-        if(!check_if_connected($connection) && !check_if_exists_database($connection, $database_name)) {
-            return false;
-        }
-        else {
-            $result = mysqli_query($connection, "DESCRIBE `$table`;");
-            if($result !== false) {
-                if(mysqli_num_rows($result) > 0) {
-                    return true;
-                }
-            }
-            else {
-                return false;
-            }
-        }
-    }
-
  //Function to check if table exists
  function check_table_existence($connection, $table) {
     // If connection is not established, return false
     if(!check_if_connected($connection)) {
+        echo "a";
         return false;
     }
     // If connection is established, check if table exists
@@ -57,7 +40,7 @@
         }
         else {
             // If the table does not exist, create the table
-            $query = "CREATE TABLE $table(
+            $query = "CREATE TABLE $table (
                 EOINumber INT AUTO_INCREMENT PRIMARY KEY,
                 job_reference_number VARCHAR(5),
                 first_name VARCHAR(20),
