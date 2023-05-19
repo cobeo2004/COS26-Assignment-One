@@ -2,7 +2,8 @@
     $host_name = "feenix-mariadb.swin.edu.au";
     $user_name = "s103819212";
     $password = "281204";
-    $database = "s103819212_db";
+    $database = "assign2_db";
+    $table = "form";
     $connection = @mysqli_connect($host_name, $user_name, $password, $database);
 
     //Check if the server has been connected
