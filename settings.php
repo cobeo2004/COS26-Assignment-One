@@ -72,7 +72,7 @@
     }
 
     //Create database if exists
-    function create_database($connection, $database_name) {
+    function create_database($connection, $database_name = "assign2") {
         if(!check_if_connected($connection)) {
             die("Connect failed! \n".mysqli_connect_error());
         }
