@@ -80,14 +80,14 @@ if (isset($_GET['error'])) {
   <header>
     <nav id="header-nav">
       <div class="logo">
-        <a href="index.html">
+        <a href="index.php">
           <img src="images/logo-removebg-preview.png" alt="CloudLabs logo" width="80" height="80" /></a>
       </div>
       <ul>
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./jobs.html">Jobs</a></li>
-        <li id="selected-page"><a href="./apply.html">Apply</a></li>
-        <li><a href="./about.html">About</a></li>
+        <li><a href="./index.php">Home</a></li>
+        <li><a href="./jobs.php">Jobs</a></li>
+        <li id="selected-page"><a href="./apply.php">Apply</a></li>
+        <li><a href="./about.php">About</a></li>
       </ul>
     </nav>
   </header>
@@ -403,7 +403,7 @@ if (isset($_GET['error'])) {
   <footer id="general-footer">
     <div class="footer-row">
       <div class="footer-col">
-        <a href="index.html"><img src="images/logo-removebg-preview.png" class="logo" alt="CloudLabs logo" /></a>
+        <a href="index.php"><img src="images/logo-removebg-preview.png" class="logo" alt="CloudLabs logo" /></a>
         <p>
           Our company provides details of "Chief Technology Officer(CTO)" and
           "Cloud engineering", including base position, skills needed,
@@ -421,11 +421,11 @@ if (isset($_GET['error'])) {
       <div class="footer-col">
         <h3>Links</h3>
         <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./jobs.html">Jobs</a></li>
-          <li><a href="./apply.html">Apply</a></li>
-          <li><a href="./about.html">About</a></li>
-          <li><a href="./enhancements.html">Enhancements</a></li>
+          <li><a href="./index.php">Home</a></li>
+          <li><a href="./jobs.php">Jobs</a></li>
+          <li><a href="./apply.php">Apply</a></li>
+          <li><a href="./about.php">About</a></li>
+          <li><a href="./enhancements.php">Enhancements</a></li>
         </ul>
       </div>
       <div class="footer-col">

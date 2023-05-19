@@ -30,10 +30,10 @@ description: Explanations for the website enhancements
           /></a>
         </div>
         <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./jobs.html">Jobs</a></li>
-          <li><a href="./apply.html">Apply</a></li>
-          <li><a href="./about.html">About</a></li>
+          <li><a href="./index.php">Home</a></li>
+          <li><a href="./jobs.php">Jobs</a></li>
+          <li><a href="./apply.php">Apply</a></li>
+          <li><a href="./about.php">About</a></li>
         </ul>
       </nav>
     </header>
@@ -58,7 +58,7 @@ description: Explanations for the website enhancements
           individually to fit each heading.
         </p>
         <p>
-          Another example is the use of flexbox and dynamic sizing to make our pages responsive. We have used advanced CSS to ensure that the font and elements on the page dynamically resize according to the user's screen size. 
+          Another example is the use of flexbox and dynamic sizing to make our pages responsive. We have used advanced CSS to ensure that the font and elements on the page dynamically resize according to the user's screen size.
         </p>
         <p>
           This enhancement is done solely using HTML and CSS, and the flexbox, keyframes and
@@ -168,11 +168,11 @@ description: Explanations for the website enhancements
         <div class="footer-col">
           <h3>Links</h3>
           <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./jobs.html">Jobs</a></li>
-            <li><a href="./apply.html">Apply</a></li>
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./enhancements.html">Enhancements</a></li>
+            <li><a href="./index.php">Home</a></li>
+            <li><a href="./jobs.php">Jobs</a></li>
+            <li><a href="./apply.php">Apply</a></li>
+            <li><a href="./about.php">About</a></li>
+            <li><a href="./enhancements.php">Enhancements</a></li>
           </ul>
         </div>
         <div class="footer-col">
