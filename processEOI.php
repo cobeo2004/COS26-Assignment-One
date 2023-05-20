@@ -283,6 +283,12 @@ if ($_POST) {
 
 	// If there is no error, add the application to the database
 	if ($error == false) {
+
+                // redirect to the application form with success parameter and application number set
+                // TODO: make application number dynamic
+                header("location: apply.php?success=1&no=10");
+                exit;
+
         // Check if table exists
          if (check_table_existence($connection, 'eoi')) {
             // Extract skills from array

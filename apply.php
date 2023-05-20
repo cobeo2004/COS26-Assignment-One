@@ -61,6 +61,13 @@ if (isset($_GET['error'])) {
   $skills = "";
   $other_skills = "";
 }
+
+if (isset($_GET['success'])) {
+  $success = true;
+  $application_number = $_GET['no'];
+} else {
+  $success = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +108,33 @@ if (isset($_GET['error'])) {
       Fill out the form below to apply for one of our open positions!
     </h2>
     <br />
+    <!-- Success modal (adapted from https://codepen.io/Idered/pen/DdeoeW)-->
+<input class="show-success-modal" id="success-modal" type="checkbox"     <?php
+    // if the form was submitted successfully, check the checkbox to show the success modal
+    if ($success) {
+      echo "checked";
+    }
+    ?>/>
+    <!-- Only displays when checkbox above is checked -->
+<div class="success-modal">
+  <label class="success-modal__bg" for="success-modal"></label>
+  <div class="success-modal__inner">
+    <label class="success-modal__close" for="success-modal"></label>
+          <!-- Display CloudLabs logo -->
+              <img src="images/logo-removebg-preview.png" alt="CloudLabs logo" width="100" height="100" /></a>
+    <br>
+    <h2 class="apply-h2">Your job application has been submitted successfully!</h2>
+    <br>
+      <p>Thank you for applying for a position at CloudLabs. We will review your application and get back to you as soon as possible.</p>
+      <br>
+      <p>Your application number:</p>
+      <?php
+      // display the application number
+      echo "<p>$application_number</p>";
+      ?>
+      <br>
+  </div>
+</div>
     <!-- Job Application form, sends a POST request to the Swinburne Mercury server upon submission -->
     <form method="post" action="./processEOI.php" novalidate=”novalidate”>
       <fieldset class="apply-section">
