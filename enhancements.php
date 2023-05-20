@@ -17,26 +17,11 @@ description: Explanations for the website enhancements
     <meta name="description" content="Website enhancements" />
   </head>
   <body class="index-body">
-    <!-- Header -->
-    <header>
-      <nav id="header-nav">
-        <div class="logo">
-          <a href="index.html">
-            <img
-              src="images/logo-removebg-preview.png"
-              alt="CloudLabs logo"
-              width="80"
-              height="80"
-          /></a>
-        </div>
-        <ul>
-          <li><a href="./index.php">Home</a></li>
-          <li><a href="./jobs.php">Jobs</a></li>
-          <li><a href="./apply.php">Apply</a></li>
-          <li><a href="./about.php">About</a></li>
-        </ul>
-      </nav>
-    </header>
+  <?php
+// include the header
+$activePage = '';
+include_once("header.inc");
+?>
     <main class="enhancements-main">
       <!-- ENHANCEMENT 1 -->
       <h1>Enhancements</h1>
@@ -164,27 +149,9 @@ description: Explanations for the website enhancements
           </p>
           <p>Phone Number: +61423032755</p>
         </div>
-        <!-- Footer -->
-        <div class="footer-col">
-          <h3>Links</h3>
-          <ul>
-            <li><a href="./index.php">Home</a></li>
-            <li><a href="./jobs.php">Jobs</a></li>
-            <li><a href="./apply.php">Apply</a></li>
-            <li><a href="./about.php">About</a></li>
-            <li><a href="./enhancements.php">Enhancements</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Sign up to our newsletter</h3>
-          <form>
-            <input type="email" placeholder="Enter your email here" required />
-            <input type="submit" />
-          </form>
-        </div>
-      </div>
-      <hr />
-      <p>CloudLabs 2023 &copy; - All Rights Reserved</p>
-    </footer>
+        <?php
+  // include footer
+  include_once "footer.inc";
+  ?>
   </body>
 </html>

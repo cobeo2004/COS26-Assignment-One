@@ -284,11 +284,6 @@ if ($_POST) {
 	// If there is no error, add the application to the database
 	if ($error == false) {
 
-                // redirect to the application form with success parameter and application number set
-                // TODO: make application number dynamic
-                header("location: apply.php?success=1&no=10");
-                exit;
-
         // Check if table exists
          if (check_table_existence($connection, 'eoi')) {
             // Extract skills from array
@@ -330,6 +325,11 @@ if ($_POST) {
 
             // If table exists, insert data into table
             $query  = "INSERT INTO eoi (job_reference_number, first_name, last_name, date_of_birth, gender, street_address, suburb, state, postcode, email, phone, skill_communication, skill_teamwork, skill_detail_oriented, skill)_initiative, skill_time_management, skill_risk_management, other_skills, status) values ('$job_reference_number', '$first_name', '$last_name', '$date_of_birth_string', '$gender', '$street_address', '$suburb', '$state', '$postcode', '$email', '$phone', '$skill_communication', '$skill_teamwork', '$skill_detail_oriented', '$skill_initiative', '$skill_time_management', '$skill_risk_management', '$other_skills', 'New')";
+
+                            // redirect to the application form with success parameter and application number set
+                // TODO: make application number dynamic
+                header("location: apply.php?success=1&no=10");
+                exit;
          }
 	} else {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
