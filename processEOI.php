@@ -330,6 +330,7 @@ if ($_POST) {
                 header("location: apply.php?success=1&no=$application_number");
                 exit;
             } else {
+                echo("<p>Well it looks like the database has the error, we are looking for that.\nError: </p>".mysqli_error($connection));
                 header("location: apply.php?error=1");
                 exit;
             }
