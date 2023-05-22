@@ -332,7 +332,7 @@ if ($_POST) {
             }
          } else {
             create_table($connection, 'eoi');
-            header("location: apply.php");
+            $data = add_eoi_data($connection, $job_reference_number, $first_name, $last_name, $date_of_birth_string, $gender, $street_address, $suburb, $state, $postcode, $email, $phone, $skill_communication, $skill_teamwork, $skill_detail_oriented, $skill_initiative, $skill_time_management, $skill_risk_management, $other_skills);
          }
 	} else {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
