@@ -325,7 +325,6 @@ if ($_POST) {
             $data = add_eoi_data($connection, $job_reference_number, $first_name, $last_name, $date_of_birth_string, $gender, $street_address, $suburb, $state, $postcode, $email, $phone, $skill_communication, $skill_teamwork, $skill_detail_oriented, $skill_initiative, $skill_time_management, $skill_risk_management, $other_skills);
             if($data === true) {
                 // redirect to the application form with success parameter and application number set
-                // TODO: make application number dynamic
                 redirect_if_success($connection);
             } else {
                 header("location: apply.php?error=1");
