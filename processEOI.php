@@ -326,7 +326,8 @@ if ($_POST) {
             if($data === true) {
                 // redirect to the application form with success parameter and application number set
                 // TODO: make application number dynamic
-                header("location: apply.php?success=1&no=10");
+                $application_number = mysqli_query($connection, "SELECT EOINumber FROM eoi");
+                header("location: apply.php?success=1&no=$application_number");
                 exit;
             } else {
                 header("location: apply.php?error=1");
