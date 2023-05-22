@@ -1,10 +1,3 @@
-<!--
-filename: settings.php
-authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
-created: 21-Mar-2023
-description: Settings script for database
--->
-
 <?php
     $host_name = "feenix-mariadb.swin.edu.au";
     $user_name = "s103819212";
@@ -94,11 +87,18 @@ function create_table($connection, $table_name) {
             $queried = mysqli_query($connection, $query);
             //Return true if successfully query, otherwise no
             return $queried ? true : false;
-        } else {
-            //If table not exist then create table
-            create_table($connection, "eoi");
         }
+    }
 
+    function redirect_if_success($connection) {
+        $res = mysqli_query($connection, "SELECT EOINumber FROM eoi");
+        $rows = array();
+        while($row = mysqli_fetch_array($res)) {
+            $rows[] = $row['EOINumber'];
+        }
+        $application_number = $rows[count($rows) - 1];
+        header("location: apply.php?success=1&no=$application_number");
+        exit;
     }
 ?>
 

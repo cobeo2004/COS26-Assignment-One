@@ -42,7 +42,7 @@ $error_skills = "";
 $error_other_skills = "";
 
 // initialise database connection
-require "settings.php";
+include "settings.php";
 
 // Function to sanitise inputs
 function sanitise_input($data) {
@@ -326,16 +326,14 @@ if ($_POST) {
             if($data === true) {
                 // redirect to the application form with success parameter and application number set
                 // TODO: make application number dynamic
-                $application_number = mysqli_query($connection, "SELECT EOINumber FROM eoi");
-                header("location: apply.php?success=1&no=$application_number");
-                exit;
+                redirect_if_success($connection);
             } else {
-                echo("<p>Well it looks like the database has the error, we are looking for that.\nError: </p>".mysqli_error($connection));
                 header("location: apply.php?error=1");
                 exit;
             }
          } else {
             create_table($connection, 'eoi');
+            header("location: apply.php");
          }
 	} else {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
