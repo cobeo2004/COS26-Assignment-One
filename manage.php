@@ -16,33 +16,30 @@ description: Manager form
     <title>Manage - CloudLabs</title>
 </head>
 <body class="index-body">
+
 <?php
 $activePage = "manage";
-include_once("header.inc"); ?>
+include("header.inc");
+?>
+
 <main id="manage-body">
     <h1>Management page</h1>
     <h2>List all EOIs</h2>
 
 <?php
+    include("settings.php");
     session_start();
 
-    require_once("settings.php");
-
-    if (isset ($_POST["login"])) {
+    if (!isset ($_POST["login"])) {
+        header ("location: loginmanager.php");
+    }
+    else {
         $username = $_POST["username"];
         $password = $_POST["pw"];
 
         $_SESSION["username"] = $username;
         $_SESSION["pw"] = $password;
-
     }
-    elseif (isset ($_SESSION["username"])) {
-
-    }
-    else {
-        header ("location: loginmanager.php");
-    }
-
 
 
     function sanitise_data($data) {
@@ -52,10 +49,9 @@ include_once("header.inc"); ?>
         return $data;
     }
 
-    $connection = @mysqli_connect($host_name, $user_name, $password, $database);
 
     // checks if connection's successful
-    if (!$connection) {
+    if (!check_if_connected($connection)) {
         // display an error message
         echo "<p>Database connection failure</p>"; // not in production script
     }
@@ -70,7 +66,7 @@ include_once("header.inc"); ?>
 
             // checks if the execution was successful
             if (!$result_all) {
-                echo "<>Something is wrong with ", $query_all, "</p>";
+                echo "<p>Something is wrong with ", $query_all, "</p>";
             }
             else {
                 // display the retrieved records
@@ -212,7 +208,7 @@ include_once("header.inc"); ?>
                                 $result_job = mysqli_query($connection, $query_job);
 
                                 if (!$result_job) {
-                                    echo "<>Something is wrong with ", $query_job, "</p>";
+                                    echo "<p>Something is wrong with ", $query_job, "</p>";
                                 }
                                 else {
                                     // display the retrieved records
