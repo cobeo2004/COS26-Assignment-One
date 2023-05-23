@@ -5,13 +5,6 @@ created: 21-Mar-2023
 description: Manager form
 -->
 
-<!--
-filename: manage.php
-authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
-created: 21-Mar-2023
-description: Manager form
--->
-
 <!DOCTYPE html>
 <html lang="en" class="manage-class">
 <head>
@@ -23,7 +16,7 @@ description: Manager form
     <title>Manage - CloudLabs</title>
 </head>
 <body class="index-body">
-<?php 
+<?php
 $activePage = "manage";
 include_once("header.inc"); ?>
 <main id="manage-body">
@@ -33,11 +26,11 @@ include_once("header.inc"); ?>
 <?php
     session_start();
 
-    require_once("settings.php"); 
+    require_once("settings.php");
 
     if (isset ($_POST["login"])) {
         $username = $_POST["username"];
-        $password = $_POST["pw"];   
+        $password = $_POST["pw"];
 
         $_SESSION["username"] = $username;
         $_SESSION["pw"] = $password;
@@ -50,7 +43,7 @@ include_once("header.inc"); ?>
         header ("location: loginmanager.php");
     }
 
-    
+
 
     function sanitise_data($data) {
         $data = trim($data);
@@ -64,7 +57,7 @@ include_once("header.inc"); ?>
     // checks if connection's successful
     if (!$connection) {
         // display an error message
-        echo "<p>Database connection failure</p>"; // not in production script 
+        echo "<p>Database connection failure</p>"; // not in production script
     }
     else {
         // upon successful connection
@@ -154,12 +147,12 @@ include_once("header.inc"); ?>
                 // frees up the memory, after using the result pointer
                 mysqli_free_result($result_all);
             }
-            
+
         }
         else {
             echo "<p>Table not exist</p>";
         }
-        
+
 
         // close the database connection
         mysqli_close($connection);
@@ -179,7 +172,7 @@ include_once("header.inc"); ?>
     </form>
 
 <?php
-    
+
     if (isset ($_POST["submit_job"])) {
         if (isset ($_POST["jobref"])) {
             $jobref = sanitise_data($_POST["jobref"]);
@@ -192,7 +185,7 @@ include_once("header.inc"); ?>
             // checks if connection's successful
             if (!$connection) {
                 // display an error message
-                echo "<p>Database connection failure</p>"; // not in production script 
+                echo "<p>Database connection failure</p>"; // not in production script
             }
             else {
                 if (check_table_existence($connection, $table)) {
@@ -201,23 +194,23 @@ include_once("header.inc"); ?>
                     }
                     else {
                         $row_jobref_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where job_reference_number='$jobref')"));
-                        
+
                         if ($row_jobref_ex["exists(select * from $table where job_reference_number='$jobref')"] == 0) {
                             echo "<p>Cannot find this job reference number in the database</p>";
                         }
                         else {
-    
-                        
+
+
                             if ($_POST["submit_job"] == "Delete base on reference num") {
                                 $query_del_jobref = "delete from $table where job_reference_number='$jobref'";
-    
+
                                 $result_job = mysqli_query($connection, $query_del_jobref);
                             }
                             else {
                                 $query_job = "select * from $table where job_reference_number='$jobref'"; //ko co position field in db?
-                    
+
                                 $result_job = mysqli_query($connection, $query_job);
-                    
+
                                 if (!$result_job) {
                                     echo "<>Something is wrong with ", $query_job, "</p>";
                                 }
@@ -238,7 +231,7 @@ include_once("header.inc"); ?>
                                         ."<th scope=\"col\">Status</th>\n"
                                         ."</tr>\n";
                                     // retrieve current record pointed by the result pointer
-    
+
                                     while ($row = mysqli_fetch_assoc($result_job)) {
                                         echo "<tr>\n";
                                         echo "<td>", $row["EOINumber"], "</td>\n";
@@ -296,16 +289,16 @@ include_once("header.inc"); ?>
                                     echo "</table>\n";
                             // frees up the memory, after using the result pointer
                                     mysqli_free_result($result_job);
-                                } 
+                                }
                             }
                         }
-                
+
                     }
                 }
                 else {
                     echo "<p>Table not exist</p>";
                 }
-                
+
                 mysqli_close($connection);
             }
         }
@@ -315,7 +308,7 @@ include_once("header.inc"); ?>
 ?>
     <!-- table of all eoi based on ref num -->
     <!-- delete all eois w a specified job ref num using button -->
-    
+
     <h2>List all EOIs for a particular participant based on their name</h2>
     <form action="<?php $_PHP_SELF ?>" method="post">
         <label for="fname">First Name</label>
@@ -329,7 +322,7 @@ include_once("header.inc"); ?>
     if (isset ($_POST["submit_name"]) and isset ($_POST["fname"]) and isset ($_POST["lname"])) {
         $fname = sanitise_data($_POST["fname"]);
         $lname = sanitise_data($_POST["lname"]);
-        
+
         // require_once("setting.php"); //chua co db de lm
 
         $connection = @mysqli_connect($host_name, $user_name, $password, $database);
@@ -337,7 +330,7 @@ include_once("header.inc"); ?>
         // checks if connection's successful
         if (!$connection) {
             // display an error message
-            echo "<p>Database connection failure</p>"; // not in production script 
+            echo "<p>Database connection failure</p>"; // not in production script
         }
         else {
             if (check_table_existence($connection, $table)) {
@@ -351,7 +344,7 @@ include_once("header.inc"); ?>
                     if (($fname != "") and ($lname != "")) {
                         $row_name_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where first_name='$fname' and last_name='$lname')"));
                     }
-                    
+
                     if ($row_name_ex["exists(select * from $table where first_name='$fname' or last_name='$lname')"] == 0) {
                         echo "<p>Cannot find this name in the database</p>";
                     }
@@ -359,7 +352,7 @@ include_once("header.inc"); ?>
                         echo "<p>Cannot find this name in the database</p>";
                     }
                     else {
-    
+
                         $query_name = "select * from $table where";
                         if (($fname == "") or ($lname == "")) {
                             $query_name.= "first_name like '$fname' or last_name like '$lname'";
@@ -367,10 +360,10 @@ include_once("header.inc"); ?>
                         if (($fname != "") and ($lname != "")) {
                             $query_name.= "first_name like '$fname' and last_name like '$lname'";
                         }
-                        
-    
+
+
                         $result_name = mysqli_query($connection, $query_name);
-    
+
                         if (!$result_name) {
                             echo "<>Something is wrong with ", $query_name, "</p>";
                         }
@@ -391,7 +384,7 @@ include_once("header.inc"); ?>
                                 ."<th scope=\"col\">Status</th>\n"
                                 ."</tr>\n";
                             // retrieve current record pointed by the result pointer
-    
+
                             while ($row = mysqli_fetch_assoc($result_name)) {
                                 echo "<tr>\n";
                                 echo "<td>", $row["EOINumber"], "</td>\n";
@@ -449,20 +442,20 @@ include_once("header.inc"); ?>
                             echo "</table>\n";
                             // frees up the memory, after using the result pointer
                             mysqli_free_result($result_name);
-                        } 
+                        }
                     }
             }
-            
+
                 mysqli_close($connection);
             }
             else {
                 echo "<p>Table not exist</p>";
             }
         }
-            
+
     }
 
-    
+
 ?>
     <h2>Change the status of an EOI</h2>
     <!-- insert (add new data), delete (rmv existing data), update (modify existing data) -->
@@ -475,28 +468,28 @@ include_once("header.inc"); ?>
         <input type="text" name="status" id="status" required>
         <label for="eoinum">EOI Number</label>
         <input type="text" name="eoinum" id="eoinum" required>
-        
+
         <input type="submit" name="submit_change_stat" value="Change Status">
     </form>
-<?php 
+<?php
     if (isset ($_POST["submit_change_stat"])) {
-        
+
         $status = sanitise_data($_POST["status"]);
-        
+
         $eoinum = sanitise_data($_POST["eoinum"]);
-        
+
         $connection = @mysqli_connect($host_name, $user_name, $password, $database);
-        
+
 
         // checks if connection's successful
         if (!$connection) {
             // display an error message
-            echo "<p>Database connection failure</p>"; // not in production script 
+            echo "<p>Database connection failure</p>"; // not in production script
         }
         else {
             if (check_table_existence($connection, $table)) {
                 $row_change_stat_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where EOINumber='$eoinum')"));
-                
+
                 if ($row_change_stat_ex["exists(select * from $table where where EOINumber='$eoinum')"] == 0) {
                     echo "<p>Cannot find this EOI number in the database</p>";
                 }
@@ -512,19 +505,19 @@ include_once("header.inc"); ?>
                         echo "<p>Successfully change EOI's status.</p>";
                         // mysqli_free_result($result_change);
                     }
-                } 
+                }
             }
             else {
                 echo "<p>Table not exist</p>";
             }
-            
-        }
-        
-        
-        mysqli_close($connection);
-    } 
 
-    
+        }
+
+
+        mysqli_close($connection);
+    }
+
+
 
 ?>
 </main>
