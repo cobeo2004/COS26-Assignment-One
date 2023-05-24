@@ -93,4 +93,11 @@
         header("location: apply.php?success=1&no=$application_number");
         exit;
     }
+
+    function sanitise_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 ?>
