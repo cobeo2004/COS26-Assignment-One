@@ -256,7 +256,7 @@ if ($_POST) {
     $age = $age->format("%y");
     if ($age < 15 || $age > 80) {
         $error = true;
-        $error_date_of_birth = "Age must be between 15 and 80 years old";
+        $error_date_of_birth = "You must be between 15 and 80 years old to apply";
     }
 }
 
