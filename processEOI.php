@@ -42,8 +42,8 @@ $error_skills = "";
 $error_other_skills = "";
 
 // initialise database connection
-include_once "settings.php";
-include_once "db_functions.php";
+include "settings.php";
+include "db_functions.php";
 
 // Function to sanitise inputs
 function sanitise_input($data) {
