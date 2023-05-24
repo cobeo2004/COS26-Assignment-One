@@ -134,7 +134,7 @@ include_once("header.inc"); ?>
                         }
                         $skills_all.= "risk management";
                     }
-                    if ($row["other_skills"]=="") {
+                    if ($row["other_skills"]!="") {
                         if ($skills_all != "") {
                             $skills_all.= ", ";
                         }
@@ -277,7 +277,7 @@ include_once("header.inc"); ?>
                                             }
                                             $skills_all.= "risk management";
                                         }
-                                        if ($row["other_skills"]=="") {
+                                        if ($row["other_skills"]!="") {
                                             if ($skills_all != "") {
                                                 $skills_all.= ", ";
                                             }
@@ -341,25 +341,29 @@ include_once("header.inc"); ?>
                 else {
                     if (($fname == "") or ($lname == "")) {
                         $row_name_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where first_name='$fname' or last_name='$lname')"));
+                        $check_name_ex = $row_name_ex["exists(select * from $table where first_name='$fname' or last_name='$lname')"];
                     }
                     if (($fname != "") and ($lname != "")) {
                         $row_name_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where first_name='$fname' and last_name='$lname')"));
+                        $check_name_ex = $row_name_ex["exists(select * from $table where first_name='$fname' and last_name='$lname')"];
                     }
                     
-                    if ($row_name_ex["exists(select * from $table where first_name='$fname' or last_name='$lname')"] == 0) {
-                        echo "<p>Cannot find this name in the database</p>";
-                    }
-                    elseif ($row_name_ex["exists(select * from $table where first_name='$fname' and last_name='$lname')"] == 0) {
+                    if ($check_name_ex == 0) {
                         echo "<p>Cannot find this name in the database</p>";
                     }
                     else {
     
-                        $query_name = "select * from $table where";
-                        if (($fname == "") or ($lname == "")) {
-                            $query_name.= "first_name like '$fname' or last_name like '$lname'";
+                        $query_name = "select * from $table where ";
+                        if (($fname == "") xor ($lname == "")) {
+                            if ($fname != "") {
+                                $query_name.= "first_name='$fname'";
+                            }
+                            elseif ($lname != "") {
+                                $query_name.= "last_name='$lname'";
+                            }
                         }
-                        if (($fname != "") and ($lname != "")) {
-                            $query_name.= "first_name like '$fname' and last_name like '$lname'";
+                        elseif (($fname != "") and ($lname != "")) {
+                            $query_name.= "first_name='$fname' and last_name='$lname'";
                         }
                         
     
@@ -430,7 +434,7 @@ include_once("header.inc"); ?>
                                     }
                                     $skills_all.= "risk management";
                                 }
-                                if ($row["other_skills"]=="") {
+                                if ($row["other_skills"]!="") {
                                     if ($skills_all != "") {
                                         $skills_all.= ", ";
                                     }
@@ -491,7 +495,7 @@ include_once("header.inc"); ?>
             if (check_table_existence($connection, $table)) {
                 $row_change_stat_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where EOINumber='$eoinum')"));
                 
-                if ($row_change_stat_ex["exists(select * from $table where where EOINumber='$eoinum')"] == 0) {
+                if ($row_change_stat_ex["exists(select * from $table where EOINumber='$eoinum')"] == 0) {
                     echo "<p>Cannot find this EOI number in the database</p>";
                 }
                 else {
