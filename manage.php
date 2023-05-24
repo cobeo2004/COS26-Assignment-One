@@ -26,8 +26,8 @@ include_once("header.inc"); ?>
 <?php
 
 
-    include_once("settings.php");
-    include_once("db_functions.php");
+    include("settings.php");
+    include("db_functions.php");
     session_start();
 
     if (isset ($_POST["login"])) {
@@ -135,7 +135,7 @@ include_once("header.inc"); ?>
                         }
                         $skills_all.= "risk management";
                     }
-                    if ($row["other_skills"]!="") {
+                    if ($row["other_skills"]=="") {
                         if ($skills_all != "") {
                             $skills_all.= ", ";
                         }
@@ -278,7 +278,7 @@ include_once("header.inc"); ?>
                                             }
                                             $skills_all.= "risk management";
                                         }
-                                        if ($row["other_skills"]!="") {
+                                        if ($row["other_skills"]=="") {
                                             if ($skills_all != "") {
                                                 $skills_all.= ", ";
                                             }
@@ -342,11 +342,9 @@ include_once("header.inc"); ?>
                 else {
                     if (($fname == "") or ($lname == "")) {
                         $row_name_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where first_name='$fname' or last_name='$lname')"));
-                        $check_name_ex = $row_name_ex["exists(select * from $table where first_name='$fname' or last_name='$lname')"];
                     }
                     if (($fname != "") and ($lname != "")) {
                         $row_name_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where first_name='$fname' and last_name='$lname')"));
-                        $check_name_ex = $row_name_ex["exists(select * from $table where first_name='$fname' and last_name='$lname')"];
                     }
 
                     if ($row_name_ex["exists(select * from $table where first_name='$fname' or last_name='$lname')"] == 0) {
@@ -361,8 +359,8 @@ include_once("header.inc"); ?>
                         if (($fname == "") or ($lname == "")) {
                             $query_name.= "first_name like '$fname' or last_name like '$lname'";
                         }
-                        elseif (($fname != "") and ($lname != "")) {
-                            $query_name.= "first_name='$fname' and last_name='$lname'";
+                        if (($fname != "") and ($lname != "")) {
+                            $query_name.= "first_name like '$fname' and last_name like '$lname'";
                         }
 
 
@@ -433,7 +431,7 @@ include_once("header.inc"); ?>
                                     }
                                     $skills_all.= "risk management";
                                 }
-                                if ($row["other_skills"]!="") {
+                                if ($row["other_skills"]=="") {
                                     if ($skills_all != "") {
                                         $skills_all.= ", ";
                                     }
