@@ -6,8 +6,6 @@ description: Script to process the job application form
 -->
 
 <?php
-// TODO: Add EOI to table, generate table if it doesnt exist
-
 // initialise form data variables
 $job_reference_number = "";
 $first_name = "";
