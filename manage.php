@@ -27,6 +27,7 @@ include_once("header.inc"); ?>
     
 
     include("settings.php"); 
+    include("db_functions.php");
     session_start();
 
     if (isset ($_POST["login"])) {
