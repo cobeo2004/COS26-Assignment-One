@@ -30,24 +30,6 @@ include_once("header.inc"); ?>
     include("db_functions.php");
     session_start();
 
-    if (isset ($_POST["login"])) {
-        $username = $_POST["username"];
-        $password = $_POST["pw"];
-
-        $_SESSION["username"] = $username;
-        $_SESSION["pw"] = $password;
-
-    }
-    elseif (isset ($_SESSION["username"])) {
-
-    }
-    else {
-        header ("location: loginmanager.php");
-    }
-
-
-
-    $connection = @mysqli_connect($host_name, $user_name, $password, $database);
 
     // checks if connection's successful
     if (!$connection) {
