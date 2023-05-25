@@ -133,8 +133,6 @@ include_once("header.inc"); ?>
         }
 
 
-        // close the database connection
-        mysqli_close($connection);
     } // if successful database connection
 
 ?>
@@ -158,8 +156,6 @@ include_once("header.inc"); ?>
 
 
         // require_once("setting.php"); //chua co db de lm
-
-        $connection = @mysqli_connect($host_name, $user_name, $password, $database);
 
         // checks if connection's successful
         if (!$connection) {
@@ -278,7 +274,6 @@ include_once("header.inc"); ?>
                 echo "<p>Table not exist</p>";
             }
 
-            mysqli_close($connection);
         }
 
     }
@@ -304,7 +299,6 @@ include_once("header.inc"); ?>
 
         // require_once("setting.php"); //chua co db de lm
 
-        $connection = @mysqli_connect($host_name, $user_name, $password, $database);
 
         // checks if connection's successful
         if (!$connection) {
@@ -429,7 +423,6 @@ include_once("header.inc"); ?>
                     }
             }
 
-                mysqli_close($connection);
             }
             else {
                 echo "<p>Table not exist</p>";
@@ -462,8 +455,6 @@ include_once("header.inc"); ?>
         $status = sanitise_input($_POST["status"]);
 
         $eoinum = sanitise_input($_POST["eoinum"]);
-
-        $connection = @mysqli_connect($host_name, $user_name, $password, $database);
 
 
         // checks if connection's successful
@@ -499,11 +490,11 @@ include_once("header.inc"); ?>
         }
 
 
-        mysqli_close($connection);
     }
 
     if(isset($_POST["submit_log_out"])) {
         header("location: log_out.php");
+        mysqli_close($connection);
         exit();
     }
 
