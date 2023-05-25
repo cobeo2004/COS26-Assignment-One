@@ -448,11 +448,13 @@ include_once("header.inc"); ?>
         <!-- status is a new field/column in the table -->
 
         <label for="status">Status</label>
-        <input type="text" name="status" id="status" required>
+        <input type="text" name="status" id="status" >
         <label for="eoinum">EOI Number</label>
-        <input type="text" name="eoinum" id="eoinum" required>
+        <input type="text" name="eoinum" id="eoinum" >
 
         <input type="submit" name="submit_change_stat" value="Change Status">
+        <br>
+        <input type="submit" value="Log Out" name="submit_log_out">
     </form>
 <?php
     if (isset ($_POST["submit_change_stat"])) {
@@ -498,6 +500,11 @@ include_once("header.inc"); ?>
 
 
         mysqli_close($connection);
+    }
+
+    if(isset($_POST["submit_log_out"])) {
+        header("location: log_out.php");
+        exit();
     }
 
 
