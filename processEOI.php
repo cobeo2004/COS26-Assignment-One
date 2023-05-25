@@ -6,6 +6,8 @@ description: Script to process the job application form
 -->
 
 <?php
+// TODO: Add EOI to table, generate table if it doesnt exist
+
 // initialise form data variables
 $job_reference_number = "";
 $first_name = "";
@@ -42,7 +44,6 @@ $error_other_skills = "";
 // initialise database connection
 include "settings.php";
 include "db_functions.php";
-
 
 // Checks if validation was triggered by a form submit, if not redirect the user
 if ($_POST) {
@@ -250,7 +251,7 @@ if ($_POST) {
     $age = $age->format("%y");
     if ($age < 15 || $age > 80) {
         $error = true;
-        $error_date_of_birth = "You must be between 15 and 80 years old to apply";
+        $error_date_of_birth = "Age must be between 15 and 80 years old";
     }
 }
 
