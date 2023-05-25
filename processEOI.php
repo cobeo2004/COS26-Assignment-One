@@ -6,8 +6,14 @@ description: Script to process the job application form
 -->
 
 <?php
-// TODO: Add EOI to table, generate table if it doesnt exist
+// initialise database connection
+include "settings.php";
+include "db_functions.php";
 
+// TODO: Add EOI to table, generate table if it doesnt exist
+if(!check_table_existence($connection)) {
+    create_table($connection, "eoi");
+}
 // initialise form data variables
 $job_reference_number = "";
 $first_name = "";
@@ -41,9 +47,7 @@ $error_phone = "";
 $error_skills = "";
 $error_other_skills = "";
 
-// initialise database connection
-include "settings.php";
-include "db_functions.php";
+
 
 // Checks if validation was triggered by a form submit, if not redirect the user
 if ($_POST) {
@@ -314,7 +318,6 @@ if ($_POST) {
                 $skill_risk_management = 0;
             }
             // If table exists, insert data into table
-            create_table($connection, "eoi");
             $data = add_eoi_data($connection, $job_reference_number, $first_name, $last_name, $date_of_birth_string, $gender, $street_address, $suburb, $state, $postcode, $email, $phone, $skill_communication, $skill_teamwork, $skill_detail_oriented, $skill_initiative, $skill_time_management, $skill_risk_management, $other_skills);
             if($data === true) {
                 // redirect to the application form with success parameter and application number set
