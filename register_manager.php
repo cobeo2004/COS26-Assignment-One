@@ -14,7 +14,7 @@ description: Log in to Manager form
 
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
-    <title>Login to management - CloudLabs</title>
+    <title>Register to management - CloudLabs</title>
 </head>
 
 <body class="index-body">
