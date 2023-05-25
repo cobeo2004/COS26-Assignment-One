@@ -23,7 +23,7 @@ $activePage = "loginmanager";
 include_once("header.inc"); ?>
 <main id="login_manager-body">
     <h1>Login for Manager</h1>
-    <form action="manage.php" method="post">
+    <form action="trigger_manager.php" method="post">
         <label for="username">Username</label>
         <input type="text" name="username" id="username">
         <br>
