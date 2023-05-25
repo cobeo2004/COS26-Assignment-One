@@ -21,7 +21,6 @@ $activePage = "manage";
 include_once("header.inc"); ?>
 <main id="manage-body">
     <h1>Management page</h1>
-    <h2>List all EOIs</h2>
 
 <?php
 
@@ -29,8 +28,11 @@ include_once("header.inc"); ?>
     include("settings.php");
     include("db_functions.php");
     session_start();
-
-
+    $user_name = $_SESSION["name"];
+    echo("<h2>Welcome: $user_name</h2>");
+?>
+    <h2>List all EOIs</h2>
+<?php
     // checks if connection's successful
     if (!$connection) {
         // display an error message

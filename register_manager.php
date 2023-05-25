@@ -22,20 +22,25 @@ description: Log in to Manager form
 $activePage = "loginmanager";
 include_once("header.inc"); ?>
 <main id="login_manager-body">
-    <h1>Login for Manager</h1>
-    <form action="login_backend.php" method="post">
+    <h1>Register for Manager</h1>
+    <form action="register_backend.php" method="post">
         <?php
         if(isset($_GET["error"])) { ?>
             <p id="form-error-login"><?php echo $_GET['error']; ?></p>
         <?php } ?>
 
-        <label for="login-username">Username</label>
-        <input type="text" name="login-username" id="login-username">
+        <label for="reg-name">Your Name</label>
+        <input type="text" name="reg-name" id="reg-name">
         <br>
-        <label for="pw">Password</label>
-        <input type="password" name="login-pw" id="login-pw">
+        <label for="reg-username">Username</label>
+        <input type="text" name="reg-username" id="reg-username">
         <br>
-        <button type="submit" name="login" id="login">Login</button>
+        <label for="reg-pw">Password</label>
+        <input type="password" name="reg-pw" id="reg-pw">
+        <br>
+        <label for="reg-auth-code">Auth Code</label>
+        <input type="text" name="reg-auth-code" id="reg-auth-code">
+        <br>
         <button type="submit" name="register" id="register">Register</button>
     </form>
 </main>
