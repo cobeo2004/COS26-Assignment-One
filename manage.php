@@ -16,42 +16,23 @@ description: Manager form
     <title>Manage - CloudLabs</title>
 </head>
 <body class="index-body">
-
 <?php
 $activePage = "manage";
-include("header.inc");
-?>
-
+include_once("header.inc"); ?>
 <main id="manage-body">
     <h1>Management page</h1>
     <h2>List all EOIs</h2>
 
 <?php
+
+
     include("settings.php");
+    include("db_functions.php");
     session_start();
-
-    if (!isset ($_POST["login"])) {
-        header ("location: loginmanager.php");
-    }
-    else {
-        $username = $_POST["username"];
-        $password = $_POST["pw"];
-
-        $_SESSION["username"] = $username;
-        $_SESSION["pw"] = $password;
-    }
-
-
-    function sanitise_data($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
 
 
     // checks if connection's successful
-    if (!check_if_connected($connection)) {
+    if (!$connection) {
         // display an error message
         echo "<p>Database connection failure</p>"; // not in production script
     }
@@ -66,7 +47,7 @@ include("header.inc");
 
             // checks if the execution was successful
             if (!$result_all) {
-                echo "<p>Something is wrong with ", $query_all, "</p>";
+                echo "<>Something is wrong with ", $query_all, "</p>";
             }
             else {
                 // display the retrieved records
@@ -103,7 +84,7 @@ include("header.inc");
                         if ($skills_all != "") {
                             $skills_all.= ", ";
                         }
-                        $skills_all.= "communication";
+                        $skills_all.= "teamwork";
                     }
                     if ($row["skill_detail_oriented"]==1) {
                         if ($skills_all != "") {
@@ -129,7 +110,7 @@ include("header.inc");
                         }
                         $skills_all.= "risk management";
                     }
-                    if ($row["other_skills"]=="") {
+                    if ($row["other_skills"]!="") {
                         if ($skills_all != "") {
                             $skills_all.= ", ";
                         }
@@ -163,141 +144,141 @@ include("header.inc");
     <form action="<?php $_PHP_SELF ?>" method="post">
         <label for="jobref">Reference number</label>
         <input type="text" name="jobref" id="jobref">
-        <input type="submit" name="submit_job" value="Find based on reference number">
-        <input type="submit" name="submit_job" value="Delete base on reference number">
+        <input type="submit" name="submit_job" id="find_refnum" value="Find based on reference number">
+        <input type="submit" name="delete_job" id="delete_refnum" value="Delete base on reference number">
     </form>
 
 <?php
 
-    if (isset ($_POST["submit_job"])) {
-        if (isset ($_POST["jobref"])) {
-            $jobref = sanitise_data($_POST["jobref"]);
+
+    if (isset ($_POST["jobref"])) {
+        $jobref = sanitise_input($_POST["jobref"]);
 
 
-            // require_once("setting.php"); //chua co db de lm
+        // require_once("setting.php"); //chua co db de lm
 
-            $connection = @mysqli_connect($host_name, $user_name, $password, $database);
+        $connection = @mysqli_connect($host_name, $user_name, $password, $database);
 
-            // checks if connection's successful
-            if (!$connection) {
-                // display an error message
-                echo "<p>Database connection failure</p>"; // not in production script
-            }
-            else {
-                if (check_table_existence($connection, $table)) {
-                    if (($jobref == "")) {
-                        echo "<p>No values have been entered for reference number</p>";
-                    }
-                    else {
-                        $row_jobref_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where job_reference_number='$jobref')"));
-
-                        if ($row_jobref_ex["exists(select * from $table where job_reference_number='$jobref')"] == 0) {
-                            echo "<p>Cannot find this job reference number in the database</p>";
-                        }
-                        else {
-
-
-                            if ($_POST["submit_job"] == "Delete base on reference num") {
-                                $query_del_jobref = "delete from $table where job_reference_number='$jobref'";
-
-                                $result_job = mysqli_query($connection, $query_del_jobref);
-                            }
-                            else {
-                                $query_job = "select * from $table where job_reference_number='$jobref'"; //ko co position field in db?
-
-                                $result_job = mysqli_query($connection, $query_job);
-
-                                if (!$result_job) {
-                                    echo "<p>Something is wrong with ", $query_job, "</p>";
-                                }
-                                else {
-                                    // display the retrieved records
-                                    // display the retrieved records
-                                    echo "<table border=\"1px\">\n";
-                                    echo "<tr>\n"
-                                        ."<th scope=\"col\">EOI Number</th>\n"
-                                        ."<th scope=\"col\">Job Reference Number</th>\n"
-                                        ."<th scope=\"col\">Name</th>\n"
-                                        ."<th scope=\"col\">Date of Birth</th>\n"
-                                        ."<th scope=\"col\">Gender</th>\n"
-                                        ."<th scope=\"col\">Address</th>\n"
-                                        ."<th scope=\"col\">Email</th>\n"
-                                        ."<th scope=\"col\">Phone Number</th>\n"
-                                        ."<th scope=\"col\">Skills</th>\n"
-                                        ."<th scope=\"col\">Status</th>\n"
-                                        ."</tr>\n";
-                                    // retrieve current record pointed by the result pointer
-
-                                    while ($row = mysqli_fetch_assoc($result_job)) {
-                                        echo "<tr>\n";
-                                        echo "<td>", $row["EOINumber"], "</td>\n";
-                                        echo "<td>", $row["job_reference_number"], "</td>\n";
-                                        echo "<td>", $row["first_name"], " ", $row["last_name"], "</td>\n";
-                                        echo "<td>", $row["date_of_birth"], "</td>\n";
-                                        echo "<td>", $row["gender"], "</td>\n";
-                                        echo "<td>", $row["street_address"], ", ", $row["suburb"], ", ", $row["state"], ", ", $row["postcode"], "</td>\n";
-                                        echo "<td>", $row["email"], "</td>\n";
-                                        echo "<td>", $row["phone"], "</td>\n";
-                                        $skills_all = "";
-                                        if ($row["skill_communication"]==1) {
-                                            $skills_all.= "communication";
-                                        }
-                                        if ($row["skill_teamwork"]==1) {
-                                            if ($skills_all != "") {
-                                                $skills_all.= ", ";
-                                            }
-                                            $skills_all.= "communication";
-                                        }
-                                        if ($row["skill_detail_oriented"]==1) {
-                                            if ($skills_all != "") {
-                                                $skills_all.= ", ";
-                                            }
-                                            $skills_all.= "detail oriented";
-                                        }
-                                        if ($row["skill_initiative"]==1) {
-                                            if ($skills_all != "") {
-                                                $skills_all.= ", ";
-                                            }
-                                            $skills_all.= "initiative";
-                                        }
-                                        if ($row["skill_time_management"]==1) {
-                                            if ($skills_all != "") {
-                                                $skills_all.= ", ";
-                                            }
-                                            $skills_all.= "time management";
-                                        }
-                                        if ($row["skill_risk_management"]==1) {
-                                            if ($skills_all != "") {
-                                                $skills_all.= ", ";
-                                            }
-                                            $skills_all.= "risk management";
-                                        }
-                                        if ($row["other_skills"]=="") {
-                                            if ($skills_all != "") {
-                                                $skills_all.= ", ";
-                                            }
-                                            $skills_all.= $row["other_skills"];
-                                        }
-                                        echo "<td>", $skills_all, "</td>\n";
-                                        echo "<td>", $row["status"], "</td>\n";
-                                        echo "</tr>\n";
-                                    }
-                                    echo "</table>\n";
-                            // frees up the memory, after using the result pointer
-                                    mysqli_free_result($result_job);
-                                }
-                            }
-                        }
-
-                    }
+        // checks if connection's successful
+        if (!$connection) {
+            // display an error message
+            echo "<p>Database connection failure</p>"; // not in production script
+        }
+        else {
+            if (check_table_existence($connection, $table)) {
+                if (($jobref == "")) {
+                    echo "<p>No values have been entered for reference number</p>";
                 }
                 else {
-                    echo "<p>Table not exist</p>";
-                }
+                    $row_jobref_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where job_reference_number='$jobref')"));
 
-                mysqli_close($connection);
+                    if ($row_jobref_ex["exists(select * from $table where job_reference_number='$jobref')"] == 0) {
+                        echo "<p>Cannot find this job reference number in the database</p>";
+                    }
+                    else {
+
+
+                        if (isset ($_POST["delete_job"])) {
+                            $query_del_jobref = "delete from $table where job_reference_number='$jobref'";
+
+                            $result_job = mysqli_query($connection, $query_del_jobref);
+                        }
+                        elseif (isset ($_POST["submit_job"])) {
+                            $query_job = "select * from $table where job_reference_number='$jobref'"; //ko co position field in db?
+
+                            $result_job = mysqli_query($connection, $query_job);
+
+                            if (!$result_job) {
+                                echo "<>Something is wrong with ", $query_job, "</p>";
+                            }
+                            else {
+                                // display the retrieved records
+                                // display the retrieved records
+                                echo "<table border=\"1px\">\n";
+                                echo "<tr>\n"
+                                    ."<th scope=\"col\">EOI Number</th>\n"
+                                    ."<th scope=\"col\">Job Reference Number</th>\n"
+                                    ."<th scope=\"col\">Name</th>\n"
+                                    ."<th scope=\"col\">Date of Birth</th>\n"
+                                    ."<th scope=\"col\">Gender</th>\n"
+                                    ."<th scope=\"col\">Address</th>\n"
+                                    ."<th scope=\"col\">Email</th>\n"
+                                    ."<th scope=\"col\">Phone Number</th>\n"
+                                    ."<th scope=\"col\">Skills</th>\n"
+                                    ."<th scope=\"col\">Status</th>\n"
+                                    ."</tr>\n";
+                                // retrieve current record pointed by the result pointer
+
+                                while ($row = mysqli_fetch_assoc($result_job)) {
+                                    echo "<tr>\n";
+                                    echo "<td>", $row["EOINumber"], "</td>\n";
+                                    echo "<td>", $row["job_reference_number"], "</td>\n";
+                                    echo "<td>", $row["first_name"], " ", $row["last_name"], "</td>\n";
+                                    echo "<td>", $row["date_of_birth"], "</td>\n";
+                                    echo "<td>", $row["gender"], "</td>\n";
+                                    echo "<td>", $row["street_address"], ", ", $row["suburb"], ", ", $row["state"], ", ", $row["postcode"], "</td>\n";
+                                    echo "<td>", $row["email"], "</td>\n";
+                                    echo "<td>", $row["phone"], "</td>\n";
+                                    $skills_all = "";
+                                    if ($row["skill_communication"]==1) {
+                                        $skills_all.= "communication";
+                                    }
+                                    if ($row["skill_teamwork"]==1) {
+                                        if ($skills_all != "") {
+                                            $skills_all.= ", ";
+                                        }
+                                        $skills_all.= "teamwork";
+                                    }
+                                    if ($row["skill_detail_oriented"]==1) {
+                                        if ($skills_all != "") {
+                                            $skills_all.= ", ";
+                                        }
+                                        $skills_all.= "detail oriented";
+                                    }
+                                    if ($row["skill_initiative"]==1) {
+                                        if ($skills_all != "") {
+                                            $skills_all.= ", ";
+                                        }
+                                        $skills_all.= "initiative";
+                                    }
+                                    if ($row["skill_time_management"]==1) {
+                                        if ($skills_all != "") {
+                                            $skills_all.= ", ";
+                                        }
+                                        $skills_all.= "time management";
+                                    }
+                                    if ($row["skill_risk_management"]==1) {
+                                        if ($skills_all != "") {
+                                            $skills_all.= ", ";
+                                        }
+                                        $skills_all.= "risk management";
+                                    }
+                                    if ($row["other_skills"]!="") {
+                                        if ($skills_all != "") {
+                                            $skills_all.= ", ";
+                                        }
+                                        $skills_all.= $row["other_skills"];
+                                    }
+                                    echo "<td>", $skills_all, "</td>\n";
+                                    echo "<td>", $row["status"], "</td>\n";
+                                    echo "</tr>\n";
+                                }
+                                echo "</table>\n";
+                        // frees up the memory, after using the result pointer
+                                mysqli_free_result($result_job);
+                            }
+                        }
+                    }
+
+                }
             }
+            else {
+                echo "<p>Table not exist</p>";
+            }
+
+            mysqli_close($connection);
         }
+
     }
 
 
@@ -316,8 +297,8 @@ include("header.inc");
 
 <?php
     if (isset ($_POST["submit_name"]) and isset ($_POST["fname"]) and isset ($_POST["lname"])) {
-        $fname = sanitise_data($_POST["fname"]);
-        $lname = sanitise_data($_POST["lname"]);
+        $fname = sanitise_input($_POST["fname"]);
+        $lname = sanitise_input($_POST["lname"]);
 
         // require_once("setting.php"); //chua co db de lm
 
@@ -336,25 +317,29 @@ include("header.inc");
                 else {
                     if (($fname == "") or ($lname == "")) {
                         $row_name_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where first_name='$fname' or last_name='$lname')"));
+                        $check_name_ex = $row_name_ex["exists(select * from $table where first_name='$fname' or last_name='$lname')"];
                     }
                     if (($fname != "") and ($lname != "")) {
                         $row_name_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where first_name='$fname' and last_name='$lname')"));
+                        $check_name_ex = $row_name_ex["exists(select * from $table where first_name='$fname' and last_name='$lname')"];
                     }
 
-                    if ($row_name_ex["exists(select * from $table where first_name='$fname' or last_name='$lname')"] == 0) {
-                        echo "<p>Cannot find this name in the database</p>";
-                    }
-                    elseif ($row_name_ex["exists(select * from $table where first_name='$fname' and last_name='$lname')"] == 0) {
+                    if ($check_name_ex == 0) {
                         echo "<p>Cannot find this name in the database</p>";
                     }
                     else {
 
-                        $query_name = "select * from $table where";
-                        if (($fname == "") or ($lname == "")) {
-                            $query_name.= "first_name like '$fname' or last_name like '$lname'";
+                        $query_name = "select * from $table where ";
+                        if (($fname == "") xor ($lname == "")) {
+                            if ($fname != "") {
+                                $query_name.= "first_name='$fname'";
+                            }
+                            elseif ($lname != "") {
+                                $query_name.= "last_name='$lname'";
+                            }
                         }
-                        if (($fname != "") and ($lname != "")) {
-                            $query_name.= "first_name like '$fname' and last_name like '$lname'";
+                        elseif (($fname != "") and ($lname != "")) {
+                            $query_name.= "first_name='$fname' and last_name='$lname'";
                         }
 
 
@@ -399,7 +384,7 @@ include("header.inc");
                                     if ($skills_all != "") {
                                         $skills_all.= ", ";
                                     }
-                                    $skills_all.= "communication";
+                                    $skills_all.= "teamwork";
                                 }
                                 if ($row["skill_detail_oriented"]==1) {
                                     if ($skills_all != "") {
@@ -425,7 +410,7 @@ include("header.inc");
                                     }
                                     $skills_all.= "risk management";
                                 }
-                                if ($row["other_skills"]=="") {
+                                if ($row["other_skills"]!="") {
                                     if ($skills_all != "") {
                                         $skills_all.= ", ";
                                     }
@@ -470,9 +455,9 @@ include("header.inc");
 <?php
     if (isset ($_POST["submit_change_stat"])) {
 
-        $status = sanitise_data($_POST["status"]);
+        $status = sanitise_input($_POST["status"]);
 
-        $eoinum = sanitise_data($_POST["eoinum"]);
+        $eoinum = sanitise_input($_POST["eoinum"]);
 
         $connection = @mysqli_connect($host_name, $user_name, $password, $database);
 
@@ -486,7 +471,7 @@ include("header.inc");
             if (check_table_existence($connection, $table)) {
                 $row_change_stat_ex = mysqli_fetch_assoc(mysqli_query($connection, "select exists(select * from $table where EOINumber='$eoinum')"));
 
-                if ($row_change_stat_ex["exists(select * from $table where where EOINumber='$eoinum')"] == 0) {
+                if ($row_change_stat_ex["exists(select * from $table where EOINumber='$eoinum')"] == 0) {
                     echo "<p>Cannot find this EOI number in the database</p>";
                 }
                 else {

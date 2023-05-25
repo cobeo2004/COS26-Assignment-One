@@ -41,14 +41,8 @@ $error_other_skills = "";
 
 // initialise database connection
 include "settings.php";
+include "db_functions.php";
 
-// Function to sanitise inputs
-function sanitise_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
 
 // Checks if validation was triggered by a form submit, if not redirect the user
 if ($_POST) {
