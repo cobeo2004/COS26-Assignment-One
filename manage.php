@@ -180,6 +180,7 @@ include_once("header.inc"); ?>
                             $query_del_jobref = "delete from $table where job_reference_number='$jobref'";
 
                             $result_job = mysqli_query($connection, $query_del_jobref);
+                            echo "<p>Successfully delete EOIs with written reference number. Reload all EOIs to see the change.</p>";
                         }
                         elseif (isset ($_POST["submit_job"])) {
                             $query_job = "select * from $table where job_reference_number='$jobref'"; //ko co position field in db?
