@@ -1,18 +1,23 @@
-<?php
-    session_start();
 
+
+<?php
+
+    session_start();
     include("settings.php");
     include("db_functions.php");
+
 
     if(isset($_POST["login"])) {
         if(isset($_POST["login-username"]) && isset($_POST["login-pw"])) {
             $manager_username = sanitise_input($_POST["login-username"]);
             $manager_password = sanitise_input($_POST["login-pw"]);
             if(empty($manager_username)) {
-                header("location: loginmanager.php?error=Username is required");
+                $_SESSION["login-error"] = "Username is required";
+                header("location: loginmanager.php");
                 exit();
             } elseif(empty($manager_password)) {
-                header("location: loginmanager.php?error=Password is required");
+                $_SESSION["login-error"] = "Password is required";
+                header("location: loginmanager.php");
                 exit();
             } else {
                 if(check_if_connected($connection) === true) {
@@ -29,16 +34,20 @@
                             exit();
                         }
                     } else {
-                        header("location: loginmanager.php?error=Wrong username or password");
+                        $_SESSION["login-error"] = "Wrong username and password";
+                        $_SESSION["login_time"] += 1;
+                        header("location: loginmanager.php");
                         exit();
                     }
                 } else {
-                    header("location: loginmanager.php?error=Could not connect to the Database");
+                    $_SESSION["login-error"] = "Could not connect to database!";
+                    header("location: loginmanager.php");
                     exit();
                 }
             }
         } else {
-            header("location: loginmanager.php?error=Username and password are required");
+            $_SESSION["login-error"] = "Username and password are required";
+            header("location: loginmanager.php");
             exit();
         }
     }
@@ -46,5 +55,7 @@
         header("location: register_manager.php");
         exit();
     }
+
+
 
 ?>

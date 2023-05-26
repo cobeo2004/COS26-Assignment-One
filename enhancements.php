@@ -125,30 +125,6 @@ include_once("header.inc");
         </p>
       </section>
     </main>
-    <footer id="general-footer">
-      <div class="footer-row">
-        <div class="footer-col">
-          <a href="index.html"><img
-            src="images/logo-removebg-preview.png"
-            class="logo"
-            alt="CloudLabs logo"
-          /></a>
-          <p>
-            Our company provides details of "Chief Technology Officer(CTO)" and
-            "Cloud engineering", including base position, skills needed,
-            qualification and salary average per year in Australia.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h3>Contact us</h3>
-          <p class="footer-email-id">
-            <a href="mailto:104082552@student.swin.edu.au" class="footer-email-id"
-              >Email: 104082552@student.swin.edu.au</a
-            >
-          </p>
-          <p>Phone Number: +61423032755</p>
-        </div>
         <?php
   // include footer
   include_once "footer.inc";

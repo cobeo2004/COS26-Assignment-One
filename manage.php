@@ -28,6 +28,11 @@ include_once("header.inc"); ?>
     include("settings.php");
     include("db_functions.php");
     session_start();
+    if(isset($_POST["submit_log_out"])) {
+        header("location: log_out.php");
+        mysqli_close($connection);
+        exit();
+    }
     $user_name = $_SESSION["name"];
     echo("<h2>Welcome: $user_name</h2>");
 ?>
@@ -493,11 +498,6 @@ include_once("header.inc"); ?>
 
     }
 
-    if(isset($_POST["submit_log_out"])) {
-        header("location: log_out.php");
-        mysqli_close($connection);
-        exit();
-    }
 
 
 
