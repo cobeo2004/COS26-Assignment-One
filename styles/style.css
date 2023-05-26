@@ -369,7 +369,6 @@ selector:hover {
   transition: 0.5s ease-in-out;
 }
 
-
 /* Group image */
 .about-group-img {
   display: flex;
@@ -672,7 +671,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 }
 
 .apply-error {
-  color: #FF0004
+  color: #ff0004;
 }
 
 .apply-success-h2 {
@@ -684,7 +683,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 }
 
 /* Modal CSS adapted from https://codepen.io/Idered/pen/DdeoeW */
- .success-modal {
+.success-modal {
   opacity: 0;
   visibility: hidden;
   position: fixed;
@@ -693,8 +692,8 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   bottom: 0;
   left: 0;
   text-align: left;
-  background: rgba(0,0,0, .9);
-  transition: opacity .25s ease;
+  background: rgba(0, 0, 0, 0.9);
+  transition: opacity 0.25s ease;
 }
 
 .success-modal__bg {
@@ -721,7 +720,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 }
 
 .success-modal__inner {
-  transition: top .25s ease;
+  transition: top 0.25s ease;
   position: absolute;
   top: -20%;
   right: 0;
@@ -748,7 +747,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 
 .success-modal__close:after,
 .success-modal__close:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 2px;
   height: 1.5em;
@@ -770,7 +769,6 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 }
 
 @media screen and (max-width: 768px) {
-	
   .success-modal__inner {
     width: 90%;
     height: 90%;
@@ -778,9 +776,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   }
 }
 
-
 /**************************** End of apply.css ***********************/
-
 
 /**************************** Start of loginmanager.css ***********************/
 
@@ -846,12 +842,16 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 }
 
 /* whole main part of the page */
-#login_manager-body  {
+#login_manager-body {
   width: auto;
   margin: 10px;
   padding: 10px;
   /* justify-content: center; */
   /* display: flex; */
+}
+
+#form-error-login {
+  color: red;
 }
 
 /**************************** End of loginmanager.css ***********************/
@@ -862,10 +862,9 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   padding: 0;
 }
 
-
 /* whole main part of the page */
 #manage-body {
-  width:80%;
+  width: 80%;
   margin: auto;
   justify-content: center;
   padding: 10px 10px 10px 10px;
@@ -889,9 +888,9 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
 }
 
 /* table design */
-#manage-body table, 
-#manage-body tr,  
-#manage-body th, 
+#manage-body table,
+#manage-body tr,
+#manage-body th,
 #manage-body td {
   margin: auto;
   padding: 10px;
@@ -932,7 +931,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   display: inline-block;
 }
 
-#manage-body button, 
+#manage-body button,
 #manage-body input[type="submit"] {
   cursor: pointer;
   transition: 0.5s ease-in-out;
@@ -947,9 +946,7 @@ Adapted from W3Schools - https://www.w3schools.com/howto/howto_css_stacked_form.
   margin-bottom: 50px;
 }
 
-
 /**************************** End of manage.css ***********************/
-
 
 /**************************** Start of enhancements.css ***********************/
 
