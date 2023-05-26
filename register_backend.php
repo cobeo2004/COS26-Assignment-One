@@ -27,10 +27,17 @@
                 exit();
             }
             if(check_if_connected($connection) === true) {
-                $query = "INSERT INTO manager_db(user_name, password, name) VALUES ('$manager_username', '$manager_password', '$manager_name')";
-                $result = mysqli_query($connection, $query);
-                header("location: loginmanager.php?error=Register successfully");
-                exit();
+                $check_query = "SELECT * FROM manager_db WHERE password='$manager_password'";
+                $check_res = mysqli_query($connection, $check_query);
+                if(mysqli_num_rows($check_res) > 0) {
+                    header("location: register_manager.php?error=The password is existed, please try another");
+                    exit();
+                } else {
+                    $query = "INSERT INTO manager_db(user_name, password, name) VALUES ('$manager_username', '$manager_password', '$manager_name')";
+                    $result = mysqli_query($connection, $query);
+                    header("location: loginmanager.php?error=Register successfully");
+                    exit();
+                }
             } else {
                 header("location: register_manager.php?error=Could not connect to the Database");
                 exit();
