@@ -5,6 +5,16 @@ created: 21-Mar-2023
 description: Manager form
 -->
 
+<?php
+    session_start();
+    include("settings.php");
+    include("db_functions.php");
+
+    if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
+        $_SESSION["login-error"] = "Never try to be childish :)";
+        header("location: loginmanager.php");
+    } else { ?>
+
 <!DOCTYPE html>
 <html lang="en" class="manage-class">
 <head>
@@ -24,10 +34,6 @@ include_once("header.inc"); ?>
 
 <?php
 
-
-    include("settings.php");
-    include("db_functions.php");
-    session_start();
     if(isset($_POST["submit_log_out"])) {
         header("location: log_out.php");
         mysqli_close($connection);
@@ -509,3 +515,4 @@ include_once("header.inc"); ?>
 ?>
 </body>
 </html>
+<?php } ?>

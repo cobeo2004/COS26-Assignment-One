@@ -8,12 +8,12 @@ description: Log in to Manager form
 error_reporting(error_reporting() & ~E_NOTICE);
 session_start();
 if(isset($_SESSION["locked"])) {
-        $diff = time() - $_SESSION["locked"];
-        if($diff > 5) {
-            unset($_SESSION["locked"]);
-            unset($_SESSION["login_time"]);
-        }
+    $diff = time() - $_SESSION["locked"];
+    if($diff > 5) {
+        unset($_SESSION["locked"]);
+        unset($_SESSION["login_time"]);
     }
+}
 ?>
 
 <!DOCTYPE html>
