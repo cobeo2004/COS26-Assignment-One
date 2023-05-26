@@ -12,7 +12,8 @@ description: Manager form
 
     if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
         $_SESSION["login-error"] = "Never try to be childish :) ";
-        header("location: loginmanager.php");
+        header("location: log_out.php");
+        // header("location: loginmanager.php");
     } else { ?>
 
 <!DOCTYPE html>
