@@ -44,64 +44,122 @@ include "db_functions.php";
             $query = "SELECT job_name FROM job_descriptions";
             $result = mysqli_query($connection, $query);
 
-            if ($result) {
-                  // Start the unordered list
-    echo "<ol>";
-    
-    // Loop through each row and display the names
-    while ($row = mysqli_fetch_assoc($result)) {
-        $name = $row['name'];
-        // Display each name as a list item
-        echo "<li>$name</li>";
-    }
-    
-    // Close the unordered list
-    echo "</ol>";
-    
-    // Free the result set
-    mysqli_free_result($result);
-} else {
-    // Handle any errors that occurred during the query
-    echo "Error: " . mysqli_error($connection);
-}
-            
-            
+           # display as list
+            echo "<ol>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<li><a href=\"jobs.php#" . $row["job_name"] . "\">" . $row["job_name"] . "</a></li>";
+            }
+            echo "</ol>";
             ?>
-            <ol>
-                <li><a href="jobs.html#cto">Chief Technology Officer</a></li>
-                <li><a href="jobs.html#cloud_en">Cloud Engineer</a></li>
-            </ol>
         </div>
-        <!-- JOB 1: Chief Technology Officer -->
-        <div class="job-des">
-            <section>
-                <h2 id="cto">Chief Technology Officer</h2>
+
+            <?php
+            # loop through each job description in the database and get the data for each job
+            $query = "SELECT * FROM job_descriptions";
+            $result = mysqli_query($connection, $query);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                # extract data and put into variables
+                $position_reference = $row["position_reference"];
+                $job_name = $row["job_name"];
+                $reports_to = $row["reports_to"];
+                $salary_range_start = $row["salary_range_start"];
+                $salary_range_end = $row["salary_range_end"];
+                $description = $row["description"];
+                $essential_qualification = $row["essential_qualification"];
+                $knowledge = $row["knowledge"];
+
+                # start displaying job description
+echo <<<EOL
+                <div class=\"job-des\">";
+                <section>
+                    <h2 id="$job_name">$job_name</h2>
                 <dl>
-                    <dt><strong>Position description reference number</strong></dt>
-                    <dd>00000</dd>
+                <dt><strong>Position description reference number</strong></dt>
+                    <dd>$position_reference</dd>
                     <dt><strong>Reports to</strong></dt>
-                    <dd>Chief Executive Officer</dd>
+                    <dd>$reports_to</dd>
                     <dt><strong>Salary range</strong></dt>
-                    <dd>237,500 &#8211; 376,665 AUD&#x2F;year <sup><a href="jobs.html#cite1">[1]</a></sup></dd>
+                    <dd>$salary_range_start - $salary_range_end AUD&#x2F;year</dd>
                 </dl>
                 <h3>Brief Description</h3>
-                <p>
-                    A Chief Technology Officer needs to improve and perform new technology to establish or innovate our products (including both goods and services) for the client and the customers. <sup><a href="jobs.html#cite5">[5]</a></sup>
-                    They ensure that the technical improvements go in line with the company&#39;s target and that the technological resources are used for the right intention &#8211; for technological development. <sup><a href="jobs.html#cite4">[4]</a></sup>
-                </p>
+                <p>$description</p>
                 <h3>Key Responsibilities</h3>
-                <ul>
-                    <li>Managing the technology strategies of the organisation</li>
-                    <li>Overseeing data security and management</li>
-                    <li>Upkeep of the company's network</li>
-                    <li>Visualizing how various technologies will be used across the organisation</li>
-                    <li>Finding methods to enhance the company&#39;s technology resources</li>
-                    <li>Establishing networking safeguards that keep the privacy of client data and stop security breakdown</li>
-                    <li>Determining if the usage of new technologies is appropriate for the company</li>
-                    <li>Ensuring that the technologies presently in use are effective and implementing adjustments as needed</li>
+EOL;
+
+# get key responsibilities from database
+$query = "SELECT * FROM key_responsibilities WHERE job_description = '$position_reference'";
+$result = mysqli_query($connection, $query);
+
+# loop through key responsibilities, display as list
+echo "<ul>";
+while ($row2 = mysqli_fetch_assoc($result)) {
+    echo "<li>" . $row2["description"] . "</li>";
+}
+echo <<<EOL
                 </ul>
                 <h3>Required attributes</h3>
                 <h4>Essential</h4>
+                <table>
+                    <tr>
+                        <td>Qualification</td>
+                        <td colspan="2">$essential_qualification</td>
+                    </tr>
+EOL;
+
+# loop through skills, display as table
+$query = "SELECT * FROM skills WHERE job_description = '$position_reference'";
+$result_skills = mysqli_query($connection, $query);
+
+$skill_index = 0;
+
+echo "<tr>";
+
+# TODO: add skills row, rowspan = number of skill descriptions for each skill
+
+
+while ($skill = mysqli_fetch_assoc($result_skills)) {
+    # get the skill descriptions for this skill
+    $query = "SELECT * FROM skill_descriptions WHERE skill_id = " . $skill["id"];
+    $result_skill_desc = mysqli_query($connection, $query);
+
+    # if this is the first database row, do not make a new row
+    if ($skill_index == 0) {
+        echo "<td>" . $skill["name"] . "</td>";
+        
+        $skill_desc_index = 0;
+        while ($skill_desc = mysqli_fetch_assoc($result_skill_desc)) {
+            # if this is the first database row, do not make a new row
+            if ($skill_desc_index == 0) {
+                echo "<td>" . $skill_desc["description"] . "</td>";
+            } else {
+                echo "<tr><td></td><td>" . $skill_desc["description"] . "</td></tr>";
+            }
+            $skill_desc_index++;
+        }
+    } else {
+        echo "<tr><td>" . $skill["name"] . "</td>";
+        
+        $skill_desc_index = 0;
+        while ($skill_desc = mysqli_fetch_assoc($result_skill_desc)) {
+            # if this is the first database row, do not make a new row
+            if ($skill_desc_index == 0) {
+                echo "<td>" . $skill_desc["description"] . "</td></tr>";
+            } else {
+                echo "<tr><td></td><td>" . $skill_desc["description"] . "</td></tr>";
+            }
+            $skill_desc_index++;
+        }
+    }
+            
+        $skill_index++;
+}
+            
+  }  ?>
+                     
+        
+                
+
                 <table>
                     <tr>
                         <td>Qualification</td>
@@ -145,7 +203,7 @@ include "db_functions.php";
                     <li>Qualifications
                         <ul>
                             <li>Master of Computer Science or related fields, a post-graduate degree in computer science or related fields</li>
-                            <li>Experience leading programs and projects within the technological environment with ideally around 15 years <sup><a href="jobs.html#cite5">[5]</a></sup></li>
+                            <li>Experience leading programs and projects within the technological environment with ideally around 15 years</li>
                         </ul>
                     </li>
                     <li>Knowledgeable in Mathematics, Statistics, and Business</li>
@@ -160,14 +218,14 @@ include "db_functions.php";
                     <dt><strong>Reports to</strong></dt>
                     <dd>Cloud Architecture Manager</dd>
                     <dt><strong>Salary range</strong></dt>
-                    <dd>132,500 &#8211; 180,000 AUD&#x2F;year <sup><a href="jobs.html#cite3">[3]</a></sup></dd>
+                    <dd>132,500 &#8211; 180,000 AUD&#x2F;year </dd>
                 </dl>
                 <h3>Brief Description</h3>
                 <p>
                     A Cloud Engineer needs to create, run, and maintain a cloud infrastructure.
-                    This includes sticking to the best performance of the environment and ensuring network security. <sup><a href="jobs.html#cite2">[2]</a></sup>
+                    This includes sticking to the best performance of the environment and ensuring network security. 
                 </p>
-                <h3>Key Responsibilities <sup><a href="jobs.html#cite6">[6]</a></sup></h3>
+                <h3>Key Responsibilities </h3>
                 <ul>
                     <li>Planning and designing cloud computing products such as cloud applications and services</li>
                     <li>Programming codes for cloud systems in coding languages such as Java, Python, C++, …</li>
@@ -224,25 +282,13 @@ include "db_functions.php";
                     <li>Qualifications
                         <ul>
                             <li>Earning computer certifications such as AWS and GCP</li>
-                            <li>Experiencing in the field for 3+ years <sup><a href="jobs.html#cite6">[6]</a></sup></li>
+                            <li>Experiencing in the field for 3+ years</li>
                             <li>Experience integrating with third party apps supporting designing cloud infrastructures</li>
                         </ul>
                     </li>
                 </ul>
             </section>
         </div>
-        <!-- REFERENCES -->
-        <aside>
-            <h2>References</h2>
-            <ol>
-                <li id="cite1">Anonymous. (n.d.). CTO / Chief Technology Officer Salary & Rates Guide. Clicks IT Recruitment. <a href="https://clicks.com.au/job-salary/cto-chief-technology-officer/">https://clicks.com.au/job-salary/cto-chief-technology-officer/</a></li>
-                <li id="cite2">Anonymous. (n.d.) Cloud Engineer. Indeed. <a href="https://www.indeed.com/career/cloud-engineer">https://www.indeed.com/career/cloud-engineer</a></li>
-                <li id="cite3">Anonymous. (n.d.). Cloud Engineer Salary & Rates Guide. Clicks IT Recruitment. <a href="https://clicks.com.au/job-salary/cloud-engineer/#:~:text=The%20average%20Cloud%20Engineer%20salary,up%20to%20%24180%2C000%20per%20year">https://clicks.com.au/job-salary/cloud-engineer/#:~:text=The%20average%20Cloud%20Engineer%20salary,up%20to%20%24180%2C000%20per%20year</a></li>
-                <li id="cite4">Anonymous. (2020, August 3). Chief Technology Officer Job Description | Hudson. Hudson Australia. <a href="https://au.hudson.com/employers/recruitment/technology-it/chief-technology-officer-job-description/#:~:text=What%20does%20a%20Chief%20Technology">https://au.hudson.com/employers/recruitment/technology-it/chief-technology-officer-job-description/#:~:text=What%20does%20a%20Chief%20Technology</a>‌</li>
-                <li id="cite5">Frankenfield, J. (2023, January 23). Chief technology officer (CTO): Definition, how to become one, average salary. Investopedia. <a href="https://www.investopedia.com/terms/c/chief-technology-officer.asp">https://www.investopedia.com/terms/c/chief-technology-officer.asp</a></li>
-                <li id="cite6">Indeed Editorial Team. (2023, March 10). Cloud Engineer Roles And Responsibilities: A Complete Guide. Indeed. <a href="https://in.indeed.com/career-advice/finding-a-job/cloud-engineer-roles-and-responsibilities">https://in.indeed.com/career-advice/finding-a-job/cloud-engineer-roles-and-responsibilities</a></li>
-            </ol>
-        </aside>
     </main>
     <?php
   // include footer
