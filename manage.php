@@ -11,7 +11,7 @@ description: Manager form
     include("db_functions.php");
 
     if(!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
-        $_SESSION["login-error"] = "Never try to be childish :)";
+        $_SESSION["login-error"] = "Never try to be childish :) ";
         header("location: loginmanager.php");
     } else { ?>
 
