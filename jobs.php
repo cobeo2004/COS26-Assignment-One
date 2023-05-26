@@ -22,6 +22,12 @@ description: Job descriptions page
 // include the header
 $activePage = 'jobs';
 include_once("header.inc");
+
+// initialise database connection
+include "settings.php";
+include "db_functions.php";
+
+// TODO: Dynamically generate job descriptions
 ?>
     <main id="job-main">
         <div class="header-container">
@@ -32,6 +38,35 @@ include_once("header.inc");
         <!-- Table of Contents -->
         <div class="table-of-content">
             <h2>Table of Contents</h2>
+
+            <?php
+            # get all job titles and display as list
+            $query = "SELECT job_name FROM job_descriptions";
+            $result = mysqli_query($connection, $query);
+
+            if ($result) {
+                  // Start the unordered list
+    echo "<ol>";
+    
+    // Loop through each row and display the names
+    while ($row = mysqli_fetch_assoc($result)) {
+        $name = $row['name'];
+        // Display each name as a list item
+        echo "<li>$name</li>";
+    }
+    
+    // Close the unordered list
+    echo "</ol>";
+    
+    // Free the result set
+    mysqli_free_result($result);
+} else {
+    // Handle any errors that occurred during the query
+    echo "Error: " . mysqli_error($connection);
+}
+            
+            
+            ?>
             <ol>
                 <li><a href="jobs.html#cto">Chief Technology Officer</a></li>
                 <li><a href="jobs.html#cloud_en">Cloud Engineer</a></li>

@@ -13,7 +13,6 @@ description: Handling functions and informations for accessing database, creatin
     $database = "s103819212_db";
     $table = "eoi";
     $connection = @mysqli_connect($host_name, $user_name, $password, $database);
-
 ?>
 
 
