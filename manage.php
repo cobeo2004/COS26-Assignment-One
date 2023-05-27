@@ -43,7 +43,7 @@ include_once("header.inc"); ?>
     $user_name = $_SESSION["name"];
     echo("<h2>Welcome: $user_name</h2>");
 ?>
-    <h2>List all EOIs</h2>
+    <h2>View all EOIs</h2>
 <?php
     // checks if connection's successful
     if (!$connection) {
@@ -152,12 +152,12 @@ include_once("header.inc"); ?>
     <button onClick="window.location.reload();">Reload all EOIs</button>
     <br>
 
-    <h2>List all EOIs based on particular position given reference number</h2>
+    <h2>Search EOIs by Reference Number</h2>
     <form action="<?php $_PHP_SELF ?>" method="post">
         <label for="jobref">Reference number</label>
         <input type="text" name="jobref" id="jobref">
-        <input type="submit" name="submit_job" id="find_refnum" value="Find based on reference number">
-        <input type="submit" name="delete_job" id="delete_refnum" value="Delete base on reference number">
+        <input type="submit" name="submit_job" id="find_refnum" value="Search">
+        <input type="submit" name="delete_job" id="delete_refnum" value="Delete all EOIs with this reference number">
     </form>
 
 <?php
@@ -296,7 +296,7 @@ include_once("header.inc"); ?>
     <!-- table of all eoi based on ref num -->
     <!-- delete all eois w a specified job ref num using button -->
 
-    <h2>List all EOIs for a particular participant based on their name</h2>
+    <h2>Search EOIs by Applicant Name</h2>
     <form action="<?php $_PHP_SELF ?>" method="post">
         <label for="fname">First Name</label>
         <input type="text" name="fname" id="fname">
@@ -446,7 +446,7 @@ include_once("header.inc"); ?>
 
 
 ?>
-    <h2>Change the status of an EOI</h2>
+    <h2>Edit EOI Status</h2>
     <!-- insert (add new data), delete (rmv existing data), update (modify existing data) -->
     <form action="<?php $_PHP_SELF ?>" method="post">
         <!-- <label for="status">status of eoi</label>
