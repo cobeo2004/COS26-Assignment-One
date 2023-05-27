@@ -36,10 +36,12 @@
             if(check_if_connected($connection) === true) {
                 $check_query = "SELECT * FROM manager_db WHERE user_name='$manager_username'";
                 $check_res = mysqli_query($connection, $check_query);
+                // check if the username already exists
                 if(mysqli_num_rows($check_res) > 0) {
                     header("location: register_manager.php?error=This username already exists, please try another");
                     exit();
                 } else {
+                    // insert the new manager into the database
                     $query = "INSERT INTO manager_db(user_name, password, name) VALUES ('$manager_username', '$manager_password', '$manager_name')";
                     $result = mysqli_query($connection, $query);
                     header("location: loginmanager.php?error=Register successfully");
