@@ -51,7 +51,7 @@
                 skill_time_management TINYINT NOT NULL,
                 skill_risk_management TINYINT NOT NULL,
                 other_skills VARCHAR(300) NOT NULL,
-                status VARCHAR(20) NOT NULL
+                status ENUM('New', 'Current', 'Final') NOT NULL
             );";
             mysqli_query($connection, $query);
         }

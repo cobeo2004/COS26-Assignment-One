@@ -454,7 +454,11 @@ include_once("header.inc"); ?>
         <!-- status is a new field/column in the table -->
 
         <label for="status">Status</label>
-        <input type="text" name="status" id="status" >
+        <select name="status" id="status">
+  <option value="New">New</option>
+  <option value="Current">Current</option>
+  <option value="Final">Final</option>
+</select>
         <label for="eoinum">EOI Number</label>
         <input type="text" name="eoinum" id="eoinum" >
 
