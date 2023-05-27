@@ -31,6 +31,7 @@
         <li><a href="./apply.php">Apply</a></li>
         <li><a href="./about.php">About</a></li>
         <li><a href="./enhancements.php">Enhancements</a></li>
+        <li><a href="./phpenhancements.php">PHP Enhancements</a></li>
         <li><a href="./loginmanager.php">Manage</a></li>
       </ul>
     </div>

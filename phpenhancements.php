@@ -1,8 +1,8 @@
 <!--
-filename: enhancements.php
+filename: phpenhancements.php
 authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
 created: 29-Mar-2023
-description: Explanations for the website enhancements
+description: Explanations for the website PHP enhancements
 -->
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ description: Explanations for the website enhancements
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enhancements - CloudLabs</title>
+    <title>PHP Enhancements - CloudLabs</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <meta name="description" content="Website enhancements" />
