@@ -9,6 +9,7 @@
         $manager_username = sanitise_input($_POST["reg-username"]);
         $manager_password = sanitise_input($_POST["reg-pw"]);
         $manager_auth_code = sanitise_input($_POST["reg-auth-code"]);
+        // check if the fields are empty
         if(empty($manager_name)) {
             header("location: register_manager.php?error=Name is required");
             exit();
@@ -22,15 +23,21 @@
             header("location: register_manager.php?error=Authentication Code is required");
             exit();
         } else {
+            // check if the authentication code is correct
             if($manager_auth_code !== "ilovecloudlabs") {
                 header("location: register_manager.php?error=Wrong authentication code");
                 exit();
             }
+            if (!preg_match('/^(?=.*[A-Z]).{8,}$/', $manager_password))
+            {
+                header("location: register_manager.php?error=Password must be at least 8 characters and must contain at least 1 uppercase letter");
+                exit();
+            }
             if(check_if_connected($connection) === true) {
-                $check_query = "SELECT * FROM manager_db WHERE password='$manager_password'";
+                $check_query = "SELECT * FROM manager_db WHERE user_name='$manager_username'";
                 $check_res = mysqli_query($connection, $check_query);
                 if(mysqli_num_rows($check_res) > 0) {
-                    header("location: register_manager.php?error=The password is existed, please try another");
+                    header("location: register_manager.php?error=This username already exists, please try another");
                     exit();
                 } else {
                     $query = "INSERT INTO manager_db(user_name, password, name) VALUES ('$manager_username', '$manager_password', '$manager_name')";
