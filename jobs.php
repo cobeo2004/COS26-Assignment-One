@@ -4,7 +4,8 @@ authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Am
 created: 29-Mar-2023
 description: Job descriptions page
 -->
-
+<?php error_reporting(error_reporting() & ~E_NOTICE);
+?>
 <!DOCTYPE html>
 <html lang="en" class="job-class">
 <head>
@@ -126,7 +127,7 @@ while ($skill = mysqli_fetch_assoc($result_skills)) {
     # if this is the first database row, do not make a new row
     if ($skill_index == 0) {
         echo "<td>" . $skill["name"] . "</td>";
-        
+
         $skill_desc_index = 0;
         while ($skill_desc = mysqli_fetch_assoc($result_skill_desc)) {
             # if this is the first database row, do not make a new row
@@ -139,7 +140,7 @@ while ($skill = mysqli_fetch_assoc($result_skills)) {
         }
     } else {
         echo "<tr><td>" . $skill["name"] . "</td>";
-        
+
         $skill_desc_index = 0;
         while ($skill_desc = mysqli_fetch_assoc($result_skill_desc)) {
             # if this is the first database row, do not make a new row
@@ -151,14 +152,14 @@ while ($skill = mysqli_fetch_assoc($result_skills)) {
             $skill_desc_index++;
         }
     }
-            
+
         $skill_index++;
 }
-            
+
   }  ?>
-                     
-        
-                
+
+
+
 
                 <table>
                     <tr>
@@ -223,7 +224,7 @@ while ($skill = mysqli_fetch_assoc($result_skills)) {
                 <h3>Brief Description</h3>
                 <p>
                     A Cloud Engineer needs to create, run, and maintain a cloud infrastructure.
-                    This includes sticking to the best performance of the environment and ensuring network security. 
+                    This includes sticking to the best performance of the environment and ensuring network security.
                 </p>
                 <h3>Key Responsibilities </h3>
                 <ul>
