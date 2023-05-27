@@ -84,13 +84,14 @@
     }
 
     function redirect_if_success($connection) {
+        // dynamically retrieve application number from the database, and pass it to apply.php
         $res = mysqli_query($connection, "SELECT EOINumber FROM eoi");
         $rows = array();
         while($row = mysqli_fetch_array($res)) {
             $rows[] = $row['EOINumber'];
         }
         $application_number = $rows[count($rows) - 1];
-        header("location: apply.php?success=1&no=$application_number");
+        header("location: apply.php?no=$application_number");
         exit;
     }
 

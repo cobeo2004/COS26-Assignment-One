@@ -5,10 +5,6 @@ created: 29-Mar-2023
 description: Job application page
 -->
 
-
-
-<!-- TODO: make confirmation page -->
-
 <?php
   session_start();
 // check if there are form errors indicated in the URL parameter
@@ -62,7 +58,7 @@ if (isset($_SESSION['error']) ) {
   $other_skills = "";
 }
 
-if (isset($_GET['success'])) {
+if (isset($_GET['no'])) {
   $success = true;
   $application_number = $_GET['no'];
 } else {

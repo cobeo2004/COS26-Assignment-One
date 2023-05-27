@@ -10,10 +10,11 @@ description: Script to process the job application form
 include "settings.php";
 include "db_functions.php";
 
-// TODO: Add EOI to table, generate table if it doesnt exist
+// check if the EOI table exists, if not create it
 if(!check_table_existence($connection)) {
     create_table($connection, "eoi");
 }
+
 // initialise form data variables
 $job_reference_number = "";
 $first_name = "";
@@ -277,6 +278,7 @@ if ($_POST) {
         $error_phone = "Phone number must contain 8-12 digits, or spaces";
     }
 
+    session_start();
 	// If there is no error, add the application to the database
 	if ($error === false) {
         // Check if table exists
@@ -320,20 +322,17 @@ if ($_POST) {
             // If table exists, insert data into table
             $data = add_eoi_data($connection, $job_reference_number, $first_name, $last_name, $date_of_birth_string, $gender, $street_address, $suburb, $state, $postcode, $email, $phone, $skill_communication, $skill_teamwork, $skill_detail_oriented, $skill_initiative, $skill_time_management, $skill_risk_management, $other_skills);
             if($data === true) {
-                // delete error session variable if set
-                if (isset($_SESSION["error"])) {
-                unset($_SESSION["error"]);
-                }
+                // delete form session variables
+                session_destroy();
                 // redirect to the application form with success parameter and application number set
                 redirect_if_success($connection);
             } else {
-                header("location: apply.php?error=1");
+                header("location: apply.php");
                 exit;
             }
          }
 	} else {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
-        session_start();
         // store error messages in session variables
         $_SESSION["error"] = true;
         $_SESSION["error_job_reference_number"] = $error_job_reference_number;
