@@ -10,9 +10,9 @@ description: Job application page
 <!-- TODO: make confirmation page -->
 
 <?php
-// check if there are form errors indicated in the URL parameter
-if (isset($_GET['error'])) {
   session_start();
+// check if there are form errors indicated in the URL parameter
+if (isset($_SESSION['error']) ) {
   // set error to true
   $error = true;
   // get the error messages from session variables

@@ -320,6 +320,10 @@ if ($_POST) {
             // If table exists, insert data into table
             $data = add_eoi_data($connection, $job_reference_number, $first_name, $last_name, $date_of_birth_string, $gender, $street_address, $suburb, $state, $postcode, $email, $phone, $skill_communication, $skill_teamwork, $skill_detail_oriented, $skill_initiative, $skill_time_management, $skill_risk_management, $other_skills);
             if($data === true) {
+                // delete error session variable if set
+                if (isset($_SESSION["error"])) {
+                unset($_SESSION["error"]);
+                }
                 // redirect to the application form with success parameter and application number set
                 redirect_if_success($connection);
             } else {
@@ -331,6 +335,7 @@ if ($_POST) {
         // If there is an error, display the error messages and fill the inputs with the user's previous data (in the HTML form)
         session_start();
         // store error messages in session variables
+        $_SESSION["error"] = true;
         $_SESSION["error_job_reference_number"] = $error_job_reference_number;
         $_SESSION["error_first_name"] = $error_first_name;
         $_SESSION["error_last_name"] = $error_last_name;
@@ -361,7 +366,7 @@ if ($_POST) {
         $_SESSION["other_skills"] = $other_skills;
 
         // redirect to the application form with error parameter set
-        header("location: apply.php?error=1");
+        header("location: apply.php");
         exit;
     }
 } else {
