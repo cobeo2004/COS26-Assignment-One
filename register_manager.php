@@ -1,8 +1,8 @@
 <!--
-filename: loginmanager.php
+filename: register_manager.php
 authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Amiru Manthrige
 created: 21-Mar-2023
-description: Log in to Manager form
+description: Register for manager
 -->
 
 <!DOCTYPE html>
