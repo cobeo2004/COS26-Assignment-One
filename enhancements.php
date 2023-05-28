@@ -26,7 +26,7 @@ include_once("header.inc");
       <!-- ENHANCEMENT 1 -->
       <h1>Enhancements</h1>
       <section>
-        <h2><a href="apply.html">First: Advanced CSS</a></h2>
+        <h2><a href="apply.php">First: Advanced CSS</a></h2>
         <p>
           The first enhancement uses advanced CSS such as keyframes,
           animations and flexbox.
@@ -69,7 +69,7 @@ include_once("header.inc");
       </section>
       <!-- ENHANCEMENT 2 -->
       <section>
-        <h2><a href="about.html">Second: CSS Hover Animations</a></h2>
+        <h2><a href="about.php">Second: CSS Hover Animations</a></h2>
         <p>The second enhancement uses simple hover CSS animation.</p>
         <p>
           The animation is done by adding a hover effect to the group member's
@@ -123,6 +123,7 @@ include_once("header.inc");
             >https://www.youtube.com/watch?v=H_64n7gY3h0</a
           >.
         </p>
+        <p><a href="phpenhancements.php">PHP Enhancements</a></p>
       </section>
     </main>
         <?php
