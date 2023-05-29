@@ -53,7 +53,7 @@ include_once("header.inc"); ?>
         <?php
         if($_SESSION["login_time"] > 3) {
             $_SESSION["locked"] = time();
-            echo "<p id = 'form-error-login'> Please try again for 5 seconds </p>";
+            echo "<p id = 'form-error-login'> Please try again in 5 seconds </p>";
         } else { ?>
         <button type="submit" name="login" id="login">Login</button>
         <button type="submit" name="register" id="register">Register</button>
