@@ -52,7 +52,7 @@ include_once("header.inc");
         </p>
         <p>
         Managers can update job listings directly from the database, Changes can
-        be made to job titles, descriptions, qualifications, etc through the database rather than having to manually edit the HTML. This results in a more consistent and convenient experience for managers.
+        be made to job titles, descriptions, qualifications, etc through the database rather than having to manually edit the HTML. This results in a more consistent and convenient experience for managers. Additionally, if changes need to be made to the design or formatting of the job descriptions, they only need to be changed once instead of having to change every single job description manually.
         </p>
 
         <p>

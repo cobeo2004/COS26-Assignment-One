@@ -170,7 +170,6 @@ while ($skill = mysqli_fetch_assoc($result_skills)) {
             $skill_desc_index++;
         }
     }
-
         $skill_index++;
 }
 
