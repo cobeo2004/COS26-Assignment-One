@@ -48,8 +48,6 @@ $error_phone = "";
 $error_skills = "";
 $error_other_skills = "";
 
-
-
 // Checks if validation was triggered by a form submit, if not redirect the user
 if ($_POST) {
 	// connect to database
@@ -275,7 +273,7 @@ if ($_POST) {
     // check if phone number contains 8-12 digits or spaces
     if (!preg_match("/^[0-9 ]{8,12}$/", $phone) && empty($error_phone)) {
         $error = true;
-        $error_phone = "Phone number must contain 8-12 digits, or spaces";
+        $error_phone = "Phone number must contain 8-12 digits or spaces";
     }
 
     session_start();
@@ -364,7 +362,7 @@ if ($_POST) {
         $_SESSION["skills"] = $skills;
         $_SESSION["other_skills"] = $other_skills;
 
-        // redirect to the application form with error parameter set
+        // redirect to the application form
         header("location: apply.php");
         exit;
     }

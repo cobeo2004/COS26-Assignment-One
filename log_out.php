@@ -6,6 +6,7 @@ description: Logout backend handler and redirect to login page
 -->
 
 <?php
+    // destroy the user's session and redirect to login page
     session_start();
     session_unset();
     session_destroy();

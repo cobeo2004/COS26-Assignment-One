@@ -34,12 +34,13 @@ include_once("header.inc"); ?>
     <h1>Management page</h1>
 
 <?php
-
+    // redirect to log_out.php if user clicks on log out button
     if(isset($_POST["submit_log_out"])) {
         header("location: log_out.php");
         mysqli_close($connection);
         exit();
     }
+    // display user's name
     $user_name = $_SESSION["name"];
     echo("<h2>Welcome: $user_name</h2>");
 ?>
@@ -477,7 +478,7 @@ include_once("header.inc"); ?>
         // checks if connection's successful
         if (!$connection) {
             // display an error message
-            echo "<p>Database connection failure</p>"; // not in production script
+            echo "<p>Database connection failure</p>";
         }
         else {
             if (check_table_existence($connection, $table)) {

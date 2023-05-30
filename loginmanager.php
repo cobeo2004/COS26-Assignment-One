@@ -6,6 +6,7 @@ description: Log in to Manager form
 -->
 <?php
 error_reporting(error_reporting() & ~E_NOTICE);
+// check if user is locked out (too many failed logins)
 session_start();
 if(isset($_SESSION["locked"])) {
     $diff = time() - $_SESSION["locked"];
@@ -37,6 +38,7 @@ include_once("header.inc"); ?>
     <h1>Login for Manager</h1>
     <form action="login_backend.php" method="post">
         <?php
+        // display any error messages
         if(isset($_SESSION["login-error"])) { ?>
             <p id="form-error-login"><?php echo $_SESSION['login-error']; ?></p>
         <?php }
@@ -51,6 +53,7 @@ include_once("header.inc"); ?>
         <br>
 
         <?php
+        // if user has failed to login 3 or more times, lock them out
         if($_SESSION["login_time"] > 2) {
             $_SESSION["locked"] = time();
             echo "<p id = 'form-error-login'> Please try again in 5 seconds </p>";

@@ -25,6 +25,7 @@ include_once("header.inc"); ?>
     <h1>Register for Manager</h1>
     <form action="register_backend.php" method="post">
         <?php
+        // display any error messages
         if(isset($_GET["error"])) { ?>
             <p id="form-error-login"><?php echo $_GET['error']; ?></p>
         <?php } ?>

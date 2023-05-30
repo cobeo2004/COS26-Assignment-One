@@ -23,11 +23,11 @@ $activePage = '';
 include_once("header.inc");
 ?>
     <main class="enhancements-main">
-      <!-- ENHANCEMENT 1 -->
       <h1>Enhancements</h1>
       <section>
               <!-- ENHANCEMENT PHP -->
       <h2>Enhancements with PHP</h2>
+            <!-- ENHANCEMENT 1 -->
         <h2><a href="jobs.php">First: Dynamic Job Listing with PHP and Database Integration</a></h2>
         <p>This enhancement involves integrating PHP and a database, allowing for the ability to update job listings directly
           from the database without the need for manual HTML editing. This enhancement significantly

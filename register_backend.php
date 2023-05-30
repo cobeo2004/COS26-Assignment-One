@@ -12,6 +12,7 @@ description: Backend handler for register
     include("db_functions.php");
 
     if(isset($_POST["reg-name"]) && isset($_POST["reg-username"]) && isset($_POST["reg-pw"]) && isset($_POST["reg-auth-code"])) {
+        // sanitise the inputs
         $manager_name = sanitise_input($_POST["reg-name"]);
         $manager_username = sanitise_input($_POST["reg-username"]);
         $manager_password = sanitise_input($_POST["reg-pw"]);

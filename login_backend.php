@@ -11,11 +11,13 @@ description: Backend handler for login form
     include("settings.php");
     include("db_functions.php");
 
-
+    // check if the login form was sent
     if(isset($_POST["login"])) {
         if(isset($_POST["login-username"]) && isset($_POST["login-pw"])) {
+            // sanitise the inputs
             $manager_username = sanitise_input($_POST["login-username"]);
             $manager_password = sanitise_input($_POST["login-pw"]);
+            // check if the fields are empty
             if(empty($manager_username)) {
                 $_SESSION["login-error"] = "Username is required";
                 header("location: loginmanager.php");
@@ -25,6 +27,7 @@ description: Backend handler for login form
                 header("location: loginmanager.php");
                 exit();
             } else {
+                // check if the username and password are correct
                 if(check_if_connected($connection) === true) {
                     $query = "SELECT * FROM manager_db WHERE user_name='$manager_username' AND password='$manager_password'";
                     $result = mysqli_query($connection, $query);
@@ -56,6 +59,7 @@ description: Backend handler for login form
             exit();
         }
     }
+    // check if the register button was pressed, if so redirect to register page
     if(isset($_POST["register"])) {
         header("location: register_manager.php");
         exit();
