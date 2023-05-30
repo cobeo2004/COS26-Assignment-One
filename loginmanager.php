@@ -46,12 +46,12 @@ include_once("header.inc"); ?>
         <label for="login-username">Username</label>
         <input type="text" name="login-username" id="login-username">
         <br>
-        <label for="pw">Password</label>
+        <label for="login-pw">Password</label>
         <input type="password" name="login-pw" id="login-pw">
         <br>
 
         <?php
-        if($_SESSION["login_time"] > 3) {
+        if($_SESSION["login_time"] > 2) {
             $_SESSION["locked"] = time();
             echo "<p id = 'form-error-login'> Please try again in 5 seconds </p>";
         } else { ?>

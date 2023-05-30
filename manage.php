@@ -65,7 +65,7 @@ include_once("header.inc"); ?>
             }
             else {
                 // display the retrieved records
-                echo "<table border=\"1px\">\n";
+                echo "<table>\n";
                 echo "<tr>\n"
                     ."<th scope=\"col\">EOI Number</th>\n"
                     ."<th scope=\"col\">Job Reference Number</th>\n"
@@ -153,7 +153,7 @@ include_once("header.inc"); ?>
     <br>
 
     <h2>Search EOIs by Reference Number</h2>
-    <form action="<?php $_PHP_SELF ?>" method="post">
+    <form action="./manage.php" method="post">
         <label for="jobref">Reference number</label>
         <input type="text" name="jobref" id="jobref">
         <input type="submit" name="submit_job" id="find_refnum" value="Search">
@@ -205,7 +205,7 @@ include_once("header.inc"); ?>
                             else {
                                 // display the retrieved records
                                 // display the retrieved records
-                                echo "<table border=\"1px\">\n";
+                                echo "<table>\n";
                                 echo "<tr>\n"
                                     ."<th scope=\"col\">EOI Number</th>\n"
                                     ."<th scope=\"col\">Job Reference Number</th>\n"
@@ -297,7 +297,7 @@ include_once("header.inc"); ?>
     <!-- delete all eois w a specified job ref num using button -->
 
     <h2>Search EOIs by Applicant Name</h2>
-    <form action="<?php $_PHP_SELF ?>" method="post">
+    <form action="./manage.php" method="post">
         <label for="fname">First Name</label>
         <input type="text" name="fname" id="fname">
         <label for="lname">Last Name</label>
@@ -360,7 +360,7 @@ include_once("header.inc"); ?>
                         else {
                             // display the retrieved records
                            // display the retrieved records
-                            echo "<table border=\"1px\">\n";
+                            echo "<table>\n";
                             echo "<tr>\n"
                                 ."<th scope=\"col\">EOI Number</th>\n"
                                 ."<th scope=\"col\">Job Reference Number</th>\n"
@@ -448,7 +448,7 @@ include_once("header.inc"); ?>
 ?>
     <h2>Edit EOI Status</h2>
     <!-- insert (add new data), delete (rmv existing data), update (modify existing data) -->
-    <form action="<?php $_PHP_SELF ?>" method="post">
+    <form action="./manage.php" method="post">
         <!-- <label for="status">status of eoi</label>
         <input type="text" name="status" id="status"> -->
         <!-- status is a new field/column in the table -->

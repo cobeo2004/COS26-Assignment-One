@@ -107,7 +107,7 @@ include_once("header.inc");
   <div class="success-modal__inner">
     <label class="success-modal__close" for="success-modal"></label>
           <!-- Display CloudLabs logo -->
-              <img src="images/logo-removebg-preview.png" alt="CloudLabs logo" width="100" height="100" /></a>
+              <img src="images/logo-removebg-preview.png" alt="CloudLabs logo" width="100" height="100" />
     <br>
     <h2 class="apply-h2">Your job application has been submitted successfully!</h2>
     <br>
@@ -122,7 +122,7 @@ include_once("header.inc");
   </div>
 </div>
     <!-- Job Application form, sends a POST request to the Swinburne Mercury server upon submission -->
-    <form method="post" action="./processEOI.php" novalidate=”novalidate”>
+    <form method="post" action="./processEOI.php" novalidate>
       <fieldset class="apply-section">
         <legend>About the job</legend>
         <label class="apply-label" for="job_ref_no">Which job are you applying for?</label><br />
