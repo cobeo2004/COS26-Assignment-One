@@ -47,9 +47,9 @@ include "db_functions.php";
            # display as list
             echo "<ol>";
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "<li><a href=\"jobs.php#" . $row["job_name"] . "\">" . $row["job_name"] . "</a></li>";
+                echo "<li><a href=\"jobs.php#" . str_replace(' ', '', $row["job_name"]) . "\">" . $row["job_name"] . "</a></li>";
             }
-            echo "</ol>";
+            echo "</ol><div class=\"job-des\">";
             ?>
         </div>
 
@@ -69,12 +69,12 @@ include "db_functions.php";
                 $description = $row["description"];
                 $essential_qualification = $row["essential_qualification"];
                 $knowledge = $row["knowledge"];
+                $job_name_no_spaces = str_replace(' ', '', $job_name);
 
                 # start displaying job description
 echo <<<EOL
-                <div class=\"job-des\">
                 <section>
-                    <h2 id="$job_name">$job_name</h2>
+                    <h2 id="$job_name_no_spaces">$job_name</h2>
                 <dl>
                 <dt><strong>Position description reference number</strong></dt>
                     <dd>$position_reference</dd>

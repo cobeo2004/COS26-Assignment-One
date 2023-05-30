@@ -71,7 +71,7 @@ include_once("header.inc");
 
         <strong>Enhancement Details:</strong>
 
-        <p>Logout Page Creation</p>
+        <p>Logout Page Creation:</p>
 
         <p>We developed a dedicated logout page using PHP that handles the logout functionality.
           The manage page includes a logout button that users can click to securely log out of their session.
@@ -86,11 +86,11 @@ include_once("header.inc");
         to verify the user's login status. If a user attempts to access the manager's web page
         without an active session, they are redirected to the login page.
         </p>
-       <p>Manager Registration Page</p>
+       <p>Manager Registration Page:</p>
        <p>We created a dedicated manager registration page using PHP that allows managers to sign up for an account. The registration
          form includes fields for entering a unique username and a password that adheres to specific rules. Managers require a unique authentication code to register new accounts.</p>
 
-       <p>Temporary Account Lockout</p>
+       <p>Temporary Account Lockout:</p>
        <p>For security, we implemented a temporary account lockout feature. After 3 consecutive
          invalid login attempts, access to the website is disabled for a few seconds. This discourages
          unauthorised access attempts and protects against brute-force attacks.</p>
