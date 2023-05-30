@@ -28,7 +28,6 @@ include_once("header.inc");
       <section>
               <!-- ENHANCEMENT PHP -->
       <h2>Enhancements with PHP</h2>
-      <section>
         <h2><a href="jobs.php">First: Dynamic Job Listing with PHP and Database Integration</a></h2>
         <p>This enhancement involves integrating PHP and a database, allowing for the ability to update job listings directly
           from the database without the need for manual HTML editing. This enhancement significantly
