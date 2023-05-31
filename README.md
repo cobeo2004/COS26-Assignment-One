@@ -27,3 +27,9 @@ Deadline Is Coming guys
 # Assignment information
 
 https://swinburne.instructure.com/courses/49151/assignments/504478
+
+# Final
+
+Every journey must comes to an end, and this is it, this is the final commits of the assignment and also the final commit of our beautiful time. As the leader of the group, Simon aka Tuan Minh, I would like to give many thanks to our lovely member. Nathan, Nhat Minh, Mai An, Amiru, you guys are one of the greatest teammates that I have ever met in my life and it was a pleasure to work with you guys. Finally, many thanks and all the best to your future journey.
+
+Simon
