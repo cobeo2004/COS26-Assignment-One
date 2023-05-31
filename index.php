@@ -122,7 +122,7 @@ include_once("header.inc");
     </section>
     <!-- Link to video report -->
     <section class="link-report">
-      <a href="https://www.youtube.com/watch?v=N02GqclyABc" target="_blank">Link To Video Report</a>
+      <a href="https://youtu.be/PUfQxcJGEKU" target="_blank">Link To Video Report</a>
     </section>
     </main>
     <?php
