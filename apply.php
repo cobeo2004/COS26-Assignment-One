@@ -6,7 +6,10 @@ description: Job application page
 -->
 
 <?php
-  session_start();
+error_reporting(error_reporting() & ~E_NOTICE & ~E_ALL & ~E_DEPRECATED);
+?>
+<?php
+  // session_start();
 // check if there are form errors indicated in the URL parameter
 if (isset($_SESSION['error']) ) {
   // set error to true

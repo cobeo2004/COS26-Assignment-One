@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Apache and PHP service
+  web:
+    image: php:8-apache
+    container_name: php-apache-container
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+
+  # MySQL service
+  mysql:
+    image: mysql:8.0
+    networks:
+      - my-network
+    container_name: mysql-container
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 281204
+      MYSQL_DATABASE: s103819212_db
+      MYSQL_USER: s103819212
+      MYSQL_PASSWORD: 281204
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+
+  # phpMyAdmin service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    networks:
+      - my-network
+    container_name: phpmyadmin-container
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      - mysql
+
+# Define networks
+networks:
+  my-network:

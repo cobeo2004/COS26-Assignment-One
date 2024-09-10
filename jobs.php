@@ -4,7 +4,8 @@ authors: Xuan Tuan Minh Nguyen, Nathan Wijaya, Mai An Nguyen, Nhat Minh Tran, Am
 created: 29-Mar-2023
 description: Job descriptions page
 -->
-<?php error_reporting(error_reporting() & ~E_NOTICE);
+<?php
+ error_reporting(error_reporting() & ~E_NOTICE & ~E_ALL & ~E_DEPRECATED);
 ?>
 <!DOCTYPE html>
 <html lang="en" class="job-class">

@@ -58,19 +58,19 @@
     }
 
     // //Create database if exists
-    // function create_database($connection, $database_name = "assign2") {
-    //     if(!check_if_connected($connection)) {
-    //         die("Connect failed! \n".mysqli_connect_error());
-    //     }
-    //     else {
-    //         if(!check_if_exists_database($connection, $database_name)) {
-    //             mysqli_query($connection, "CREATE DATABASE $database_name");
-    //             echo("<p> Database $database_name has been created successfully!</p>");
-    //         } else {
-    //             echo("<p> Already create the table </p>");
-    //         }
-    //     }
-    // }
+    function create_database($connection, $database_name = "assign2") {
+        if(!check_if_connected($connection)) {
+            die("Connect failed! \n".mysqli_connect_error());
+        }
+        else {
+            if(!check_if_exists_database($connection, $database_name)) {
+                mysqli_query($connection, "CREATE DATABASE $database_name");
+                echo("<p> Database $database_name has been created successfully!</p>");
+            } else {
+                echo("<p> Already create the table </p>");
+            }
+        }
+    }
 
     // Add user data to table
     function add_eoi_data($connection, $job_reference_number, $first_name, $last_name, $date_of_birth_string, $gender, $street_address, $suburb, $state, $postcode, $email, $phone, $skill_communication, $skill_teamwork, $skill_detail_oriented, $skill_initiative, $skill_time_management, $skill_risk_management, $other_skills) {
